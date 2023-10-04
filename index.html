@@ -1,0 +1,997 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon_io/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon_io/favicon2-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon_io/favicon2-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <!--==================== UNICONS ====================-->
+    <link
+      rel="stylesheet"
+      href="https://unicons.iconscout.com/release/v4.0.0/css/line.css"
+    />
+
+    <!--==================== SWIPER CSS ====================-->
+    <link rel="stylesheet" href="assets/css/swiper-bundle.min.css" />
+
+    <!--==================== CSS ====================-->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+
+    <title>Swapnil Mane Portfolio</title>
+  </head>
+  <body>
+    <!--==================== HEADER ====================-->
+    <header class="header" id="header">
+      <nav class="nav container">
+        <a href="#" class="nav_logo">Swapnil Mane</a>
+
+        <div class="nav_menu" id="nav-menu">
+          <ul class="nav_list grid">
+            <li class="nav_item">
+              <a href="#home" class="nav_link">
+                <i class="uil uil-estate nav_icon"></i> Home
+              </a>
+            </li>
+
+            <li class="nav_item">
+              <a href="#about" class="nav_link">
+                <i class="uil uil-user nav_icon"></i> About
+              </a>
+            </li>
+
+            <li class="nav_item">
+              <a href="#skills" class="nav_link">
+                <i class="uil uil-file-alt nav_icon"></i> Skills
+              </a>
+            </li>
+
+            <!--li class="nav_item">
+              <a href="#services" class="nav_link">
+                <i class="uil uil-briefcase nav_icon"></i> Services
+              </a>
+            </-li-->
+
+            <li class="nav_item">
+              <a href="#portfolio" class="nav_link">
+                <i class="uil uil-scenery nav_icon"></i> Portfolio
+              </a>
+            </li>
+
+            <li class="nav_item">
+              <a href="#contact" class="nav_link">
+                <i class="uil uil-message nav_icon"></i> Contact
+              </a>
+            </li>
+          </ul>
+          <i class="uil uil-times nav_close" id="nav-close"></i>
+        </div>
+
+        <div class="nav_btns">
+          <!--Theme change button -->
+          <i class="uil uil-moon change-theme" id="theme-button"></i>
+
+
+
+          <div class="nav_toggle" id="nav-toggle">
+            <i class="uil uil-apps"></i>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <!--==================== MAIN ====================-->
+    <main class="main">
+      <!--==================== HOME ====================-->
+      <section class="home section" id="home">
+        <div class="home_container container grid">
+          <div class="home_content grid">
+            <div class="home_social">
+              <a
+                href="https://linkedin.com/in/swapnil-mane-aa573615b"
+                target="_blank"
+                class="home_social-icon"
+              >
+                <i class="uil uil-linkedin-alt"></i>
+              </a>
+
+              <a
+                href="https://github.com/SwapnilMane22"
+                target="_blank"
+                class="home_social-icon"
+              >
+                <i class="uil uil-github-alt"></i>
+              </a>
+
+              <a
+                href="https://leetcode.com/CodingW-HelloWorld/"
+                target="_blank"
+                class="home_social-icon"
+              >
+                <i class="uil uil-arrow"></i>
+              </a>
+            </div>
+
+            <!--div class="home_img">
+              <svg
+                class="home_blob"
+                viewBox="0 0 200 187"
+                xmlns="http://www.w3.org/2000/svg"
+                xmlns:xlink="http://www.w3.org/1999/xlink"
+              >
+                <mask id="mask0" mask-type="alpha">
+                  <path
+                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 165.547 
+                        130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 129.362C2.45775 
+                        97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 -0.149132 97.9666 
+                        0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
+                  />
+                </mask>
+                <g mask="url(#mask0)">
+                  <path
+                    d="M190.312 36.4879C206.582 62.1187 201.309 102.826 182.328 134.186C163.346 
+                        165.547 130.807 187.559 100.226 186.353C69.6454 185.297 41.0228 161.023 21.7403 
+                        129.362C2.45775 97.8511 -7.48481 59.1033 6.67581 34.5279C20.9871 10.1032 59.7028 
+                        -0.149132 97.9666 0.00163737C136.23 0.303176 174.193 10.857 190.312 36.4879Z"
+                  /-->
+                  <img src="assets/img/5207 b final.jpg" alt="" class="home_img" />
+                </g>
+              </svg>
+            
+
+            <div class="home_data">
+              <h2 class="home_title">Hello, I am Swapnil Mane!</h2>
+              <h3 class="home_subtitle">Software Development Engineer</h3>
+              <p class="home_description">
+                <br>Welcome to my digital corner. I'm thrilled to showcase my current and past projects, as well as provide insights into my educational journey and professional endeavors. Let's connect and explore opportunities together. <!--I'm excited about the future of technology, and I invite you to explore my portfolio to see how I'm contributing to this dynamic landscape. Let's connect and explore opportunities together. I'm a passionate graduate student pursuing a Master's in Computer Science at Binghamton University. I'm diving deep into the fascinating world of AI and ML. With a strong foundation as a former Software Development Engineer at LTIMindtree Ltd., I've honed my skills in various domains, including SAP ABAP, and Azure AI Cognitive Services. I hold a Bachelor's degree in Electronics and Telecommunication Engineering from FCRIT, graduating in 2020.-->
+                 </p>
+              <a href="#contact" class="button button--flex"
+                >Contact Me
+                <i class="uil uil-message button_icon"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="home_scroll">
+            <a href="#about" class="home_scroll-button button--flex">
+              <i class="uil uil-mouse-alt home_scroll-mouse"></i>
+              <span class="home_scroll-name">Scroll Down</span>
+              <i class="uil uil-arrow-down home_scroll-arrow"></i>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!--==================== ABOUT ====================-->
+      <section class="about section" id="about">
+        <h2 class="section_title">About Me</h2>
+        <span class="section_subtitle">My Introduction</span>
+
+        <div class="about_container container grid">
+          <!--img src="assets/img/5207 b final.jpg" alt="" class="about_img" /-->
+
+          <class="about_data">
+            <p class="about_description">
+              
+              I am a graduate student pursuing a Master of Science in Computer Science at Binghamton University. I am currently looking for Summer 2024 internship opportunities. <br><br>
+              My professional foundation was established during my tenure as a Software Development Engineer at LTIMindtree Ltd., where I gained invaluable experience in diverse domains, including proficiency in SAP ABAP and expertise in Azure AI Cognitive Services. This role equipped me with the skills to tackle complex challenges and deliver innovative solutions to enhance operational efficiency.<br><br>
+
+              Complementing my practical experience, I hold a Bachelor's degree in Electronics and Telecommunication Engineering, which I earned from FCRIT in 2020. This educational background has provided me with a strong technical foundation, enabling me to bridge theory and practice effectively.<br><br>
+    
+              I am driven by a relentless pursuit of knowledge and excellence in the field of computer science. I am excited to leverage my academic and professional experiences to contribute to the dynamic landscape of technology and make a meaningful impact on the projects I undertake.
+</p>
+
+            <div class="about_info">
+              <div>
+                <span class="about_info-title">3+</span>
+                <span class="about_info-name"
+                  >Years <br />
+                  experience</span
+                >
+              </div>
+
+              <div>
+                <span class="about_info-title">9+</span>
+                <span class="about_info-name"
+                  >Completed <br />
+                  Projects</span
+                >
+              </div>
+
+              <div>
+                <span class="about_info-title">05</span>
+                <span class="about_info-name"
+                  >Organizations <br />
+                  worked</span>
+              </div>
+              </div>
+
+              <!--href="assets/pdf/Swapnil Mane Bing Resume detailed version portfolio.pdf"-->
+              <div class="about_button">
+                <a
+                  download=""
+                  href="assets/pdf/Swapnil Mane Bing Resume 2.1.pdf"
+                  class="button button--flex"
+                  >Download CV<i class="uil uil-download-alt button_icon"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+       
+      </section>
+
+      <!--==================== SKILLS ====================-->
+      <section class="skills section" id="skills">
+        <h2 class="section_title">Skills</h2>
+        <span class="section_subtitle">My Technical level</span>
+
+        <div class="skills_container container grid">
+
+          <div>
+              <!-----------------SKIILS1---------------------->
+              <div class="skills_content">
+                <div class="skills_header">
+                  <i class="uil uil-arrow skills_icon"></i>  
+                  
+  
+                  <div>
+                    <h1 class="skills_title">Programming</h1>
+                    <span class="skills_subtitle">Coding Languages </span>
+                  </div>
+
+                  
+                  <i class="uil uil-angle-up skills_arrow"></i>
+                  </div>
+  
+                  <div class="skills_list grid">
+  
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Python</h3>
+                        <span class="skills_number">85%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_cpp"></span>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Java</h3>
+                        <span class="skills_number">65%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_dsa"></span>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">C++</h3>
+                        <span class="skills_number">70%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_oop"></span>
+                      </div>
+                    </div>
+                    <br>
+
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">SQL</h3>
+                        <span class="skills_number">80%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_dsa"></span>
+                      </div>
+                    </div>
+                    <br>
+                </div>
+                </div>
+                </div>  
+                
+                <div>
+
+                  <!-- ----------------SKILLS 2>
+                  <div class="skills_content">
+                    <div class="skills_header">
+                      <i class="uil uil-desktop skills_icon"></i>
+                  
+                      <div>
+                        <h1 class="skills_title">Computer Science</h1>
+                        <span class="skills_subtitle">Courses</span>
+                      </div>
+      
+                      <i class="uil uil-angle-down skills_arrow"></i>
+                      </div>
+      
+                      <div class="skills_list grid">
+      
+                        <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name">OOP using Java</h3>
+                            <span class="skills_number">80%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_cc"></span>
+                          </div>
+                        </div>
+      
+                        <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name">Design & Analysis of Computer Algorithms</h3>
+                            <span class="skills_number">80%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_da"></span>
+                          </div>
+                        </div>
+      
+                        <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name">Design Patterns</h3>
+                            <span class="skills_number">70%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_ds"></span>
+                          </div>
+                        </div>
+      
+                        <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name">Data Structures</h3>
+                            <span class="skills_number">60%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_ml"></span>
+                          
+                        </div>
+                      </div>
+
+                      <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name"> Image Processing and Machine Vision</h3>
+                            <span class="skills_number">70%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_ds"></span>
+                          </div>
+                        </div>
+
+                        <div class="skills_data">
+                          <div class="skills_title">
+                            <h3 class="skills_name"> Neural Networks and Fuzzy Logic</h3>
+                            <span class="skills_number">70%</span>
+                          </div>
+                          <div class="skills_bar">
+                            <span class="skills_percentage skills_ds"></span>
+                          </div>
+                        </div>
+
+                    </div>
+                </div>
+                 </div>
+             
+           <div-->
+
+            <!-----------------SKIILS 3---------------------->
+            <div class="skills_content">
+              <div class="skills_header">
+                <i class="uil uil-brackets-curly skills_icon"></i>
+
+                <div>
+                  <h1 class="skills_title">Developement</h1>
+                  <span class="skills_subtitle">Tools and Softwares</span>
+                </div>
+
+                <i class="uil uil-angle-down skills_arrow"></i>
+                </div>
+
+                <div class="skills_list grid">
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">Microsoft Azure Machine Learning Studio & Cognitive Services</h3>
+                      <span class="skills_number">90%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_react"></span>
+                    </div>
+                  </div>
+                    <br>
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">Visual Studio Code</h3>
+                      <span class="skills_number">70%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_node"></span>
+                    </div>
+                  </div>
+                    <br>
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">SAP Logon NetWeaver</h3>
+                      <span class="skills_number">60%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_mongo"></span>
+                    </div>
+                  </div>
+                    <br>
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">Android Studio</h3>
+                      <span class="skills_number">70%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_express"></span>
+                </div>
+              </div>
+                    <br>
+              </div>
+              </div>
+              </div>
+              <div>
+                              <!--======================SKILLS 5==========================-->
+              <div class="skills_content">
+                <div class="skills_header">
+                  <i class="uil uil-social-distancing skills_icon"></i>
+        
+                  <div>
+                    <h1 class="skills_title">Social Skills</h1>
+                    <span class="skills_subtitle">Personal and Social Skills</span>
+                  </div>
+        
+                  <i class="uil uil-angle-down skills_arrow"></i>
+                  </div>
+        
+                  <div class="skills_list grid">
+
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Project Management</h3>
+                        <span class="skills_number">100%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_project"></span>
+                      </div>
+                    </div>
+                    <br>
+        
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Event Management</h3>
+                        <span class="skills_number">100%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_event"></span>
+                      </div>
+                    </div>
+                    <br>
+        
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Team Management</h3>
+                        <span class="skills_number">90%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_tm"></span>
+                      </div>
+                    </div>
+                    <br>
+        
+                    <!--div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Anchoring</h3>
+                        <span class="skills_number">80%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_anchoring"></span>
+                      </div>
+                    </div>
+                    <br>
+        
+                    <div class="skills_data">
+                      <div class="skills_title">
+                        <h3 class="skills_name">Public Speaking</h3>
+                        <span class="skills_number">70%</span>
+                      </div>
+                      <div class="skills_bar">
+                        <span class="skills_percentage skills_public"></span>
+                      </div>
+                    </div-->
+                  </div>
+                       </div>
+                    </div>
+            <!------------------SKILLS 4------------------------------->
+            <div class="skills_content">
+              <div class="skills_header">
+                <i class="uil uil-language skills_icon"></i>
+
+                <div>
+                  <h1 class="skills_title">Languages</h1>
+                  <span class="skills_subtitle">This includes languages I can speak and write</span>
+                </div>
+
+                <i class="uil uil-angle-down skills_arrow"></i>
+                </div>
+
+                <div class="skills_list grid">
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">English</h3>
+                      <span class="skills_number">100%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_english"></span>
+                    </div>
+                  </div>
+                    <br>
+
+                 
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">Hindi</h3>
+                      <span class="skills_number">100%</span>
+                    </div>
+                    <div class="skills_bar">
+                      <span class="skills_percentage skills_hindi"></span>
+                    </div>
+                  </div>
+                    <br>
+
+                  <div class="skills_data">
+                    <div class="skills_title">
+                      <h3 class="skills_name">Marathi</h3>
+                      <span class="skills_number">100%</span>
+                    </div>
+                    <class class="skills_bar">
+                      <span class="skills_percentage skills_marathi"></span>
+                    
+                  </div>
+                </div>
+              </div>
+          </div>
+           
+            <div>
+ 
+                  </div>
+                </div>
+                  </section>
+     
+
+        <!--==================== QUALIFICATION ====================-->
+        <section class="qualification section">
+          <h2 class="section_title">Qualification</h2>
+        <span class="section_subtitle">My personal journey</span>
+    
+        <div class="qualification_container container">
+          <div class="qualification_tabs">
+
+          <div class="qualification_button button--flex qualification_active" data-target='#education'>
+            <i class="uil uil-graduation-cap qualification_icon"></i>
+            Education
+          </div>
+
+          <div class="qualification_button button--flex" data-target='#work'>
+            <i class="uil uil-briefcase-alt"></i>
+            Work
+          </div>
+          </div>
+       
+          <div class="qualification_sections">
+
+            <!--==================== QUALIFICATION  CONTENT 1 ====================-->
+            <div class="qualification_content qualification_active" data-content id="education">
+            <!--==================== QUALIFICATION  1====================-->
+            <div class="qualification_data">
+              <div>
+                <h3 class="qualification_title">Binghamton University, Thomas J. Watson College of Engineering and Applied Science</h3>
+                <span class="qualification_subtitle">Master of Science in Computer Science</span>
+                <div class="qualification_calender">
+                  <i class="uil uil-calendar-alt"></i>
+                  2023 - 2025
+                </div>
+              </div>
+    
+              <div>
+                <span class="qualification_rounder"></span>
+                <span class="qualification_line"></span>
+              </div>
+            </div>
+    
+    
+            <!--==================== QUALIFICATION 2 ====================-->
+            <div class="qualification_data">
+              <div></div>
+    
+              <div>
+                <span class="qualification_rounder"></span>
+                
+              </div>
+    
+              <div>
+                <h3 class="qualification_title">Fr. C. Rodrigues Institute of Technology, Navi Mumbai, India</h3>
+                <span class="qualification_subtitle">Bachelor of Engineering in Electronics, and Telecommunication Engineering</span>
+                <div class="qualification_calender">
+                  <i class="uil uil-calendar-alt"></i>
+                  2016 - 2020
+                </div>
+              </div>
+            </div>
+
+    
+            <!--==================== QUALIFICATION  3====================>
+            <div class="qualification_data">
+              <div>
+                <h3 class="qualification_title">D.A.V. Public School, Nerul, Navi Mumbai, India</h3>
+                <span class="qualification_subtitle">Higher Secondary School</span>
+                <div class="qualification_calender">
+                  <i class="uil uil-calendar-alt"></i>
+                  2014 - 2016
+                </div>
+              </div>
+    
+              <div>
+                <span class="qualification_rounder"></span>
+                <span class="qualification_line">
+              </div>
+            </div-->
+            </div>
+
+
+    
+            <!--==================== QUALIFICATION  CONTENT 2 ====================-->
+            
+             <div class="qualification_content" data-content id="work">
+
+
+            <!--==================== QUALIFICATION  1====================-->
+              <div class="qualification_data">
+                <div>
+                  <h3 class="qualification_title"> LTIMindtree Ltd. (erstwhile Larsen & Toubro Infotech Ltd.)</h3>
+                  <span class="qualification_subtitle">Software Engineer - AI/ML</span>
+                  <div class="qualification_calender">
+                    <i class="uil uil-calendar-alt"></i>
+                    August 2020 – July 2023
+
+                  </div>
+                </div>
+
+                <div>
+                  <span class="qualification_rounder"></span>
+                  <span class="qualification_line"></span>
+                </div>
+              </div>
+
+
+              <!--==================== QUALIFICATION 2 ====================-->
+              <div class="qualification_data">
+                <div></div>
+
+                <div>
+                  <span class="qualification_rounder"></span>
+                  <span class="qualification_line"></span>
+                </div>
+
+                <div>
+                  <h3 class="qualification_title"> Yocket Pvt. Ltd.</h3>
+                  <span class="qualification_subtitle"> Community Mentor 
+                  </span>
+                  <div class="qualification_calender">
+                    <i class="uil uil-calendar-alt"></i>
+                    October 2022
+                  </div>
+                </div>
+              </div>
+
+
+              <!--==================== QUALIFICATION 3 ====================-->
+              <div class="qualification_data">
+                <div>
+                  <h3 class="qualification_title"> Navavidha Techsolutions Pvt. Ltd</h3>
+                  <span class="qualification_subtitle"> Junior App Developer 
+                  </span>
+                  <div class="qualification_calender">
+                    <i class="uil uil-calendar-alt"></i>
+                    June 2019- July 2019
+                  </div>
+                </div>
+                
+
+                <div>
+                  <span class="qualification_rounder"></span>
+                  <span class="qualification_line"></span>
+                </div>
+
+                
+              </div>
+
+              <!--==================== QUALIFICATION  3====================-->
+              <div class="qualification_data">
+                <div></div>
+                <div>
+                  <span class="qualification_rounder"></span>
+                  <!-- <span class="qualification_line"></!--span>-->
+                </div>
+
+                <div>
+                  <h3 class="qualification_title">Combined Digilog Systems Pvt. Ltd.</h3>
+                  <span class="qualification_subtitle">Applications Trainee Engineer</span>
+                  <div class="qualification_calender">
+                    <i class="uil uil-calendar-alt"></i>
+                    January 2019 - April 2019
+                  </div>
+                </div>
+
+                
+              </div>
+            </div>        
+          </div>
+            </div>
+
+        </section>
+       
+    
+
+      <!--==================== SERVICES ====================
+      <section-- class="services section" id="services"></section-->
+
+
+
+      <!--==================== PORTFOLIO ====================-->
+      <section class="portfolio section" id="portfolio">
+        <h2 class="section_title">Portfolio</h2>
+        <span class="section_subtitle">Most Recent Work</span>
+
+        <div class="portfolio_container container swiper-container">
+          <div class="swiper-wrapper">
+           
+
+        <!--============PORTFOLIO 1 ===============================-->
+        <div class="portfolio_content grid swiper-slide">
+          <img src="assets/img/Deep learning.png" alt="" class="portfolio_img">
+
+          <div class="portfolio_data">
+            <h3 class="portfolio_title">Thought to Text Conversion Using Deep Learning </h3>
+            <p class="portfolio_description">
+              This paper intends to design a very simplified model of the human brain that 
+              learns tasks by mimicking the behavior of brain patterns. An EEG (Electroencephalography) 
+              signal is a physiological approach to record the electrical signal pertaining to the brain 
+              activity by placing the iron affinity electrode i.e. metal disc sensors on the scalp. The 
+              magnitude of this signal is quite small, measured in microvolts. 
+            </p>
+
+          <a href="https://www.taylorfrancis.com/chapters/edit/10.1201/9781003052098-54/thought-text-conversion-using-deep-learning-swapnil-mane-tiasha-nath-shobin-thomas-omkar-swami-pranali-choudhari-smita-chopde"  class="button button--flex button--small portfolio_button">
+          Read Online      
+          <i class="uil uil-arrow-right button_icon"></i>
+        </a>  
+        <a
+          download=""
+          href="assets/pdf/ICTCS 2019 Journal Cover page and Thought to Text Conversion Using Deep Learning.pdf"
+          class="button button--flex">
+          Download Research Paper<i class="uil uil-download-alt button_icon"></i>
+        </a>
+          </div>
+        </div>
+
+
+        <!--============PORTFOLIO 2 ===============================-->
+        <div class="portfolio_content grid swiper-slide">
+          <img src="assets/img/deep-learning-for-ocr-1024x442.jpg" alt="" class="portfolio_img">
+
+          <div class="portfolio_data">
+            <h3 class="portfolio_title"> Simple Handwritten Text Recognition using Neural Network </h3>
+            <p class="portfolio_description">
+              Handwritten digit recognition using MNIST dataset is a major project made with the help of Neural Network. It basically detects the scanned images of handwritten digits. The project employs a three-layered neural network consisting of an input layer, a hidden layer, and an output layer. It preprocesses data from the MNIST dataset, rescales it, and then trains the neural network using backpropagation and regularization techniques
+              </p>
+
+          <a href="https://github.com/SwapnilMane22/handwritten_digit_recognition_mnist"  class="button button--flex button--small portfolio_button" target="_blank">
+          GitHub Repository      
+          <i class="uil uil-arrow-right button_icon"></i>
+        </a>  
+          </div>
+        </div>
+
+
+        <!--============PORTFOLIO 3 ===============================-->
+        <div class="portfolio_content grid swiper-slide">
+          <img src="assets/img/Lab automation.png" alt="" class="portfolio_img">
+
+          <div class="portfolio_data">
+            <h3 class="portfolio_title"> Bidirectional Counter for Attendance Record using IoT </h3>
+            <p class="portfolio_description">
+              Attendance tracking app for businesses, associations and schools to track employees, members and students tracking services to check-in, check-out and control access for administrators with smartphones and tablets.</p>
+         
+            <a href="https://github.com/SwapnilMane22/Bidirectional-Attendance-Barcode-Counter"  class="button button--flex button--small portfolio_button" target="_blank">
+              GitHub Repository      
+              <i class="uil uil-arrow-right button_icon"></i>
+            </a>  
+              </div>
+            </div>
+
+            <!--============PORTFOLIO 4 ===============================-->
+        <div class="portfolio_content grid swiper-slide">
+          <img src="assets/img/lucas-damian-maza-arduino.jpg" alt="" class="portfolio_img">
+
+          <div class="portfolio_data">
+            <h3 class="portfolio_title"> Automatic Mains Failure System for Diesel Generators  </h3>
+            <p class="portfolio_description">
+               It is a vital component in ensuring uninterrupted power supply during electrical outages. This system begins by converting the high 3-phase voltage to a manageable 3 volts. An Arduino UNO board is employed to seamlessly switch from the primary mains voltage supply to the backup power source, guaranteeing a smooth transition and uninterrupted power flow when the need arises. This technology plays a crucial role in various industries, data centers, and critical infrastructure to maintain continuous operations in the face of power disruptions.</p>
+         
+            <!--a href="#"  class="button button--flex button--small portfolio_button">
+              Demo      
+              <i class="uil uil-arrow-right button_icon"></i>
+            </a-->  
+              </div>
+            </div>
+              </div>
+
+
+            <!--Add Arrows==========================-->
+              <div class="swiper-button-next">
+                <i class="uil uil-angle-right-b swiper-portfolio-icon"></i>
+              </div>
+              <div class="swiper-button-prev">
+                <i class="uil uil-angle-left-b swiper-portfolio-icon"></i>
+              </div>
+
+            <!--===========Add Pagination=================-->
+            <div class="swiper-pagination"></div>
+            </div>
+      </section>
+
+      <!--==================== PROJECT IN MIND ====================
+      <section class="project section"></section>
+
+      <-==================== TESTIMONIAL ====================-
+      <section-- class="testimonial section"></section-->
+
+      <!--==================== CONTACT ME ====================-->
+      <section class="contact section" id="contact">
+
+        <h2 class="section_title">Contact Me</h2>
+        <span class="section_subtitle">Get in Touch</span>
+
+        <div class="contact_container container grid">
+          <div>
+
+            <div class="contact_information">
+              <i class="uil uil-phone contact_icon"></i>
+              <div>
+                <h3 class="contact_title">Call Me</h3>
+                <span class="contact_subtitle">+1(607)232-1068</span>
+              </div>
+              </div>
+
+
+              <div class="contact_information">
+                <i class="uil uil-envelope contact_icon"></i>
+                <div>
+                  <h3 class="contact_title">Email</h3>
+                  <span class="contact_subtitle"> smane@binghamton.edu </span>
+                </div>
+                </div>
+
+                <div class="contact_information">
+                  <i class="uil uil-map-marker-alt contact_icon"></i>
+                  <div>
+                    <h3 class="contact_title">Location</h3>
+                    <span class="contact_subtitle">Binghamton, New York, 13905</span>
+                  </div>
+                  </div>
+            </div>
+
+            <form action="https://formsubmit.co/smane@binghamton.edu" class="contact_form grid" method="POST">
+              <div class="contact_input grid">
+
+                <div class="contact_content">
+                  <label for="" class="contact_label">Name : </label>
+                  <input type="text" class="contact_label">
+                </div>
+                </div>
+                
+
+                <div class="contact_content">
+                  <label for="" class="contact_label">Email :</label>
+                  <input type="email" class="contact_label">
+                </div>
+                
+              
+
+              <div class="contact_content">
+                <label for="" class="contact_label">Project :</label>
+                <input type="text" class="contact_label">
+              </div>
+
+
+
+              <div class="contact_content">
+                <label for="" class="contact_label">Message :</label>
+                <textarea name="" id="" cols="0" rows="7" class="contact_input"></textarea>
+              </div>
+               <div>    
+              <a href="" class="button button--flex" >
+                Send Message
+                <i class="uil uil-message button_icon"></i>
+              </a>
+            </div>
+
+            </form>
+          </div>
+      </section>
+
+
+    </main>
+
+    <!--==================== FOOTER ====================-->
+    <footer class="footer">
+      <div class="footer_bg">
+        <div class="footer_container container grid">
+          <div>
+            <h1 class="footer_title">Swapnil</h1>
+            <span class="footer_subtitle">Software Developer</span>
+          </div>
+
+          <ul class="footer_links">
+
+            <li>
+              <a href="#services" class="footer_link">Services</a>
+            </li>
+
+            <li>
+              <a href="#portfolio" class="footer_link">Portfolio</a>
+            </li>
+
+            <li>
+              <a href="#contact" class="footer_link">Contact Me</a>
+            </li>
+          </ul>
+
+          <div class="footer_social">
+
+            <a href="https://in.linkedin.com/in/swapnil-mane-aa573615b" target="_blank"  class="footer_social">
+              <i class="uil uil-linkedin-alt"></i>
+            </a>
+
+            <a href="https://instagram.com/mr.hustler_mane_na_maane" target="_blank" class="footer_social">
+              <i class="uil uil-instagram"></i>
+            </a>
+
+            <a href="https://github.com/SwapnilMane22" target="_blank" class="footer_social">
+              <i class="uil uil-github-alt"></i>
+            </a>
+            
+          </div>
+          <div>
+            <p class="footer_copy">&#169; Swapnil. All right reserved</p>
+          </div>
+        </div>
+        
+      </div>
+    </footer>
+
+    <!--==================== SCROLL TOP ====================-->
+    <a href="#" class="scrollup" id="scroll-up">
+      <i class="uil uil-arrow-up scrollup_icon"></i>
+    </a>
+
+    <!--==================== SWIPER JS ===================-->
+    <script src="assets/js/swiper-bundle.min.js"></script>
+
+    <!--==================== MAIN JS ====================-->
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>
