@@ -25,7 +25,7 @@ const Navbar = () => {
             <a
               href='#projects'
               onClick={toggleNavList}
-              className='link link--nav'
+              className='link link--nav heading'
             >
               Projects
             </a>

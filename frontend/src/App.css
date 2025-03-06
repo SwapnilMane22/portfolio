@@ -15,11 +15,11 @@
   }
   
   .dark {
-    --clr-bg: #23283e;
-    --clr-bg-alt: #2a2f4c;
-    --clr-fg: #bdbddd;
-    --clr-fg-alt: #cdcdff;
-    --clr-primary: #90a0d9;
+    --clr-bg: #1d1d1d;
+    --clr-bg-alt: #6a6a6a;
+    --clr-fg: #c1c1c1; /*#a3d0da*/
+    --clr-fg-alt: #eafdff; /*#e5fcff*/
+    --clr-primary: #2978b5; /*#8a9bdb*/
     --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
       rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
   }
@@ -73,7 +73,6 @@
   
   .link--nav {
     color: var(--clr-fg);
-    text-transform: lowercase;
     font-weight: 500;
   }
   

@@ -25,12 +25,19 @@
   
   .about .link--icon {
     margin-right: 0.8em;
+    color: var(--clr-fg);
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .about .link--icon:hover {
+    transform: scale(1.2); 
+    color: var(--clr-primary);
   }
   
   .about .btn--outline {
     margin-right: 1em;
   }
-  
+
   @media (max-width: 600px) {
     .app .about {
       align-items: flex-start;

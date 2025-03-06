@@ -4,6 +4,8 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import { about } from '../../portfolio'
 import './About.css'
 import Typed from 'typed.js'
+import CIcon from '@coreui/icons-react';
+import * as icon from '@coreui/icons';
 
 const About = () => {
   const { name, role, role2, role3, description, resume, social } = about
@@ -12,7 +14,7 @@ const About = () => {
   useEffect(() => {
     if (typedRef.current) {
       const typed = new Typed(typedRef.current, {
-        strings: [role, role2, role3].filter(Boolean), // Remove undefined values
+        strings: [role, role2, role3].filter(Boolean),
         typeSpeed: 100,
         backSpeed: 50,
         loop: true,
@@ -57,7 +59,14 @@ const About = () => {
                 aria-label='github'
                 className='link link--icon'
               >
-                <GitHubIcon />
+                <GitHubIcon
+                style={{ 
+                  display: 'block',
+                  width: '24px',
+                  height: '24px',
+                  fill: 'currentColor'
+                }}
+                 />
               </a>
             )}
 
@@ -67,9 +76,39 @@ const About = () => {
                 aria-label='linkedin'
                 className='link link--icon'
               >
-                <LinkedInIcon />
+                <LinkedInIcon 
+                style={{ 
+                  display: 'block',
+                  width: '26px',
+                  height: '26px',
+                  fill: 'currentColor'
+                }}
+                />
               </a>
             )}
+
+            {social.leetcode && (
+              <a
+                href={social.leetcode}
+                aria-label='leetcode'
+                className='link link--icon'
+              >
+              <CIcon 
+                  icon={icon.cibLeetcode} 
+                  className='link link--icon'
+                  style={{ 
+                    display: 'block',
+                    width: '26px',
+                    height: '26px',
+                    fill: 'currentColor',
+                    marginTop: 3.5,
+                    paddingRight: 0,
+                    marginRight: 0
+                  }}
+                />
+              </a> 
+            )}
+            
           </>
         )}
       </div>

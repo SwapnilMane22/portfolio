@@ -32,6 +32,8 @@ npm install babel-loader@8.1.0 webpack@4.42.0
 
 npm install react-typed
 
+npm install @coreui/icons-react @coreui/icons --save
+
 Then modify the frontend/src/App.js:
 
 import React from 'react';
