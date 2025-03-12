@@ -8,10 +8,12 @@ import Typed from 'typed.js'
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
 import { motion } from "framer-motion";
+import resumePdf from 'src/assets/pdf/Swapnil Mane Resume.pdf';
 
 const About = () => {
-  const { name, role, role2, role3, description, resume, social } = about
+  const { name, role, role2, role3, description, social } = about
   const typedRef = useRef(null);
+  const resume = resumePdf;
   const [showResume, setShowResume] = useState(false);
   const [isAndroid, setIsAndroid] = useState(false);
   const [isIoS, setIsIoS] = useState(false);
