@@ -24,12 +24,31 @@ jobs:
         working-directory: ./frontend
         run: npm install
 
+      - name: Run lint checks
+        working-directory: ./frontend
+        run: npm run lint
+        # Ensure you have a lint script defined in your package.json
+
+      - name: Run tests
+        working-directory: ./frontend
+        run: npm test -- --watchAll=false
+        # Using --watchAll=false ensures tests run once in CI mode
+
       - name: Build the project
         working-directory: ./frontend
         run: npm run build
+
+      - name: Check deployment compatibility
+        working-directory: ./frontend
+        run: |
+          if [ ! -d build ]; then
+            echo "Build directory does not exist, deployment aborted."
+            exit 1
+          fi
+          echo "Build compatibility check passed."
 
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           folder: frontend/build  # The folder the action should deploy
-          branch: gh-pages  # The branch the action should deploy to
+          branch: gh-pages         # The branch the action should deploy to
