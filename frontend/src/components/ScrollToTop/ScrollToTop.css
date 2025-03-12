@@ -1,12 +1,14 @@
 .scroll-top {
     position: fixed;
-    bottom: 2em;
-    right: 4em;
+    bottom: 5em;
+    right: 1.5em;
     background-color: transparent;
+    z-index: 9999;
   }
   
   @media (max-width: 900px) {
     .scroll-top {
-      display: none;
+      background-color: transparent;
+      z-index: 9999;
     }
   }

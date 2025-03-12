@@ -10,18 +10,22 @@
     --clr-bg-alt: #fff;
     --clr-fg: #555;
     --clr-fg-alt: #444;
-    --clr-primary: #2978b5;
-    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    --clr-primary: #48b0ff;
+    --shadow: rgba(32, 32, 32, 0.2) 0px 7px 29px 0px;
+    --title: #1f1f1f;
+    --theme: #d2d2d2;
   }
   
   .dark {
     --clr-bg: #1d1d1d;
-    --clr-bg-alt: #6a6a6a;
+    --clr-bg-alt: #313131;
     --clr-fg: #c1c1c1; /*#a3d0da*/
     --clr-fg-alt: #eafdff; /*#e5fcff*/
     --clr-primary: #2978b5; /*#8a9bdb*/
-    --shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
-      rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+    --shadow: rgba(126, 126, 126, 0.16) 0px 10px 36px 0px,
+      rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
+      --title: #76c2fd;
+      --theme: #4b4b4b;
   }
   
   main {
@@ -86,7 +90,7 @@
     padding: 0.8em 1.4em;
     font-weight: 500;
     font-size: 0.9rem;
-    text-transform: lowercase;
+    text-transform: capitalize;
     transition: transform 0.2s ease-in-out;
   }
   

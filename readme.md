@@ -1,3 +1,80 @@
+# MERN Stack Portfolio Website
+
+## Prerequisites
+Before starting the project, ensure you have the following installed:
+- [Node.js](https://nodejs.org/) (LTS recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [Git](https://git-scm.com/)
+
+## Getting Started
+### 1. Set Up the Frontend
+Run the following commands to set up the React frontend:
+
+```sh
+npx create-react-app frontend
+cd frontend
+```
+
+### 2. Install Dependencies
+Install the required dependencies:
+
+```sh
+npm install react@18 react-dom@18
+npm install react-bootstrap bootstrap@4.6.0
+npm install --save-dev cross-env
+npm install web-vitals --save
+npm install react-icons
+npm install react-router-dom
+npm i react-router-hash-link
+npm install @mui/icons-material
+npm install @emotion/react @emotion/styled
+npm install uniqid
+npm install babel-loader@8.1.0 webpack@4.42.0
+npm install react-typed
+npm install @coreui/icons-react @coreui/icons --save
+npm install react-pdf
+npm install react-countup
+npm install framer-motion
+npm install express --save
+```
+
+### 3. Modify Files
+
+#### Modify `frontend/src/App.js`:
+Ensure it includes:
+```js
+import React from 'react';
+```
+
+#### Modify `frontend/package.json`:
+Update the `scripts` section:
+```json
+"scripts": {
+  "start": "cross-env NODE_OPTIONS=--openssl-legacy-provider react-scripts start",
+  ...
+}
+```
+
+### 4. Set Up Git Ignore
+Run the following command to ignore `node_modules/`:
+```sh
+echo "node_modules/" >> .gitignore
+```
+
+### 5. Configure Git
+Ensure Git handles line endings correctly:
+```sh
+git config --global core.autocrlf false
+```
+
+## Next Steps
+- Start the development server: `npm start`
+- Begin building your portfolio website!
+
+
+
+
+
 MERN Stack Portfolio Website
 
 To begin run command:
@@ -34,6 +111,12 @@ npm install react-typed
 
 npm install @coreui/icons-react @coreui/icons --save
 
+npm install react-pdf
+
+npm install react-countup
+
+npm install framer-motion
+
 Then modify the frontend/src/App.js:
 
 import React from 'react';
@@ -48,18 +131,4 @@ Also modify frontend/package.json:
 
 echo "node_modules/" >> .gitignore
 
-git config --global core.autocrlf false
-
-
-  "devDependencies": {
-    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
-    "@babel/preset-env": "^7.26.9",
-    "@babel/preset-react": "^7.26.3",
-    "babel-loader": "^10.0.0",
-    "cross-env": "^7.0.3",
-    "webpack": "^5.98.0"
-  }
-}
-
-
-    
+git config --global core.autocrlf false   

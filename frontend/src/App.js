@@ -2,6 +2,8 @@ import { useContext, React } from 'react'
 import { ThemeContext } from './contexts/theme'
 import Header from './components/Header/Header'
 import About from './components/About/About'
+import ChatBot from './components/ChatBot/ChatBot'
+import Journey from './components/Journey/Journey'
 import Projects from './components/Projects/Projects'
 import Skills from './components/Skills/Skills'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
@@ -20,12 +22,14 @@ const App = () => {
       <main>
         {/* <Home/> */}
         <About />
+        <Journey/>
         <Projects />
         <Skills />
         <Contact />
       </main>
 
       <ScrollToTop />
+      <ChatBot/>
       <Footer />
     </div>
   )

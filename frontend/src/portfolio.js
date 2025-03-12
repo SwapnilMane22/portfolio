@@ -11,24 +11,48 @@ const header = {
     role2: 'Full Stack Developer',
     role3: 'Machine Learning Engineer',
     description:
-      'Welcome to my digital corner. I am thrilled to showcase my projects, as well as provide insights into my educational journey and professional endeavors. Let us connect and explore opportunities together.',
-    resume: 'https://swapnilmane22.github.io/portfolio/assets/pdf/Swapnil%20Mane%20Resume.pdf',
+      'Welcome to my digital corner. I am thrilled to showcase my projects, as well as provide insights into my educational journey and professional endeavors. Let’s connect and explore opportunities together.',
+    resume: 'https://swapnilmane22.github.io/portfolio/assets/pdf/Swapnil%20Mane%20Resume.pdf',//'./assets/pdf/Swapnil Mane Resume.pdf',//
     social: {
       linkedin: 'https://www.linkedin.com/in/-swapnilmane-/',
       github: 'https://github.com/SwapnilMane22/',
       leetcode: 'https://leetcode.com/CodingW-HelloWorld/',
     },
   }
-  
+
   const projects = [
     // projects can be added an removed
     // if there are no projects, Projects section won't show up
+    {
+      name: 'Conversational AI ChatBot',
+      description:
+        'The Conversational AI ChatBot is designed to enhance user engagement on a portfolio website by providing personalized responses to career-related queries. It leverages a fine-tuned Large Language Model (LLM) trained with PyTorch, enabling it to deliver natural, interactive answers about professional experience, skills, and resume details. Utilizing natural language processing (NLP) and deep learning techniques, the chatbot effectively understands user intent and offers context-aware responses, making it a valuable tool for networking, job applications, and automating career-related conversations. Deployed on the portfolio website, it ensures that visitors can effortlessly access relevant information without needing to navigate through extensive content. Future enhancements will include real-time resume analysis, interview preparation guidance, and seamless integration with job application platforms to further optimize career advancement.',
+      stack: ['Python', 'PyTorch', 'Transformer', 'Natural Language Processing'],
+      // sourceCode: 'https://github.com',
+      // livePreview: 'https://github.com',
+    },
     {
       name: 'Portfolio Website',
       description:
         'The project serves as a dynamic digital resume, showcasing skills, experience, and projects with interactive live demos. Each project features a detailed overview, tech stack, and direct links to both the GitHub repository and a working demo, allowing everyone to explore real-world applications firsthand.',
       stack: ['React', 'CSS', 'MongoDB'],
       sourceCode: 'https://github.com/SwapnilMane22/mern_portfolio.git',
+      // livePreview: 'https://github.com',
+    },
+    {
+      name: 'Movie Search and Recommendation System',
+      description:
+        'The Movie Search and Recommendation System delivers personalized movie suggestions by leveraging TF-IDF vectorization for keyword-based matching and SBERT embeddings for deep semantic understanding. Users can input a description or keyword, and the model ranks and recommends the most relevant films based on similarity scores. By combining titles and overviews through feature engineering, the system enhances accuracy in capturing contextual meaning. TF-IDF ensures precise word-based retrieval, while SBERT provides more nuanced recommendations by understanding sentence-level semantics.',
+      stack: ['Python', 'PyTorch', 'Transformer', 'Natural Language Processing'],
+      // sourceCode: 'https://github.com',
+      // livePreview: 'https://github.com',
+    },
+    {
+      name: 'Battery State of Health Prediction',
+      description:
+        'I led the development of a battery State of Health (SOH) prediction system, focusing on estimating Remaining Useful Life (RUL) for efficient lifecycle management. These AI models achieved over 90% accuracy, utilizing advanced machine learning techniques to categorize batteries and model their degradation over time. I optimized Python code for handling over 3.25 million data points using parallel processing and multithreading to ensure performance and scalability.',
+      stack: ['Python', 'MATLAB', 'Machine Learning'],
+      // sourceCode: 'https://github.com',
       // livePreview: 'https://github.com',
     },
     {
@@ -45,6 +69,14 @@ const header = {
         'This project implements several techniques for image classification and clustering. The methods used include Principal Component Analysis (PCA), Discrete Cosine Transform (DCT), Deep Neural Networks (DNN), and K-Nearest Neighbors (KNN). The primary goal is to enhance data representation, improve classification accuracy, and optimize clustering outcomes.',
       stack: ['Python', 'Sci-kit Learn', 'SciPy'],
       sourceCode: 'https://github.com/SwapnilMane22/Data-Mining-Dimensionality-Reduction-Classification-and-Clustering.git',
+      // livePreview: 'https://github.com',
+    },
+    {
+      name: 'Ticket Classification System',
+      description:
+        'The Ticket Classification System is designed to streamline ticket management by automatically categorizing incoming support requests based on historical data. This system is particularly useful for customer support teams, IT help desks, and service management platforms, reducing manual effort and improving response efficiency. Built using Azure ML Studio, the model employs TF-IDF for text vectorization and regression techniques for supervised learning on skewed data. When a new ticket is generated, the system calculates a similarity score by comparing it with previously classified tickets, ensuring accurate categorization. The data pipeline, managed through Azure Data Storage, facilitates seamless data ingestion, transformation, and model training, enabling real-time processing and classification. Azure’s cloud-based infrastructure ensures scalability, while machine learning automation enhances accuracy, ultimately improving issue resolution times and customer satisfaction.',
+      stack: ['Microsoft Azure ML Studio', 'Python', 'Azure Data Lake'],
+      // sourceCode: 'https://github.com',
       // livePreview: 'https://github.com',
     },
     {
@@ -97,21 +129,38 @@ const header = {
     // },
   ]
   
+  const journey = [
+    {
+      intro:
+      `<p>I am a passionate and driven Software Engineer with a Master of Science degree in Computer Science from Binghamton University with a GPA of 3.71/4.0. I have a strong foundation in Artificial Intelligence (AI), Machine Learning (ML), and Data Science, with hands-on experience in various advanced technologies, tools, and programming languages. My expertise spans across Machine Learning algorithms, Deep Learning, Natural Language Processing (NLP), Computer Vision, and cloud technologies such as AWS, Azure, and GCP.</p>
+      <br>
+      <p>I’ve developed innovative AI/ML solutions, including predictive models for battery state-of-health (SOH) prediction with over 90% accuracy and automated systems that boosted productivity and operational efficiency. Throughout my career, I’ve had the opportunity to contribute to impactful projects, such as scaling AI algorithms for SaaS platforms and optimizing machine learning pipelines, which resulted in measurable improvements in data processing and model deployment. I have been actively involved in the development of cutting-edge AI applications in areas like battery lifecycle management, NLP automation, and image processing, and have demonstrated leadership abilities as a project lead and architect of AI solutions. </p>
+      <br>
+      <p>I’m particularly excited about the transformative power of AI, ML and GenAI, and I’m eager to continue exploring their potential to solve real-world problems in diverse industries, such as healthcare, finance, and sustainability. I am committed to utilizing my technical expertise and problem-solving skills to make meaningful contributions to the tech industry, driving innovation and efficiency while promoting diversity and inclusion.</p>
+      <p></p>`,
+      yoe: 4,
+      numProjects: `${projects.length}`,
+      numOrganizations: 5,
+    },
+  ]
+
   const skills = [
     // skills can be added or removed
     // if there are no skills, Skills section won't show up
-    'HTML',
-    'CSS',
+    'Python',
+    'Artificial Intelligence',
+    'Machine Learning',
+    'Natural Language Processing',
+    'Java',
     'JavaScript',
-    'TypeScript',
     'React',
-    'Redux',
-    'SASS',
-    'Material UI',
+    'SQL',
+    'Computer Vision',
     'Git',
-    'CI/CD',
-    'Jest',
-    'Enzyme',
+    'Generative AI',
+    'Microsoft Azure Machine Learning Studio',
+    'AI/ML Frameworks',
+    'Android',
   ]
   
   const contact = {
@@ -119,4 +168,4 @@ const header = {
     email: 'smane@bingamton.edu',
   }
   
-  export { header, about, projects, skills, contact }
+  export { header, about, projects, journey, skills, contact }

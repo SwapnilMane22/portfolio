@@ -1,33 +1,72 @@
 .project {
-    padding: 2em;
+    padding: 1em;
     margin: 0 auto;
     text-align: center;
     box-shadow: var(--shadow);
     transition: transform 0.2s linear;
+    background-color: var(--clr-bg-alt);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%; 
+  }
+
+  .project__heading {
+    color: var(--title); 
   }
   
   .project:hover {
     transform: translateY(-7px);
+    color: var(--clr-fg-alt);
+    background-color: var(--clr-primary);
   }
+
+  .project:hover .project__heading {
+    color: var(--clr-fg-alt); 
+}
+
   
   .project__description {
     margin-top: 1em;
+    justify-content: center;
   }
   
   .project__stack {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     margin: 1.2em 0;
+    margin-left: -30px;
+    justify-content: center;
+    background-color: transparent;
   }
   
   .project__stack-item {
-    margin: 0.5em;
+    margin: 0.3em;
     font-weight: 500;
     font-size: 0.8rem;
     color: var(--clr-fg-alt);
   }
+
+  .project__stack-item:first-child::before {
+    content: "•";
+    margin-right: 0.3rem;
+  }
+
+  .project__stack-item:last-child::after {
+    content: "•";
+    margin-left: 0.3rem;
+  }
+
+  .project__stack-item:nth-child(n)::before {
+    content: "•";
+    margin-right: 0.3rem;
+  }
   
   .project .link--icon {
     margin-left: 0.5em;
+  }
+
+  .project .link--icon:hover {
+    color: var(--clr-bg);
   }

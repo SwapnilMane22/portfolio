@@ -1,0 +1,67 @@
+  /* Journey Section Styles */
+  .journey-section {
+    margin-top: 3rem;
+    text-align: center;
+    width: 100%;
+  }
+  
+  .journey-intro {
+    margin-bottom: 2rem;
+    font-size: 1.2rem;
+    max-width: 950px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .journey-stats {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+  }
+  
+  .journey-stat {
+    padding: 1.5rem;
+    border-radius: 8px;
+    min-width: 180px;
+    transition: transform 0.3s ease;
+    background: none 
+  }
+  
+  .journey-stat:hover {
+    transform: translateY(-5px);
+  }
+  
+  .journey-stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--clr-primary);
+    margin-bottom: 0.5rem;
+    background: none 
+  }
+  
+  .journey-stat-label {
+    font-size: 1rem;
+    color: var(--clr-fg);
+  }
+
+  
+  @media (max-width: 600px) {
+    .app .about {
+      align-items: flex-start;
+      margin-top: 2em;
+    } 
+
+    .journey-stats {
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .journey-stat {
+      width: 70%;
+    }
+
+    .journey-intro {
+        max-width: 300px;
+    }
+  }
