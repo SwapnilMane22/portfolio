@@ -1,0 +1,25 @@
+{
+  "name": "backend",
+  "version": "0.0.1",
+  "description": "Mern Stack Portfolio",
+  "homepage": "https://github.com/SwapnilMane22/mern_portfolio#readme",
+  "bugs": {
+    "url": "https://github.com/SwapnilMane22/mern_portfolio/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SwapnilMane22/mern_portfolio.git"
+  },
+  "license": "MIT",
+  "author": "Swapnil Mane",
+  "type": "commonjs",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}

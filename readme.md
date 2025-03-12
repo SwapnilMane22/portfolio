@@ -35,7 +35,8 @@ npm install @coreui/icons-react @coreui/icons --save
 npm install react-pdf
 npm install react-countup
 npm install framer-motion
-npm install express --save
+npm install axios
+npm install gh-pages --save-dev
 ```
 
 ### 3. Modify Files
@@ -72,7 +73,12 @@ git config --global core.autocrlf false
 - Begin building your portfolio website!
 
 
-
+## Create Backend
+```sh
+mkdir backend
+cd backend
+npm init
+```
 
 
 MERN Stack Portfolio Website
