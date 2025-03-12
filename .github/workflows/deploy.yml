@@ -3,26 +3,44 @@ name: Deploy React App to GitHub Pages
 on:
   push:
     branches:
-      - main  # Deploy when changes are pushed to 'main'
+      - main  # Trigger deployment on changes to the 'main' branch
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest  # Running on Ubuntu latest version
+    runs-on: ubuntu-latest
 
     steps:
+      # Checkout the repository (this gets your code)
       - name: Checkout repository
-        uses: actions/checkout@v4  # Checkout the code from the repository
+        uses: actions/checkout@v4
 
+      # Set up Node.js (install Node.js and npm)
       - name: Set up Node.js
-        uses: actions/setup-node@v3  # Set up Node.js
+        uses: actions/setup-node@v3
         with:
-          node-version: 18  # Specify the Node.js version to use
+          node-version: '18'
 
+      # Install dependencies
       - name: Install dependencies
-        run: npm install  # Install project dependencies
+        run: npm install
 
+      # Build the project
       - name: Build the project
-        run: npm run build  # Build the React app
+        run: npm run build
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
-        run: npm run deploy  # Deploy to GitHub Pages using 'gh-pages' script
+        run: |
+          npm install gh-pages --save-dev
+          npm run deploy
+        env:
+          CI: false  # Set CI to false for GitHub Pages deployment to prevent unnecessary checks
+
+      # Push the build to the 'gh-pages' branch
+      - name: Push to gh-pages branch
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+          git add -f build
+          git commit -m "Deploy to GitHub Pages"
+          git push origin `git subtree split --prefix build main`:gh-pages --force
