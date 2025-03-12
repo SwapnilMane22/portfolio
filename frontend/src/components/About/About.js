@@ -8,7 +8,7 @@ import Typed from 'typed.js'
 import CIcon from '@coreui/icons-react';
 import * as icon from '@coreui/icons';
 import { motion } from "framer-motion";
-import resumePdf from 'src/assets/pdf/Swapnil Mane Resume.pdf';
+import resumePdf from '../../assets/pdf/Swapnil Mane Resume.pdf';
 
 const About = () => {
   const { name, role, role2, role3, description, social } = about
