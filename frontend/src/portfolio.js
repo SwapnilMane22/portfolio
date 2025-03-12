@@ -12,7 +12,7 @@ const header = {
     role3: 'Machine Learning Engineer',
     description:
       'Welcome to my digital corner. I am thrilled to showcase my projects, as well as provide insights into my educational journey and professional endeavors. Let’s connect and explore opportunities together.',
-    resume: 'https://swapnilmane22.github.io/portfolio_html/assets/pdf/Swapnil%20Mane%20Resume.pdf',
+    resume: 'src/assets/pdf/Swapnil Mane Resume.pdf', //'https://swapnilmane22.github.io/portfolio_html/assets/pdf/Swapnil%20Mane%20Resume.pdf',
     social: {
       linkedin: 'https://www.linkedin.com/in/-swapnilmane-/',
       github: 'https://github.com/SwapnilMane22/',
