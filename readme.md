@@ -40,6 +40,7 @@ npm install gh-pages --save-dev
 npm install eslint --save-dev
 npm install --save-dev @testing-library/jest-dom
 npm install --save-dev @testing-library/react @testing-library/user-event
+npm install --save-dev intersection-observer
 ```
 
 ### 3. Modify Files

@@ -10,7 +10,9 @@ import { motion, AnimatePresence } from 'framer-motion'
 import './Nabar.css'
 
 const Navbar = () => {
-  const [{ themeName, toggleTheme }] = useContext(ThemeContext) // Correct destructuring
+  // const [{ themeName, toggleTheme }] = useContext(ThemeContext) // Correct destructuring
+  const contextValue = useContext(ThemeContext) || [{ themeName: 'dark', toggleTheme: () => {} }];
+  const [{ themeName, toggleTheme }] = contextValue;
   const [showNavList, setShowNavList] = useState(false)
   const menuRef = useRef(null)
   

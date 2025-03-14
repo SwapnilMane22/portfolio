@@ -1,4 +1,4 @@
-import chatbot from './assets/image/chatbot.png';
+import chatbot from './assets/image/chatbot.jpg';
 import PortfolioCover from './assets/image/portfolio.jpg';
 import movie from './assets/image/movie.jpg';
 import soh from './assets/image/soh.png';
