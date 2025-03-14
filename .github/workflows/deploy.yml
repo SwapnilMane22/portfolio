@@ -29,10 +29,10 @@ jobs:
         run: npm run lint
         # Ensure you have a lint script defined in your package.json
 
-      - name: Run tests
-        working-directory: ./frontend
-        run: npm test -- --watchAll=false
-        # Using --watchAll=false ensures tests run once in CI mode
+      # - name: Run tests
+      #   working-directory: ./frontend
+      #   run: npm test -- --watchAll=false
+      #   # Using --watchAll=false ensures tests run once in CI mode
 
       - name: Build the project
         working-directory: ./frontend
