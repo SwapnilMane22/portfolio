@@ -37,6 +37,7 @@ npm install react-countup
 npm install framer-motion
 npm install axios
 npm install gh-pages --save-dev
+npm install eslint --save-dev
 ```
 
 ### 3. Modify Files

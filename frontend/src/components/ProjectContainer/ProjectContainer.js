@@ -1,36 +1,36 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import uniqid from 'uniqid'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LaunchIcon from '@mui/icons-material/Launch'
 import './ProjectContainer.css'
 import { motion } from "framer-motion";
 
-const ProjectContainer = ({ project }) => (
+const ProjectContainer = ({ project }) => {
+  const descRef = useRef(null);
 
+
+  return (
+    <>
   <motion.div className='project' 
-        whileHover={{ y: -7 }} >
+        whileHover={{ y: -7 }} 
+        style={{ cursor: 'pointer' }}>
           
     <h3 className='project__heading'>{project.name}</h3>
 
-    {project.imageUrl && (
+    {project.image && (
           <div className='project__image-container'>
             <img 
-              src={project.imageUrl} 
+              src={project.image} 
               alt={project.name} 
               className='project__image'
             />
           </div>
         )}
-
-<div className='project__description-container'>
-          <p className='project__description-preview'>
-            {project.description.substring(0, 100)}
-            {project.description.length > 100 && '...'}
+        
+        <div className='project__description-container'>
+          <p ref={descRef} className='project__description-preview'>
+            {project.description} 
           </p>
-        </div>
-
-<div className='project__view-more'>
-          <span>View Details</span>
         </div>
     
     {project.stack && (
@@ -64,6 +64,8 @@ const ProjectContainer = ({ project }) => (
       </a>
     )}
   </motion.div>
-)
+  </>
+  )
+}
 
 export default ProjectContainer
