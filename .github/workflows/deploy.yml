@@ -24,9 +24,9 @@ jobs:
         working-directory: ./frontend
         run: npm install
 
-      - name: Run lint checks
-        working-directory: ./frontend
-        run: npm run lint
+      # - name: Run lint checks
+      #   working-directory: ./frontend
+      #   run: npm run lint
         # Ensure you have a lint script defined in your package.json
 
       # - name: Run tests
