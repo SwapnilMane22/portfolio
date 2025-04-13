@@ -33,7 +33,7 @@ const header = {
     social: {
       linkedin: 'https://www.linkedin.com/in/-swapnilmane-/',
       github: 'https://github.com/SwapnilMane22/',
-      leetcode: 'https://leetcode.com/CodingW-HelloWorld/',
+      leetcode: 'https://leetcode.com/u/Swapnil-Mane/',
     },
   }
 
