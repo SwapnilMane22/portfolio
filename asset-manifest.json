@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.bc722c06.css",
-    "main.js": "/portfolio/static/js/main.a5d01f32.js",
+    "main.js": "/portfolio/static/js/main.878899a5.js",
     "static/media/IOT.png": "/portfolio/static/media/IOT.d9e73afe877d3329ae47.png",
     "static/media/Neural Networks.png": "/portfolio/static/media/Neural Networks.012aec740f272ffaf924.png",
     "static/media/arduino.jpg": "/portfolio/static/media/arduino.5aaca4344d8891af7f9e.jpg",
@@ -12,15 +12,15 @@
     "static/media/course.jpg": "/portfolio/static/media/course.141b20de9d1aaf563036.jpg",
     "static/media/soh.png": "/portfolio/static/media/soh.3836844cf4ea808aa31f.png",
     "static/media/movie.jpg": "/portfolio/static/media/movie.39d9ae6fefefcf519cea.jpg",
-    "static/media/Swapnil Mane Resume.pdf": "/portfolio/static/media/Swapnil Mane Resume.d916dea191b49a0e4b94.pdf",
+    "static/media/Swapnil Mane Resume.pdf": "/portfolio/static/media/Swapnil Mane Resume.347510ec992827e6df0a.pdf",
     "static/media/ocr.jpg": "/portfolio/static/media/ocr.d7dbfff81c31c6e762d4.jpg",
     "static/media/portfolio.jpg": "/portfolio/static/media/portfolio.cbc48be5e717f92508c4.jpg",
     "index.html": "/portfolio/index.html",
     "main.bc722c06.css.map": "/portfolio/static/css/main.bc722c06.css.map",
-    "main.a5d01f32.js.map": "/portfolio/static/js/main.a5d01f32.js.map"
+    "main.878899a5.js.map": "/portfolio/static/js/main.878899a5.js.map"
   },
   "entrypoints": [
     "static/css/main.bc722c06.css",
-    "static/js/main.a5d01f32.js"
+    "static/js/main.878899a5.js"
   ]
 }
