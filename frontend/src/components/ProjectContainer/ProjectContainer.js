@@ -1,19 +1,25 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import uniqid from 'uniqid'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LaunchIcon from '@mui/icons-material/Launch'
 import './ProjectContainer.css'
 import { motion } from "framer-motion";
+import ProjectPopup from '../ProjectPopup/ProjectPopup';
 
 const ProjectContainer = ({ project }) => {
   const descRef = useRef(null);
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+
+  const openPopup = () => setIsPopupOpen(true);
+  const closePopup = () => setIsPopupOpen(false);
 
 
   return (
     <>
   <motion.div className='project' 
         whileHover={{ y: -7 }} 
-        style={{ cursor: 'pointer' }}>
+        style={{ cursor: 'pointer' }}
+        onClick={openPopup}>
           
     <h3 className='project__heading'>{project.name}</h3>
 
@@ -64,6 +70,12 @@ const ProjectContainer = ({ project }) => {
       </a>
     )}
   </motion.div>
+
+  <ProjectPopup 
+        project={project} 
+        isOpen={isPopupOpen} 
+        onClose={closePopup} 
+      />
   </>
   )
 }

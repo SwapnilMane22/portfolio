@@ -1,4 +1,5 @@
-.app {
+:root {
+  .app {
     font-family: 'Poppins', sans-serif;
     line-height: 1.5;
     color: var(--clr-fg);
@@ -27,7 +28,7 @@
       --title: #76c2fd;
       --theme: #4b4b4b;
   }
-  
+}  
   main {
     max-width: 1100px;
     width: 95%;
@@ -147,7 +148,7 @@
   .btn--icon:active {
     transform: translateY(-5px);
   }
-  
+ 
   @media (max-width: 600px) {
     .section {
       margin-top: 4em;
