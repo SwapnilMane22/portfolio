@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.bc722c06.css",
-    "main.js": "/portfolio/static/js/main.878899a5.js",
+    "main.css": "/portfolio/static/css/main.819ab8e9.css",
+    "main.js": "/portfolio/static/js/main.96c7f7cf.js",
     "static/media/IOT.png": "/portfolio/static/media/IOT.d9e73afe877d3329ae47.png",
     "static/media/Neural Networks.png": "/portfolio/static/media/Neural Networks.012aec740f272ffaf924.png",
     "static/media/arduino.jpg": "/portfolio/static/media/arduino.5aaca4344d8891af7f9e.jpg",
@@ -16,11 +16,11 @@
     "static/media/ocr.jpg": "/portfolio/static/media/ocr.d7dbfff81c31c6e762d4.jpg",
     "static/media/portfolio.jpg": "/portfolio/static/media/portfolio.cbc48be5e717f92508c4.jpg",
     "index.html": "/portfolio/index.html",
-    "main.bc722c06.css.map": "/portfolio/static/css/main.bc722c06.css.map",
-    "main.878899a5.js.map": "/portfolio/static/js/main.878899a5.js.map"
+    "main.819ab8e9.css.map": "/portfolio/static/css/main.819ab8e9.css.map",
+    "main.96c7f7cf.js.map": "/portfolio/static/js/main.96c7f7cf.js.map"
   },
   "entrypoints": [
-    "static/css/main.bc722c06.css",
-    "static/js/main.878899a5.js"
+    "static/css/main.819ab8e9.css",
+    "static/js/main.96c7f7cf.js"
   ]
 }
