@@ -46,9 +46,9 @@ jobs:
       #       exit 1
       #     fi
       #     echo "Build compatibility check passed."
-
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          folder: frontend/build  # The folder the action should deploy
-          branch: gh-pages         # The branch the action should deploy to
+          folder: frontend/build
+          branch: gh-pages
+          commit-message: "Automated deployment: $(date -u +'%Y-%m-%d %H:%M:%S') 🚀"
