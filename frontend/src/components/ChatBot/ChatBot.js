@@ -128,7 +128,6 @@ const ChatBot = () => {
           newSize.width = Math.max(minWidth, startSize.width + dx);
         }
         if (active.includes('left')) {
-          const proposedWidth = Math.max(minWidth, startSize.width - dx);
           const maxDx = startSize.width - minWidth;
           const clampedDx = Math.min(Math.max(dx, -maxDx), maxDx);
           newSize.width = Math.max(minWidth, startSize.width - clampedDx);
@@ -138,7 +137,6 @@ const ChatBot = () => {
           newSize.height = Math.max(minHeight, startSize.height + dy);
         }
         if (active.includes('top')) {
-          const proposedHeight = Math.max(minHeight, startSize.height - dy);
           const maxDy = startSize.height - minHeight;
           const clampedDy = Math.min(Math.max(dy, -maxDy), maxDy);
           newSize.height = Math.max(minHeight, startSize.height - clampedDy);
