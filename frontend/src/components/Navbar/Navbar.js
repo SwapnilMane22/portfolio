@@ -5,31 +5,29 @@ import WbSunnyRoundedIcon from '@mui/icons-material/WbSunnyRounded'
 import MenuIcon from '@mui/icons-material/Menu'
 import CloseIcon from '@mui/icons-material/Close'
 import { ThemeContext } from '../../contexts/theme'
-import { journey, projects, skills, contact } from '../../portfolio'
+import { useProfile } from '../../contexts/ProfileContext'
 import { motion, AnimatePresence } from 'framer-motion'
 import './Nabar.css'
 
 const Navbar = () => {
-  // const [{ themeName, toggleTheme }] = useContext(ThemeContext) // Correct destructuring
+  const { profile } = useProfile()
   const contextValue = useContext(ThemeContext) || [{ themeName: 'dark', toggleTheme: () => {} }];
   const [{ themeName, toggleTheme }] = contextValue;
   const [showNavList, setShowNavList] = useState(false)
   const menuRef = useRef(null)
+  const { journey, projects, skills, contact } = profile
+  const hasJourney = journey && (journey.intro || journey.yoe != null)
   
   const toggleNavList = () => setShowNavList(!showNavList)
   
-  // Close menu when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setShowNavList(false)
       }
     }
-    
     document.addEventListener('mousedown', handleClickOutside)
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside)
-    }
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   return (
@@ -44,7 +42,7 @@ const Navbar = () => {
               exit={{ opacity: 0, y: -20 }}
               transition={{ duration: 0.5 }}
             >
-              {journey.length ? (
+              {hasJourney ? (
                 <li className='nav__list-item'>
                   <a
                     href='#journey'
@@ -56,7 +54,7 @@ const Navbar = () => {
                 </li>
               ) : null}
 
-              {projects.length ? (
+              {(projects && projects.length) ? (
                 <li className='nav__list-item'>
                   <a
                     href='#projects'
@@ -68,7 +66,7 @@ const Navbar = () => {
                 </li>
               ) : null}
 
-              {skills.length ? (
+              {(skills && skills.length) ? (
                 <li className='nav__list-item'>
                   <a
                     href='#skills'
@@ -80,7 +78,7 @@ const Navbar = () => {
                 </li>
               ) : null}
 
-              {contact.email ? (
+              {(contact && contact.email) ? (
                 <li className='nav__list-item'>
                   <a
                     href='#contact'
@@ -96,7 +94,7 @@ const Navbar = () => {
         </AnimatePresence>
         
         <ul className='nav__list desktop-menu'>
-          {journey.length ? (
+          {hasJourney ? (
             <li className='nav__list-item'>
               <a href='#journey' className='link link--nav heading'>
                 About
@@ -104,7 +102,7 @@ const Navbar = () => {
             </li>
           ) : null}
 
-          {projects.length ? (
+          {(projects && projects.length) ? (
             <li className='nav__list-item'>
               <a href='#projects' className='link link--nav heading'>
                 Projects
@@ -112,7 +110,7 @@ const Navbar = () => {
             </li>
           ) : null}
 
-          {skills.length ? (
+          {(skills && skills.length) ? (
             <li className='nav__list-item'>
               <a href='#skills' className='link link--nav'>
                 Skills
@@ -120,7 +118,7 @@ const Navbar = () => {
             </li>
           ) : null}
 
-          {contact.email ? (
+          {(contact && contact.email) ? (
             <li className='nav__list-item'>
               <a href='#contact' className='link link--nav'>
                 Contact

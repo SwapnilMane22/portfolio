@@ -2,7 +2,8 @@ import React, { useEffect, useRef, useState } from 'react'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import CloseIcon from '@mui/icons-material/Close';
-import { about } from '../../portfolio'
+import { useProfile } from '../../contexts/ProfileContext'
+import { useChatOpen } from '../../contexts/ChatOpenContext'
 import './About.css'
 import Typed from 'typed.js'
 import CIcon from '@coreui/icons-react';
@@ -11,6 +12,9 @@ import { motion } from "framer-motion";
 import resumePdf from '../../assets/pdf/Swapnil Mane Resume.pdf';
 
 const About = () => {
+  const { profile } = useProfile()
+  const { openChat } = useChatOpen()
+  const about = profile.about || {}
   const { name, role, role2, role3, description, social } = about
   const typedRef = useRef(null);
   const resume = resumePdf;
@@ -98,6 +102,9 @@ const About = () => {
             </span>
           </a>
         )}
+        <button type='button' className='btn btn--outline' onClick={openChat} aria-label='Open chat'>
+          Chat with me
+        </button>
 
         {social && (
           <>

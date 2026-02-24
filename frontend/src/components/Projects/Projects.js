@@ -1,11 +1,15 @@
 import React from 'react'
 import uniqid from 'uniqid'
-import { projects } from '../../portfolio'
+import { useProfile } from '../../contexts/ProfileContext'
+import { attachProjectImages } from '../../portfolioAssets'
 import ProjectContainer from '../ProjectContainer/ProjectContainer'
 import './Projects.css'
 import { motion } from "framer-motion";
 
 const Projects = () => {
+  const { profile } = useProfile()
+  const projects = attachProjectImages(profile.projects || [])
+
   if (!projects.length) return null
 
   return (

@@ -36,6 +36,8 @@ jobs:
 
       - name: Build the project
         working-directory: ./frontend
+        env:
+          REACT_APP_CHAT_API_URL: ${{ secrets.REACT_APP_CHAT_API_URL }}
         run: npm run build
 
       # - name: Check deployment compatibility

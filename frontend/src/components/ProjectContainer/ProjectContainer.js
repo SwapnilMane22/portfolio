@@ -50,24 +50,31 @@ const ProjectContainer = ({ project }) => {
     )}
     
 
-    {project.sourceCode && (
-      <a
-        href={project.sourceCode}
-        aria-label='source code'
-        className='link link--icon'
-      >
-        <GitHubIcon />
-      </a>
-    )}
-
-    {project.livePreview && (
-      <a
-        href={project.livePreview}
-        aria-label='live preview'
-        className='link link--icon'
-      >
-        <LaunchIcon />
-      </a>
+    {(project.sourceCode || project.livePreview) && (
+      <div className='project__links'>
+        {project.sourceCode && (
+          <a
+            href={project.sourceCode}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='source code'
+            className='link link--icon'
+          >
+            <GitHubIcon />
+          </a>
+        )}
+        {project.livePreview && (
+          <a
+            href={project.livePreview}
+            target='_blank'
+            rel='noopener noreferrer'
+            aria-label='live preview'
+            className='link link--icon'
+          >
+            <LaunchIcon />
+          </a>
+        )}
+      </div>
     )}
   </motion.div>
 

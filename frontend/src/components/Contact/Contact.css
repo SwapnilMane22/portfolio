@@ -1,3 +1,48 @@
+/* Contact Section */
 .contact {
-    flex-direction: column;
+  text-align: center;
+  padding-bottom: 2rem;
+}
+
+.contact__cta {
+  margin-top: 0.5rem;
+}
+
+.contact__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--clr-bg);
+  background: var(--clr-primary);
+  border: 2px solid var(--clr-primary);
+  border-radius: 10px;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  text-decoration: none;
+}
+
+.contact__link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--clr-primary-soft);
+  opacity: 0.95;
+}
+
+.contact__link:active {
+  transform: translateY(0);
+}
+
+.contact__icon {
+  font-size: 1.25rem !important;
+  opacity: 0.95;
+}
+
+@media (max-width: 600px) {
+  .contact__link {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.9375rem;
   }
+}

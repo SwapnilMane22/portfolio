@@ -1,9 +1,11 @@
 import React from 'react';
-import { header } from '../../portfolio'
+import { useProfile } from '../../contexts/ProfileContext'
 import Navbar from '../Navbar/Navbar'
 import './Header.css'
 
 const Header = () => {
+  const { profile } = useProfile()
+  const header = profile.header || {}
   const { homepage, title } = header
 
   return (
