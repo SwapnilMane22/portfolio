@@ -1,4 +1,4 @@
-# MERN Stack Portfolio Website
+# Portfolio Website
 
 ## Prerequisites
 Before starting the project, ensure you have the following installed:

@@ -63,8 +63,20 @@
   margin-right: 0.3rem;
 }
 
+.project__links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+  margin-top: 0.5em;
+  flex-shrink: 0;
+}
+
 .project .link--icon {
-  margin-left: 0.5em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .project .link--icon:hover {

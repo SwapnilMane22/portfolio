@@ -122,13 +122,4 @@
       width: 95%;
       height: 95%;
     }
-
-    .journey-stats {
-      flex-direction: column;
-      align-items: center;
-    }
-    
-    .journey-stat {
-      width: 80%;
-    }
   }

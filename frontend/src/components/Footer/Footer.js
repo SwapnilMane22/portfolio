@@ -3,12 +3,16 @@ import './Footer.css'
 
 const Footer = () => (
   <footer className='footer'>
-    <a
-      href='https://swapnilmane22.github.io/portfolio/'
-      className='link footer__link'
-    >
-      Created By Swapnil Mane
-    </a>
+    <div className='footer__inner'>
+      <a
+        href='https://swapnilmane22.github.io/portfolio/'
+        className='footer__link'
+      >
+        Created by Swapnil Mane
+      </a>
+      <span className='footer__divider'>·</span>
+      <span className='footer__meta'>Portfolio</span>
+    </div>
   </footer>
 )
 

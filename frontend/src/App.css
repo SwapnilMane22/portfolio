@@ -1,48 +1,73 @@
 :root {
   .app {
     font-family: 'Poppins', sans-serif;
-    line-height: 1.5;
+    line-height: 1.6;
     color: var(--clr-fg);
     background-color: var(--clr-bg);
+    -webkit-font-smoothing: antialiased;
   }
   
   .light {
-    --clr-bg: #fcfcfc;
-    --clr-bg-alt: #fff;
-    --clr-fg: #555;
-    --clr-fg-alt: #444;
-    --clr-primary: #48b0ff;
-    --shadow: rgba(32, 32, 32, 0.2) 0px 7px 29px 0px;
-    --title: #1f1f1f;
-    --theme: #d2d2d2;
+    --clr-bg: #f8f9fc;
+    --clr-bg-alt: #ffffff;
+    --clr-bg-elevated: #ffffff;
+    --clr-fg: #4a5568;
+    --clr-fg-alt: #2d3748;
+    --clr-primary: #2563eb;
+    --clr-primary-soft: rgba(37, 99, 235, 0.08);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.1);
+    --title: #1a202c;
+    --theme: #e2e8f0;
+    --border: rgba(0, 0, 0, 0.06);
   }
   
   .dark {
-    --clr-bg: #1d1d1d;
-    --clr-bg-alt: #313131;
-    --clr-fg: #c1c1c1; /*#a3d0da*/
-    --clr-fg-alt: #eafdff; /*#e5fcff*/
-    --clr-primary: #2978b5; /*#8a9bdb*/
-    --shadow: rgba(126, 126, 126, 0.16) 0px 10px 36px 0px,
-      rgba(255, 255, 255, 0.06) 0px 0px 0px 1px;
-      --title: #76c2fd;
-      --theme: #4b4b4b;
+    --clr-bg: #0f1419;
+    --clr-bg-alt: #1a2332;
+    --clr-bg-elevated: #1e293b;
+    --clr-fg: #94a3b8;
+    --clr-fg-alt: #e2e8f0;
+    --clr-primary: #60a5fa;
+    --clr-primary-soft: rgba(96, 165, 250, 0.12);
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.5);
+    --title: #f1f5f9;
+    --theme: #334155;
+    --border: rgba(255, 255, 255, 0.06);
   }
-}  
+}
+
   main {
     max-width: 1100px;
     width: 95%;
     margin: 0 auto;
+    padding: 0 0.5rem;
   }
   
   .section {
-    margin-top: 5em;
+    margin-top: 5rem;
+    padding-bottom: 0.5rem;
   }
   
   .section__title {
     text-align: center;
-    margin-bottom: 1em;
-    text-transform: uppercase;
+    margin-bottom: 0.25rem;
+    font-size: 1.75rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--title);
+  }
+  
+  .section__subtitle {
+    text-align: center;
+    font-size: 0.95rem;
+    color: var(--clr-fg);
+    max-width: 540px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
   }
   
   .center {
