@@ -78,7 +78,7 @@
       "bullets": [
         "Led multi-platform client modernization, rebuilding 60% of mobile and desktop applications to enhance user experience while optimizing the Java backend to support new workflows",
         "Built a Rust microservice for LLM and chatbot inference, decoupling the workload from the main server, ensuring 99% system availability",
-        "Engineered token tracking workflow for monetization and implemented core business logic",
+        "Engineered token tracking workflow for monetization and implemented core business logic to process 1M+ daily tokens; introduced stricter code reviews, reducing bugs by ~30% and improving platform-wide code quality",
         "Led end-to-end mobile feature lifecycle from technical design and sprint planning to establishing a CI/CD pipeline for automated deployments",
         "Drove improvement in team velocity and code quality across all platforms"
       ],
@@ -107,7 +107,7 @@
       "type": "intern",
       "bullets": [
         "Principal architect of the AI/ML Digital Team; led product development and trained new recruits",
-        "Deployed scalable ETL data pipeline in Python and PySpark to ingest and process 3 million samples per battery; applied physics-based feature extraction (capacity estimation, open-circuit voltage profiling) for real-time SOH estimation",
+        "Established a scalable PySpark ETL pipeline in Python to ingest and process 3 million+ battery samples per unit; applied physics-based feature extraction (capacity estimation, open-circuit voltage profiling) for real-time SOH estimation and reduced execution runtime by ~60%",
         "Built hybrid LSTM-DNN model fusing temporal and physics-based features via PySpark distributed training; achieved 5.7% MAE in capacity prediction and estimated remaining useful life of battery",
         "Deployed regression model on battery state-of-health (including individual cell data) to predict repurposing with 90% accuracy",
         "Tuned Spark job configurations and parallelized data transformations; ensured low-latency integration with cloud and scaling for SaaS platform",
@@ -127,7 +127,7 @@
         "Delivered NLP solution to automatically categorize ~900,000 IT service tickets (unstructured problem descriptions and user comments) to eliminate manual triage bottlenecks",
         "Ingested raw ticket data into Azure Data Lake Storage and Microsoft SQL Server; orchestrated preprocessing and model training in Azure Machine Learning Studio",
         "Implemented stratified sampling and SMOTE to balance minority classes; class-weighted loss in Scikit-learn Logistic Regression and Random Forest",
-        "Deployed inference pipeline as Azure ML endpoint for real-time integration with ticketing web application",
+        "Deployed inference pipeline as an Azure ML endpoint for real-time integration with the ticketing web application, incorporating RLHF-style feedback to improve model generalization",
         "Achieved 66% classification accuracy on highly imbalanced dataset using word embedding and TF-IDF; reduced manual ticket routing and MTTR"
       ],
       "techStack": ["Python", "Scikit-Learn", "Azure Machine Learning Studio", "Azure AI Cognitive Services", "Azure Data Lake", "SQL Server"]
@@ -176,7 +176,7 @@
       "name": "Multi-agent LLM text-to-SQL",
       "imageKey": "workrise",
       "period": "2025-06",
-      "description": "Built a multi-agent Text-to-SQL system using Ollama LLMs and the Autogen framework to orchestrate collaborative agents that convert natural language queries into optimized SQL; built on Bird.dev database and tested on MySQL.",
+      "description": "Built a multi-agent Text-to-SQL system using Ollama LLMs and the Autogen framework to orchestrate collaborative agents that convert natural language queries into optimized SQL; evaluated on the Bird.dev dataset and MySQL with ~60% execution accuracy.",
       "stack": ["Ollama", "AutoGen", "Python", "SQL", "MySQL"],
       "sourceCode": "https://github.com/SwapnilMane22/MultiAgent-Text-to-SQL",
       "livePreview": null
@@ -185,7 +185,7 @@
       "name": "Conversational ChatBot",
       "imageKey": "chatbot",
       "period": "2025-03",
-      "description": "RAG pipeline for the portfolio website: Node/Express API loads knowledge context and injects it into the LLM system prompt; supports OpenRouter and Google Gemini with SSE streaming; React chat UI with markdown.",
+      "description": "RAG pipeline for the portfolio website: Node/Express API loads knowledge context and injects it into the LLM system prompt; supports OpenRouter and Google Gemini with SSE streaming; React chat UI with markdown. Validated with an automated test suite (26 prompts) achieving ~95.8% response-check precision, 95.4% F1 score, and ~3.2s average latency.",
       "stack": ["Node.js", "Express", "OpenRouter API", "Google Gemini", "React", "SSE", "react-markdown"],
       "sourceCode": "https://github.com/SwapnilMane22/portfolio.git",
       "livePreview": "https://swapnilmane22.github.io/portfolio/"
@@ -203,7 +203,7 @@
       "name": "Movie Recommendation System",
       "imageKey": "movie",
       "period": "2025-02",
-      "description": "Prototyped a movie recommender using TF-IDF and SBERT with Python and Sentence Transformer, leveraging feature engineering and semantic similarity on the Kaggle Movies Dataset.",
+      "description": "Prototyped a movie recommender using TF-IDF and SBERT with Python and Sentence Transformer, leveraging feature engineering and semantic similarity on ~45,000 records from the Kaggle Movies Dataset to improve top-K recommendation quality.",
       "stack": ["Python", "TF-IDF", "SBERT", "Sentence Transformer", "Kaggle"],
       "sourceCode": "https://github.com/SwapnilMane22/lumaa-spring-2025-ai-ml",
       "livePreview": null
@@ -319,7 +319,7 @@
     }
   ],
   "contact": {
-    "Phone": "+1(607)2321068",
+    "Phone": "+1(607)232-1068",
     "email": "stm2212@gmail.com"
   },
   "journeyDisplay": {
