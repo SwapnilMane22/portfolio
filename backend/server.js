@@ -69,7 +69,7 @@ function buildRAGContext() {
       lines.push(`${ed.institution} | ${ed.degree}${ed.gpa ? ` | GPA ${ed.gpa}` : ''} | ${ed.endDate || ''}${ed.location ? ` | ${ed.location}` : ''}`);
       if (ed.coursework && ed.coursework.length) lines.push(`  Coursework: ${ed.coursework.join(', ')}`);
     });
-    lines.push('');
+    lines.push('  (Short forms: SUNYB = Binghamton University/SUNY; FCRIT = Fr. C. Rodrigues Institute of Technology)', '');
   }
 
   if (k.experience && k.experience.length) {
@@ -107,7 +107,11 @@ function buildRAGContext() {
     lines.push('');
   }
 
-  lines.push('--- CONTACT ---', '', (k.contact?.email ? `Email: ${k.contact.email}` : '') + (k.contact?.emailAlternate ? `; Alternate: ${k.contact.emailAlternate}` : ''), '', '--- PROJECTS ---', '');
+  const contactParts = [];
+  if (k.contact?.email) contactParts.push(`Email: ${k.contact.email}`);
+  if (k.contact?.emailAlternate) contactParts.push(`Alternate: ${k.contact.emailAlternate}`);
+  if (k.contact?.Phone) contactParts.push(`Phone: ${k.contact.Phone}`);
+  lines.push('--- CONTACT ---', '', contactParts.join('. ') || 'Not specified.', '', '--- PROJECTS ---', '');
 
   (k.projects || []).forEach(p => {
     lines.push(`- ${p.name}: ${p.description} [${(p.stack || []).join(', ')}]`);
