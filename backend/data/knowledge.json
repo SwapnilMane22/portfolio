@@ -76,12 +76,18 @@
       "endDate": "Present",
       "type": "full-time",
       "bullets": [
-        "Led the multiplatform client modernization, rebuilding 60% of the mobile and desktop applications to enhance user experience while optimizing the Java backend to support new workflows",
-        "Developed a Rust microservice for the LLM inference, optimizing response latency and orchestrating workload distribution to maintain 99% system availability",
-        "Engineered the token tracking and LLMOps workflows for monetization, and high-throughput daily token processing",
-        "Implemented core business logic to process 1M+ daily tokens; introduced stricter code reviews, reducing bugs by ~30% and improving platform-wide code quality",
-        "Led end-to-end mobile feature lifecycle from technical design and sprint planning to establishing a CI/CD pipeline for automated deployments",
-        "Drove improvement in team velocity and code quality across all platforms"
+        "Delivered critical product and infrastructure milestones across Android, iOS, macOS, backend, Windows, and LLM inference",
+        "Rebuilt and stabilized the Android app, unblocking Google/Facebook authentication by fixing parameter-passing failures and production crash paths",
+        "Improved the Java backend upgrading auth and account flows (email validation, password checks/policies, secure password reset requiring prior credential verification)",
+        "Led a cross-platform UI development, redesigning and rebuilding ~60% of UI to enhance user experience",
+        "Designed and shipped a Rust microservice for LLM inference, reducing response latency and enabling horizontal workload distribution across contributor devices",
+        "Improved inference reliability by adding task cancellation and zombie-task cleanup to protect cluster health and keep Rust workers responsive under sustained load with the 99% availability",
+        "Built token tracking + LLMOps foundations for monetization, implementing chat-history–driven accounting of input/output tokens, per-model inference usage, and cost attribution",
+        "Introduced PR-based code review standards (review checklist + ownership-based approvals) that reduced bug regressions by ~30%",
+        "Implemented silent push notification–driven background task automation across Android and backend services to ensure critical background jobs run reliably",
+        "Took ownership of the Windows application and contributor client, restoring login flows and unlocking GPU contribution so Windows users can reliably provide and monetize compute",
+        "Established CI/CD pipelines to automate builds, versioning, and deployments, improving release predictability and long-term maintainability",
+        "Led technical planning and work allocation for the team, mapping Android, backend, and Windows deliverables to engineer strengths to hit sprint timelines"
       ],
       "techStack": ["Java", "Rust", "LLM", "LLMOps", "CI/CD", "Mobile", "Desktop"]
     },
