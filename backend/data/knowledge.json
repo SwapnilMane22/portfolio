@@ -6,7 +6,7 @@
   },
   "about": {
     "name": "Swapnil Mane",
-    "summary": "5+ years of software engineering experience delivering production-ready solutions, building web/mobile applications, architecting scalable ETL pipelines, and agentic AI workflows, complemented with legacy SAP ABAP and S/4HANA automations.",
+    "summary": "5+ years of software engineering experience delivering production-ready solutions, building web/mobile applications, LLM inference, model training, and agentic AI workflows",
     "roles": ["Software Engineer", "Full Stack Developer", "AI/ML Engineer"],
     "tagline": "I work fast, build from scratch, and ship production-ready AI solutions.",
     "description": "Welcome to my digital corner. I am thrilled to showcase my projects, as well as provide insights into my educational journey and professional endeavors. Let's connect and explore opportunities together.",
@@ -24,7 +24,7 @@
       "startDate": "2023-08",
       "endDate": "2025-05",
       "gpa": "3.71/4.0",
-      "link": "https://www.binghamton.edu/watson/academics/graduate-programs/computer-science/index.html",
+      "link": "https://www.binghamton.edu/computer-science/graduate-programs/mscs/index.html",
       "coursework": [
         "Design and Analysis of Computer Algorithms",
         "Artificial Intelligence",
@@ -56,16 +56,16 @@
   ],
   "skills": {
     "byCategory": {
-      "programmingLanguages": ["Python", "Java", "JavaScript", "HTML", "C", "C++", "SQL", "SAP ABAP"],
-      "frameworks": ["PyTorch", "PySpark", "TensorFlow", "Sci-kit Learn", "Hugging Face", "OpenCV", "AutoGen", "Ollama"],
+      "programmingLanguages": ["Python", "Rust", "SQL", "Java", "JavaScript", "Kotlin", "C#", "HTML", "C", "C++", "SAP ABAP"],
+      "frameworks": ["PyTorch", "PySpark", "TensorFlow", "scikit-learn", "Ollama", "Unsloth", "AutoGen", "OpenCV", "Hugging Face", "Flask", "React", "Node.js", "REST API", "FastAPI"],
       "dataScience": ["ETL", "Data Pipelines", "Probability and Statistics", "Correlation Analysis", "Tableau", "Feature Extraction", "Transformation", "Prediction", "Forecasting"],
       "machineLearning": ["Deep Learning", "Neural Networks", "Natural Language Processing", "Reinforcement Learning", "Pattern Recognition", "Time Series Forecasting", "Predictive Modeling", "Machine Vision", "Image Processing"],
       "genAI": ["Fine-tuning LLMs", "Multi-agent AI", "Conversational AI", "Prompt Engineering", "RAG Agent", "Chain of Thought (CoT)"],
-      "bigDataCloud": ["Databricks", "Hadoop", "PySpark", "Microsoft Azure", "Google Cloud Platform"],
-      "tools": ["MS Excel", "MATLAB", "Git", "Android Studio", "SAP Logon NetWeaver", "NI LabView"],
+      "bigDataCloud": ["Azure ML", "Amazon Web Services (AWS)", "Google Cloud Platform (GCP)", "Docker", "CI/CD", "Databricks", "Hadoop", "PySpark", "Microsoft Azure", "Google Cloud Platform"],
+      "tools": ["Android Studio", "MATLAB", "Git", "GitHub", "Jupyter Notebook", "CI/CD", "NI LabView", "MS Excel", "SAP Logon NetWeaver"],
       "sap": ["SAP ABAP", "S/4HANA", "RICEFW", "BADI", "BAPIs", "FI", "MM", "OData", "AMDP", "CDS Views", "SQL query optimization"]
     },
-    "flat": ["Python", "Java", "JavaScript", "HTML", "C", "C++", "SQL", "SAP ABAP", "PyTorch", "PySpark", "TensorFlow", "Sci-kit Learn", "Hugging Face", "OpenCV", "AutoGen", "Ollama", "ETL", "Tableau", "Deep Learning", "Natural Language Processing", "Reinforcement Learning", "Generative AI", "RAG", "Microsoft Azure", "Google Cloud Platform", "Databricks", "Hadoop", "Git", "MATLAB", "Android Studio", "SAP S/4HANA"]
+    "flat": ["Python", "Rust", "SQL", "Java", "JavaScript", "Kotlin", "C#", "HTML", "C", "C++", "SAP ABAP", "PyTorch", "PySpark", "TensorFlow", "scikit-learn", "Ollama", "Unsloth", "AutoGen", "OpenCV", "Hugging Face", "Flask", "React", "Node.js", "FastAPI", "ETL", "Tableau", "Deep Learning", "Natural Language Processing", "Reinforcement Learning", "Generative AI", "RAG", "Azure ML", "AWS", "GCP", "Docker", "CI/CD", "Databricks", "Hadoop", "Git", "GitHub", "Jupyter Notebook", "MATLAB", "Android Studio", "NI LabView", "SAP S/4HANA"]
   },
   "experience": [
     {
@@ -76,13 +76,14 @@
       "endDate": "Present",
       "type": "full-time",
       "bullets": [
-        "Led multi-platform client modernization, rebuilding 60% of mobile and desktop applications to enhance user experience while optimizing the Java backend to support new workflows",
-        "Built a Rust microservice for LLM and chatbot inference, decoupling the workload from the main server, ensuring 99% system availability",
-        "Engineered token tracking workflow for monetization and implemented core business logic to process 1M+ daily tokens; introduced stricter code reviews, reducing bugs by ~30% and improving platform-wide code quality",
+        "Led the multiplatform client modernization, rebuilding 60% of the mobile and desktop applications to enhance user experience while optimizing the Java backend to support new workflows",
+        "Developed a Rust microservice for the LLM inference, optimizing response latency and orchestrating workload distribution to maintain 99% system availability",
+        "Engineered the token tracking and LLMOps workflows for monetization, and high-throughput daily token processing",
+        "Implemented core business logic to process 1M+ daily tokens; introduced stricter code reviews, reducing bugs by ~30% and improving platform-wide code quality",
         "Led end-to-end mobile feature lifecycle from technical design and sprint planning to establishing a CI/CD pipeline for automated deployments",
         "Drove improvement in team velocity and code quality across all platforms"
       ],
-      "techStack": ["Java", "Rust", "LLM", "CI/CD", "Mobile", "Desktop"]
+      "techStack": ["Java", "Rust", "LLM", "LLMOps", "CI/CD", "Mobile", "Desktop"]
     },
     {
       "organization": "Sitewiz Inc.",
@@ -92,9 +93,9 @@
       "endDate": "2025-09",
       "type": "part-time",
       "bullets": [
-        "Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent data handoffs and downstream object retrieval",
-        "Modernized backend infrastructure by deprecating legacy Vertex AI resources, reducing monthly cloud expenses by $16,000 and saving an estimated 5+ hours of weekly troubleshooting",
-        "Conducted technical due diligence to realign cloud strategy and established production-grade backend services for enterprise launch"
+        "Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent handoffs for LLM execution",
+        "Streamlined the AI infrastructure by migrating from redundant Vertex AI to dedicated AWS GPU endpoints, reducing monthly cloud expenses by $16,000 and saving 5+ hours of weekly troubleshooting",
+        "Conducted technical due diligence to realign cloud strategy and established production-grade backend services, transforming experimental features into stable, reliable infrastructure for an enterprise launch"
       ],
       "techStack": ["AutoGen", "AWS S3", "Vertex AI", "Python"]
     },
@@ -106,45 +107,35 @@
       "endDate": "2024-12",
       "type": "intern",
       "bullets": [
-        "Principal architect of the AI/ML Digital Team; led product development and trained new recruits",
-        "Established a scalable PySpark ETL pipeline in Python to ingest and process 3 million+ battery samples per unit; applied physics-based feature extraction (capacity estimation, open-circuit voltage profiling) for real-time SOH estimation and reduced execution runtime by ~60%",
-        "Built hybrid LSTM-DNN model fusing temporal and physics-based features via PySpark distributed training; achieved 5.7% MAE in capacity prediction and estimated remaining useful life of battery",
+        "Founding architect of the AI/ML Digital Team; led product development and trained new recruits",
+        "Reduced feature extraction time by 95% for battery State of Health (SOH) analysis by engineering a PySpark pipeline to ingest and batch-process 18M+ records; applied physics-based feature extraction (capacity estimation, open-circuit voltage profiling) for real-time SOH estimation and reduced execution runtime by ~60%",
+        "Trained hybrid LSTM-DNN models for predictive battery health forecasting, achieving 5.7% MAE in capacity prediction and estimated remaining useful life to enable highly accurate failure detection",
         "Deployed regression model on battery state-of-health (including individual cell data) to predict repurposing with 90% accuracy",
         "Tuned Spark job configurations and parallelized data transformations; ensured low-latency integration with cloud and scaling for SaaS platform",
-        "Developed interactive Tableau dashboards in Python to automate report generation and embed actionable insights into the SaaS platform",
-        "Solution facilitated predictive maintenance scheduling, near-future failure analysis, and battery repurposing strategies; drove business growth and key MoUs; supported Series A launch"
+        "Developed interactive Tableau dashboards using Python to visualize battery analytics and automate report generation, enabling scalability for the Series A launch",
+        "Solution facilitated predictive maintenance scheduling, near-future failure analysis, and battery repurposing strategies; drove business growth and key MoUs"
       ],
       "techStack": ["Python", "PySpark", "Tableau", "LSTM-DNN", "ETL", "MATLAB", "Scikit-Learn", "NumPy", "Plotly", "Matplotlib"]
     },
     {
       "organization": "LTIMindtree Ltd. (formerly Larsen & Toubro Infotech Ltd.)",
       "link": "https://www.ltimindtree.com/",
-      "role": "Software Engineer - Natural Language Processing (NLP)",
-      "startDate": "2022-08",
+      "role": "Software Engineer",
+      "startDate": "2020-08",
       "endDate": "2023-07",
       "type": "full-time",
       "bullets": [
-        "Delivered NLP solution to automatically categorize ~900,000 IT service tickets (unstructured problem descriptions and user comments) to eliminate manual triage bottlenecks",
+        "Trained an NLP pipeline in Azure ML Studio for 900K+ IT tickets using word embedding and TF-IDF vectorization",
+        "Resolved severe class imbalance through stratified sampling, SMOTE oversampling, and class-weighted Logistic Regression & Random Forest models, driving 66% accuracy on a highly skewed dataset",
+        "Engineered real-time inference via Azure ML endpoint with RLHF to align model outputs and boost generalization",
         "Ingested raw ticket data into Azure Data Lake Storage and Microsoft SQL Server; orchestrated preprocessing and model training in Azure Machine Learning Studio",
-        "Implemented stratified sampling and SMOTE to balance minority classes; class-weighted loss in Scikit-learn Logistic Regression and Random Forest",
-        "Deployed inference pipeline as an Azure ML endpoint for real-time integration with the ticketing web application, incorporating RLHF-style feedback to improve model generalization",
-        "Achieved 66% classification accuracy on highly imbalanced dataset using word embedding and TF-IDF; reduced manual ticket routing and MTTR"
-      ],
-      "techStack": ["Python", "Scikit-Learn", "Azure Machine Learning Studio", "Azure AI Cognitive Services", "Azure Data Lake", "SQL Server"]
-    },
-    {
-      "organization": "LTIMindtree Ltd. (formerly Larsen & Toubro Infotech Ltd.)",
-      "link": "https://www.ltimindtree.com/",
-      "role": "Software Engineer - Python, Image Processing, SAP ABAP",
-      "startDate": "2020-08",
-      "endDate": "2022-07",
-      "type": "full-time",
-      "bullets": [
+        "Deployed inference pipeline as an Azure ML endpoint for real-time integration with the ticketing web application; reduced manual ticket routing and MTTR",
+        "Programmed a Python/Tkinter lookup tool with OpenCV, Tesseract OCR & MS Excel, cutting search time by 67%",
         "Developed and optimized SAP ABAP programs using AMDP, CDS views, and SELECT optimizations; implemented User Exits, BADIs, and Enhancements",
-        "Earned GoMx Individual Excellence Award for two automation solutions: .NET-based VB script for SAP NetWeaver monitoring (reduced manual monitoring time per system by ~86%, from 35 to 5 minutes; ~90% annual monitoring effort saved) and Python GUI-based user search with OCR and Excel (reduced user search time by 67%)",
+        "Earned GoMx Individual Excellence Award for two automation solutions: .NET-based VB script for SAP NetWeaver monitoring (reduced manual monitoring time per system by 86%, from 35 to 5 minutes; 90% annual monitoring effort saved) and Python GUI-based user search with OCR and Excel (67% search time reduction)",
         "Enhanced data integration and batch automation via BAPIs and Module Pool programming; used SAP debugging tools (SQL Trace ST05, Runtime Analysis SAT, ABAP Debugger); managed Transport Requests in Agile (DEV to QA to PRD); collaborated with SAP Functional Consultants (MM, SD, FI); provided training and knowledge-transfer documentation"
       ],
-      "techStack": ["SAP ABAP", "AMDP", "CDS Views", "BADIs", "BAPIs", "Python", "Image Processing", "Tesseract OCR", ".NET", "VB Script"]
+      "techStack": ["Python", "Scikit-Learn", "Azure Machine Learning Studio", "Azure AI Cognitive Services", "Azure Data Lake", "SQL Server", "OpenCV", "Tesseract OCR", "SAP ABAP", "AMDP", "CDS Views", "BADIs", "BAPIs", ".NET", "VB Script"]
     },
     {
       "organization": "CueMath",
@@ -173,20 +164,38 @@
   ],
   "projects": [
     {
+      "name": "GitLeet",
+      "imageKey": "gitleet",
+      "period": "2025",
+      "description": "Serverless browser extension that syncs accepted LeetCode submissions (question metadata, solution, performance) to a user's GitHub repository. Writes to solutions/<problem-slug>/ with solution files and README; supports optional MCP schema endpoint and auto-push on Accepted.",
+      "stack": ["JavaScript", "Chrome Extension", "GitHub API", "MCP"],
+      "sourceCode": "https://github.com/SwapnilMane22/GitLeet",
+      "livePreview": null
+    },
+    {
+      "name": "ATS Engine",
+      "imageKey": "ats",
+      "period": "2025",
+      "description": "Model-agnostic Applicant Tracking System engine with deterministic LaTeX parsing, strict rubric scoring, evidence mapping, and pluggable LLM models. Supports local and enhanced modes with Zod schemas for JD normalization, bullet classification, and fit explanation.",
+      "stack": ["TypeScript", "Node.js", "Zod", "LaTeX", "LLM"],
+      "sourceCode": null,
+      "livePreview": null
+    },
+    {
       "name": "Multi-agent LLM text-to-SQL",
       "imageKey": "workrise",
       "period": "2025-06",
-      "description": "Built a multi-agent Text-to-SQL system using Ollama LLMs and the Autogen framework to orchestrate collaborative agents that convert natural language queries into optimized SQL; evaluated on the Bird.dev dataset and MySQL with ~60% execution accuracy.",
+      "description": "Developed an autonomous multi-agent system using the AutoGen framework and Ollama LLMs with 60% execution accuracy to translate natural language into optimized SQL queries, validating the inference logic with Bird.dev dataset.",
       "stack": ["Ollama", "AutoGen", "Python", "SQL", "MySQL"],
       "sourceCode": "https://github.com/SwapnilMane22/MultiAgent-Text-to-SQL",
       "livePreview": null
     },
     {
-      "name": "Conversational ChatBot",
+      "name": "Portfolio ChatBot",
       "imageKey": "chatbot",
       "period": "2025-03",
-      "description": "RAG pipeline for the portfolio website: Node/Express API loads knowledge context and injects it into the LLM system prompt; supports OpenRouter and Google Gemini with SSE streaming; React chat UI with markdown. Validated with an automated test suite (26 prompts) achieving ~95.8% response-check precision, 95.4% F1 score, and ~3.2s average latency.",
-      "stack": ["Node.js", "Express", "OpenRouter API", "Google Gemini", "React", "SSE", "react-markdown"],
+      "description": "Deployed a full-stack RAG (Retrieval-Augmented Generation) chatbot using Node.js/Express, React, OpenRouter and Google AI Studio for interactive portfolio Q&A, delivering 95.8% precision, 95.4% F1 score, and 3.2s average latency.",
+      "stack": ["Node.js", "Express", "OpenRouter API", "Google AI Studio", "React", "RAG"],
       "sourceCode": "https://github.com/SwapnilMane22/portfolio.git",
       "livePreview": "https://swapnilmane22.github.io/portfolio/"
     },
@@ -203,8 +212,8 @@
       "name": "Movie Recommendation System",
       "imageKey": "movie",
       "period": "2025-02",
-      "description": "Prototyped a movie recommender using TF-IDF and SBERT with Python and Sentence Transformer, leveraging feature engineering and semantic similarity on ~45,000 records from the Kaggle Movies Dataset to improve top-K recommendation quality.",
-      "stack": ["Python", "TF-IDF", "SBERT", "Sentence Transformer", "Kaggle"],
+      "description": "Prototyped a movie recommender using TF-IDF and SBERT with Python, leveraging feature engineering on 45,000 records from the Kaggle Movies Dataset to increase semantic similarity precision in top-K results.",
+      "stack": ["Python", "TF-IDF", "SBERT", "Kaggle"],
       "sourceCode": "https://github.com/SwapnilMane22/lumaa-spring-2025-ai-ml",
       "livePreview": null
     },
@@ -323,7 +332,7 @@
     "email": "stm2212@gmail.com"
   },
   "journeyDisplay": {
-    "introHtml": "<p>I have 5+ years of software engineering experience delivering production-ready solutions—building web and mobile applications, architecting scalable ETL pipelines, and agentic AI workflows—along with legacy SAP ABAP and S/4HANA automations.</p><br><p>I hold a Master of Science in Computer Science from Binghamton University, SUNY (GPA 3.71/4.0) and a B.E. in Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Since then my path has taken me from full-stack and backend development into ML engineering and scalable data systems, shipping production software that has improved cost, accuracy, and time-to-resolution.</p><br><p>That growth from building apps and APIs to designing agentic AI, ETL pipelines, and predictive models has kept me consistent with my goal of building robust, scalable systems and bringing research-grade AI into production. I focus on shipping solutions that drive real impact.</p>"
+    "introHtml": "<p>I have 5+ years of software engineering experience delivering production-ready solutions—building web and mobile applications, LLM inference, model training, and agentic AI workflows.</p><br><p>I hold a Master of Science in Computer Science from Binghamton University (GPA 3.71/4.0) and a B.E. in Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. My path has taken me from full-stack and backend development into ML engineering, LLM systems, and scalable data pipelines, shipping production software that has improved cost, accuracy, and time-to-resolution.</p><br><p>That growth from building apps and APIs to designing agentic AI, LLM inference, and predictive models has kept me consistent with my goal of building robust, scalable systems and bringing research-grade AI into production. I focus on shipping solutions that drive real impact.</p>"
   },
-  "narrative": "Swapnil Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, scalable ETL pipelines, and agentic AI workflows, plus SAP ABAP and S/4HANA automations. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience spans Asearis Data Systems (Software Engineer, Rust LLM microservices, multi-platform modernization, 99% availability), Sitewiz (AI Engineer, AutoGen multi-agent, cloud cost reduction $16k/month), Bridge Green Upcycle Corp (Software Engineering Intern, ETL, battery SOH 5.7% MAE, 90% accuracy, PySpark, Tableau, MoUs, Series A), LTIMindtree (Software Engineer NLP ~900K tickets Azure ML 66% accuracy; Software Engineer SAP ABAP GoMx Individual Excellence Award, 86% monitoring time reduction, 67% user search time reduction), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Certifications: Microsoft Introduction to Programming using Python. Leadership: Lead Career Placement Coordinator at Fr. C. RIT. Projects include multi-agent Text-to-SQL (Ollama, AutoGen), portfolio RAG chatbot (Node/Express, OpenRouter, Gemini), computer vision, data mining, course assignment, thought-to-text research, handwritten recognition. Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
+  "narrative": "Swapnil Tukaram Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, LLM inference, model training, and agentic AI workflows. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience: Asearis Data Systems (Software Engineer, Rust LLM microservice, multiplatform client modernization 60%, 99% availability, token tracking and LLMOps), Sitewiz (AI Engineer, AutoGen multi-agent, AWS S3 serialization, Vertex AI to AWS GPU migration $16k/month savings), Bridge Green Upcycle Corp (Software Engineering Intern, PySpark 18M+ records, battery SOH 95% feature extraction reduction, LSTM-DNN 5.7% MAE, Tableau, Series A), LTIMindtree (Software Engineer Aug 2020–Jul 2023, Azure ML NLP 900K tickets, 66% accuracy, RLHF, Python/Tkinter OpenCV Tesseract 67% search time reduction), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Projects: GitLeet (browser extension LeetCode to GitHub sync), ATS Engine (model-agnostic ATS, LaTeX parsing, LLM), multi-agent Text-to-SQL (Ollama, AutoGen), Portfolio RAG chatbot (Node/Express, OpenRouter, Google AI Studio), Movie Recommendation (TF-IDF, SBERT), thought-to-text (EEG, 59% accuracy). Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
 }
