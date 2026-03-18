@@ -1,0 +1,65 @@
+.animated-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0; /* Changed from -1 to 0 */
+  overflow: hidden;
+  pointer-events: none;
+  background-color: var(--clr-bg);
+  /* Softer base gradient so content stays readable */
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(37, 99, 235, 0.12) 0%, transparent 60%),
+    radial-gradient(circle at 90% 100%, rgba(59, 130, 246, 0.12) 0%, transparent 65%);
+  transition: background-color 0.3s ease;
+}
+
+.blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  z-index: 0; /* Changed from -1 to 0 */
+  will-change: transform, opacity;
+}
+
+.dynamic-blob {
+  background: var(--clr-primary);
+  opacity: 0.8;
+  max-width: 600px;
+  max-height: 600px;
+}
+
+/* Dark mode adjustments to ensure they pop but don't blind
+   We reduce brightness of the blob container overall */
+.dark .dynamic-blob {
+  filter: blur(140px) brightness(0.6);
+}
+
+/* Light mode adjustments 
+   Remove the brightness drop so it doesn't look like spilled ink, 
+   instead use high blur and softer natural colors */
+.light .dynamic-blob {
+  filter: blur(200px); /* Massive blur for soft glow */
+  opacity: 0.2 !important; /* Override base to be extremely soft for high readability */
+}
+
+/* Cursor-following theme blob */
+.cursor-blob {
+  position: fixed;
+  /* top & left are controlled directly by React state style prop */
+  border-radius: 999px;
+  pointer-events: none;
+  z-index: 1;
+  filter: blur(30px);
+  opacity: 0.8;
+  will-change: transform, width, height, opacity, top, left;
+}
+
+.light .cursor-blob {
+  background: radial-gradient(circle at 30% 30%, rgba(37, 99, 235, 0.4), transparent 60%);
+}
+
+.dark .cursor-blob {
+  background: radial-gradient(circle at 30% 30%, rgba(96, 165, 250, 0.5), transparent 60%);
+}

@@ -7,7 +7,7 @@ import CloseIcon from '@mui/icons-material/Close'
 import { ThemeContext } from '../../contexts/theme'
 import { useProfile } from '../../contexts/ProfileContext'
 import { motion, AnimatePresence } from 'framer-motion'
-import './Nabar.css'
+import './Navbar.css'
 
 const Navbar = () => {
   const { profile } = useProfile()

@@ -18,7 +18,7 @@ const TEST_CASES = [
     name: 'About – experience and roles',
     message: "How many years of experience does Swapnil have and what are his roles?",
     expectContains: ['5', 'Software Engineer', 'AI'],
-    expectNotContain: ['2 years', 'intern only'],
+    expectNotContain: ['2 years', 'Intern only'],
   },
   {
     name: 'About – tagline',

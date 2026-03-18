@@ -1,14 +1,16 @@
 // ProjectPopup.js
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useContext } from 'react';
 import { createPortal } from 'react-dom';
 import CloseIcon from '@mui/icons-material/Close';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import LaunchIcon from '@mui/icons-material/Launch';
 import { motion, AnimatePresence } from 'framer-motion';
+import { ThemeContext } from '../../contexts/theme';
 import './ProjectPopup.css';
 
 const ProjectPopup = ({ project, isOpen, onClose }) => {
   const modalRef = useRef(null);
+  const [{ themeName }] = useContext(ThemeContext);
 
   // Close on escape key
   useEffect(() => {
@@ -49,7 +51,7 @@ const ProjectPopup = ({ project, isOpen, onClose }) => {
   return createPortal(
     <AnimatePresence className='project'>
       {isOpen && (
-        <div className="popup-overlay">
+        <div className={`popup-overlay ${themeName}`}>
           <motion.div 
             initial={{ opacity: 0, scale: 0.75 }}
             animate={{ opacity: 1, scale: 1 }}

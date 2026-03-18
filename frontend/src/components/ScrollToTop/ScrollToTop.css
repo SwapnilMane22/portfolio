@@ -2,7 +2,7 @@
 .scroll-top {
   position: fixed;
   bottom: 76px; /* 20 (chat bottom) + 44 (chat height) + 12 (gap) */
-  right: 12px;
+  right: 16px;
   width: 44px;
   height: 44px;
   background-color: transparent;
@@ -23,7 +23,7 @@
 
 @media (max-width: 900px) {
   .scroll-top {
-    right: 24px;
+    right: 14px;
     z-index: 999;
   }
 }

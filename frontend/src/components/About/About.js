@@ -102,7 +102,7 @@ const About = () => {
             </span>
           </a>
         )}
-        <button type='button' className='btn btn--outline' onClick={openChat} aria-label='Open chat'>
+        <button type='button' className='btn btn--premium' onClick={openChat} aria-label='Open chat'>
           Chat with me
         </button>
 
@@ -117,8 +117,11 @@ const About = () => {
                 <GitHubIcon
                 style={{ 
                   display: 'block',
-                  width: '24px',
-                  height: '24px',
+                  /* ================================= */
+                  /* Change width/height below to adjust icon size */
+                  width: '32px',
+                  height: '32px',
+                  /* ================================= */
                   fill: 'currentColor'
                 }}
                  />
@@ -134,8 +137,11 @@ const About = () => {
                 <LinkedInIcon 
                 style={{ 
                   display: 'block',
-                  width: '26px',
-                  height: '26px',
+                  /* ================================= */
+                  /* Change width/height below to adjust icon size */
+                  width: '34px',
+                  height: '34px',
+                  /* ================================= */
                   fill: 'currentColor'
                 }}
                 />
@@ -153,8 +159,11 @@ const About = () => {
                   className='link link--icon'
                   style={{ 
                     display: 'block',
-                    width: '26px',
-                    height: '26px',
+                    /* ================================= */
+                    /* Change width/height below to adjust icon size */
+                    width: '34px',
+                    height: '34px',
+                    /* ================================= */
                     fill: 'currentColor',
                     marginTop: 3.5,
                     paddingRight: 0,

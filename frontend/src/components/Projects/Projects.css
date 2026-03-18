@@ -1,7 +1,13 @@
 .projects__grid {
     max-width: 1100px;
     margin: 0 auto;
+    padding-top: 0.75rem;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(18em, 1fr));
     grid-gap: 2em;
+  }
+
+  /* Give extra breathing room before next section */
+  .projects {
+    padding-bottom: 1.75rem;
   }

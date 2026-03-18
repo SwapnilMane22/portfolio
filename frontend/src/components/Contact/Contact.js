@@ -15,7 +15,7 @@ const Contact = () => {
         Have a project in mind or want to connect? I’d love to hear from you.
       </p>
       <div className='contact__cta'>
-        <a href={`mailto:${contact.email}`} className='contact__link' target='_blank' rel='noopener noreferrer'>
+        <a href={`mailto:${contact.email}`} className='btn btn--outline contact__btn' target='_blank' rel='noopener noreferrer'>
           <EmailOutlinedIcon className='contact__icon' aria-hidden />
           <span>Email me</span>
         </a>

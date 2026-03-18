@@ -16,7 +16,7 @@ const ProjectContainer = ({ project }) => {
 
   return (
     <>
-  <motion.div className='project' 
+  <motion.div className='project glass' 
         whileHover={{ y: -7 }} 
         style={{ cursor: 'pointer' }}
         onClick={openPopup}>
