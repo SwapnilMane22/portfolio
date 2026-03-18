@@ -3,20 +3,22 @@
   margin-top: 4rem;
   padding: 2rem 1rem 2.5rem;
   text-align: center;
-  border-top: 1px solid var(--border);
-  background: var(--clr-bg-alt);
+  border-top: 1px solid var(--glass-border);
+  background: transparent;
+  position: relative;
+  z-index: 10;
 }
 
 .footer__inner {
   max-width: 1100px;
   margin: 0 auto;
   font-size: 0.875rem;
-  color: var(--clr-fg);
+  color: var(--clr-fg-alt);
 }
 
 .footer__link {
-  color: var(--clr-fg);
-  font-weight: 500;
+  color: var(--clr-fg-alt);
+  font-weight: 600;
   text-decoration: none;
   transition: color 0.2s ease;
 }
@@ -27,13 +29,14 @@
 
 .footer__divider {
   margin: 0 0.5rem;
-  color: var(--clr-fg);
+  color: var(--clr-fg-alt);
   opacity: 0.6;
 }
 
 .footer__meta {
-  color: var(--clr-fg);
+  color: var(--clr-fg-alt);
   opacity: 0.85;
+  font-weight: 500;
 }
 
 @media (max-width: 600px) {

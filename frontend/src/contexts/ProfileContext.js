@@ -13,6 +13,8 @@ const emptyProfile = {
   header: { homepage: '', title: 'SM' },
   about: { name: '', role: '', role2: '', role3: '', description: '', social: {} },
   journey: { intro: '', yoe: 0, numProjects: 0, numOrganizations: 0 },
+  education: [],
+  experience: [],
   projects: [],
   skills: [],
   contact: {},

@@ -7,7 +7,11 @@
   "about": {
     "name": "Swapnil Mane",
     "summary": "5+ years of software engineering experience delivering production-ready solutions, building web/mobile applications, LLM inference, model training, and agentic AI workflows",
-    "roles": ["Software Engineer", "Full Stack Developer", "AI/ML Engineer"],
+    "roles": [
+      "Software Engineer",
+      "Full Stack Developer",
+      "AI Engineer"
+    ],
     "tagline": "I work fast, build from scratch, and ship production-ready AI solutions.",
     "description": "Welcome to my digital corner. I am thrilled to showcase my projects, as well as provide insights into my educational journey and professional endeavors. Let's connect and explore opportunities together.",
     "social": {
@@ -56,16 +60,149 @@
   ],
   "skills": {
     "byCategory": {
-      "programmingLanguages": ["Python", "Rust", "SQL", "Java", "JavaScript", "Kotlin", "C#", "HTML", "C", "C++", "SAP ABAP"],
-      "frameworks": ["PyTorch", "PySpark", "TensorFlow", "scikit-learn", "Ollama", "Unsloth", "AutoGen", "OpenCV", "Hugging Face", "Flask", "React", "Node.js", "REST API", "FastAPI"],
-      "dataScience": ["ETL", "Data Pipelines", "Probability and Statistics", "Correlation Analysis", "Tableau", "Feature Extraction", "Transformation", "Prediction", "Forecasting"],
-      "machineLearning": ["Deep Learning", "Neural Networks", "Natural Language Processing", "Reinforcement Learning", "Pattern Recognition", "Time Series Forecasting", "Predictive Modeling", "Machine Vision", "Image Processing"],
-      "genAI": ["Fine-tuning LLMs", "Multi-agent AI", "Conversational AI", "Prompt Engineering", "RAG Agent", "Chain of Thought (CoT)"],
-      "bigDataCloud": ["Azure ML", "Amazon Web Services (AWS)", "Google Cloud Platform (GCP)", "Docker", "CI/CD", "Databricks", "Hadoop", "PySpark", "Microsoft Azure", "Google Cloud Platform"],
-      "tools": ["Android Studio", "MATLAB", "Git", "GitHub", "Jupyter Notebook", "CI/CD", "NI LabView", "MS Excel", "SAP Logon NetWeaver"],
-      "sap": ["SAP ABAP", "S/4HANA", "RICEFW", "BADI", "BAPIs", "FI", "MM", "OData", "AMDP", "CDS Views", "SQL query optimization"]
+      "programmingLanguages": [
+        "Python",
+        "Rust",
+        "SQL",
+        "Java",
+        "JavaScript",
+        "Kotlin",
+        "C#",
+        "HTML",
+        "C",
+        "C++",
+        "SAP ABAP"
+      ],
+      "frameworks": [
+        "PyTorch",
+        "PySpark",
+        "TensorFlow",
+        "scikit-learn",
+        "Ollama",
+        "Unsloth",
+        "AutoGen",
+        "OpenCV",
+        "Hugging Face",
+        "Flask",
+        "React",
+        "Node.js",
+        "REST API",
+        "FastAPI"
+      ],
+      "dataScience": [
+        "ETL",
+        "Data Pipelines",
+        "Probability and Statistics",
+        "Correlation Analysis",
+        "Tableau",
+        "Feature Extraction",
+        "Transformation",
+        "Prediction",
+        "Forecasting"
+      ],
+      "machineLearning": [
+        "Deep Learning",
+        "Neural Networks",
+        "Natural Language Processing",
+        "Reinforcement Learning",
+        "Pattern Recognition",
+        "Time Series Forecasting",
+        "Predictive Modeling",
+        "Machine Vision",
+        "Image Processing"
+      ],
+      "genAI": [
+        "Fine-tuning LLMs",
+        "Multi-agent AI",
+        "Conversational AI",
+        "Prompt Engineering",
+        "RAG Agent",
+        "Chain of Thought (CoT)"
+      ],
+      "bigDataCloud": [
+        "Azure ML",
+        "Amazon Web Services (AWS)",
+        "Google Cloud Platform (GCP)",
+        "Docker",
+        "CI/CD",
+        "Databricks",
+        "Hadoop",
+        "PySpark",
+        "Microsoft Azure",
+        "Google Cloud Platform"
+      ],
+      "tools": [
+        "Android Studio",
+        "MATLAB",
+        "Git",
+        "GitHub",
+        "Jupyter Notebook",
+        "CI/CD",
+        "NI LabView",
+        "MS Excel",
+        "SAP Logon NetWeaver"
+      ],
+      "sap": [
+        "SAP ABAP",
+        "S/4HANA",
+        "RICEFW",
+        "BADI",
+        "BAPIs",
+        "FI",
+        "MM",
+        "OData",
+        "AMDP",
+        "CDS Views",
+        "SQL query optimization"
+      ]
     },
-    "flat": ["Python", "Rust", "SQL", "Java", "JavaScript", "Kotlin", "C#", "HTML", "C", "C++", "SAP ABAP", "PyTorch", "PySpark", "TensorFlow", "scikit-learn", "Ollama", "Unsloth", "AutoGen", "OpenCV", "Hugging Face", "Flask", "React", "Node.js", "FastAPI", "ETL", "Tableau", "Deep Learning", "Natural Language Processing", "Reinforcement Learning", "Generative AI", "RAG", "Azure ML", "AWS", "GCP", "Docker", "CI/CD", "Databricks", "Hadoop", "Git", "GitHub", "Jupyter Notebook", "MATLAB", "Android Studio", "NI LabView", "SAP S/4HANA"]
+    "flat": [
+      "Python",
+      "Rust",
+      "SQL",
+      "Java",
+      "JavaScript",
+      "Kotlin",
+      "C#",
+      "HTML",
+      "C",
+      "C++",
+      "SAP ABAP",
+      "PyTorch",
+      "PySpark",
+      "TensorFlow",
+      "scikit-learn",
+      "Ollama",
+      "Unsloth",
+      "AutoGen",
+      "OpenCV",
+      "Hugging Face",
+      "Flask",
+      "React",
+      "Node.js",
+      "FastAPI",
+      "ETL",
+      "Tableau",
+      "Deep Learning",
+      "Natural Language Processing",
+      "Reinforcement Learning",
+      "Generative AI",
+      "RAG",
+      "Azure ML",
+      "AWS",
+      "GCP",
+      "Docker",
+      "CI/CD",
+      "Databricks",
+      "Hadoop",
+      "Git",
+      "GitHub",
+      "Jupyter Notebook",
+      "MATLAB",
+      "Android Studio",
+      "NI LabView",
+      "SAP S/4HANA"
+    ]
   },
   "experience": [
     {
@@ -74,7 +211,7 @@
       "role": "Software Engineer",
       "startDate": "2025-07",
       "endDate": "Present",
-      "type": "full-time",
+      "type": "Full-time",
       "bullets": [
         "Delivered critical product and infrastructure milestones across Android, iOS, macOS, backend, Windows, and LLM inference",
         "Rebuilt and stabilized the Android app, unblocking Google/Facebook authentication by fixing parameter-passing failures and production crash paths",
@@ -89,7 +226,15 @@
         "Established CI/CD pipelines to automate builds, versioning, and deployments, improving release predictability and long-term maintainability",
         "Led technical planning and work allocation for the team, mapping Android, backend, and Windows deliverables to engineer strengths to hit sprint timelines"
       ],
-      "techStack": ["Java", "Rust", "LLM", "LLMOps", "CI/CD", "Mobile", "Desktop"]
+      "techStack": [
+        "Java",
+        "Rust",
+        "LLM",
+        "LLMOps",
+        "CI/CD",
+        "Mobile",
+        "Desktop"
+      ]
     },
     {
       "organization": "Sitewiz Inc.",
@@ -97,13 +242,18 @@
       "role": "AI Engineer",
       "startDate": "2025-08",
       "endDate": "2025-09",
-      "type": "part-time",
+      "type": "Part-time",
       "bullets": [
         "Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent handoffs for LLM execution",
         "Streamlined the AI infrastructure by migrating from redundant Vertex AI to dedicated AWS GPU endpoints, reducing monthly cloud expenses by $16,000 and saving 5+ hours of weekly troubleshooting",
         "Conducted technical due diligence to realign cloud strategy and established production-grade backend services, transforming experimental features into stable, reliable infrastructure for an enterprise launch"
       ],
-      "techStack": ["AutoGen", "AWS S3", "Vertex AI", "Python"]
+      "techStack": [
+        "AutoGen",
+        "AWS S3",
+        "Vertex AI",
+        "Python"
+      ]
     },
     {
       "organization": "Bridge Green Upcycle Corp",
@@ -111,7 +261,7 @@
       "role": "Software Engineering Intern",
       "startDate": "2023-12",
       "endDate": "2024-12",
-      "type": "intern",
+      "type": "Intern",
       "bullets": [
         "Founding architect of the AI/ML Digital Team; led product development and trained new recruits",
         "Reduced feature extraction time by 95% for battery State of Health (SOH) analysis by engineering a PySpark pipeline to ingest and batch-process 18M+ records; applied physics-based feature extraction (capacity estimation, open-circuit voltage profiling) for real-time SOH estimation and reduced execution runtime by ~60%",
@@ -121,7 +271,18 @@
         "Developed interactive Tableau dashboards using Python to visualize battery analytics and automate report generation, enabling scalability for the Series A launch",
         "Solution facilitated predictive maintenance scheduling, near-future failure analysis, and battery repurposing strategies; drove business growth and key MoUs"
       ],
-      "techStack": ["Python", "PySpark", "Tableau", "LSTM-DNN", "ETL", "MATLAB", "Scikit-Learn", "NumPy", "Plotly", "Matplotlib"]
+      "techStack": [
+        "Python",
+        "PySpark",
+        "Tableau",
+        "LSTM-DNN",
+        "ETL",
+        "MATLAB",
+        "Scikit-Learn",
+        "NumPy",
+        "Plotly",
+        "Matplotlib"
+      ]
     },
     {
       "organization": "LTIMindtree Ltd. (formerly Larsen & Toubro Infotech Ltd.)",
@@ -129,7 +290,7 @@
       "role": "Software Engineer",
       "startDate": "2020-08",
       "endDate": "2023-07",
-      "type": "full-time",
+      "type": "Full-time",
       "bullets": [
         "Trained an NLP pipeline in Azure ML Studio for 900K+ IT tickets using word embedding and TF-IDF vectorization",
         "Resolved severe class imbalance through stratified sampling, SMOTE oversampling, and class-weighted Logistic Regression & Random Forest models, driving 66% accuracy on a highly skewed dataset",
@@ -141,31 +302,62 @@
         "Earned GoMx Individual Excellence Award for two automation solutions: .NET-based VB script for SAP NetWeaver monitoring (reduced manual monitoring time per system by 86%, from 35 to 5 minutes; 90% annual monitoring effort saved) and Python GUI-based user search with OCR and Excel (67% search time reduction)",
         "Enhanced data integration and batch automation via BAPIs and Module Pool programming; used SAP debugging tools (SQL Trace ST05, Runtime Analysis SAT, ABAP Debugger); managed Transport Requests in Agile (DEV to QA to PRD); collaborated with SAP Functional Consultants (MM, SD, FI); provided training and knowledge-transfer documentation"
       ],
-      "techStack": ["Python", "Scikit-Learn", "Azure Machine Learning Studio", "Azure AI Cognitive Services", "Azure Data Lake", "SQL Server", "OpenCV", "Tesseract OCR", "SAP ABAP", "AMDP", "CDS Views", "BADIs", "BAPIs", ".NET", "VB Script"]
+      "techStack": [
+        "Python",
+        "Scikit-Learn",
+        "Azure Machine Learning Studio",
+        "Azure AI Cognitive Services",
+        "Azure Data Lake",
+        "SQL Server",
+        "OpenCV",
+        "Tesseract OCR",
+        "SAP ABAP",
+        "AMDP",
+        "CDS Views",
+        "BADIs",
+        "BAPIs",
+        ".NET",
+        "VB Script"
+      ]
     },
     {
       "organization": "CueMath",
       "role": "Python and Game Development Teacher",
       "startDate": null,
       "endDate": null,
-      "type": "part-time",
+      "type": "Part-time",
       "bullets": [
         "Taught basics of Python and game development through interactive small projects and object-oriented programming with real-world examples"
       ],
-      "techStack": ["Python", "Game Development"]
+      "techStack": [
+        "Python",
+        "Game Development"
+      ]
     },
     {
       "organization": "Navavidha Techsolutions Pvt. Ltd.",
       "role": "Junior App Developer",
       "startDate": "2019-06",
       "endDate": "2019-07",
-      "type": "intern",
+      "type": "Intern",
       "bullets": [
         "Implemented multi-utility app development on Human Machine Interface (HMI)",
         "Developed games and managed peripheral device communication via Tkinter and PySerial in Python",
         "Deployed code to embedded systems (Arduino, Raspberry Pi, STM32) for real-time data acquisition"
       ],
-      "techStack": ["Git", "GitHub", "IoT", "Arduino", "GPIO", "Python", "Pandas", "NumPy", "Tkinter", "PySerial", "OpenCV"]
+      "techStack": [
+        "Git",
+        "GitHub",
+        "IoT",
+        "Arduino",
+        "GPIO",
+        "Python",
+        "Pandas",
+        "NumPy",
+        "Tkinter",
+        "PySerial",
+        "OpenCV"
+      ]
     }
   ],
   "projects": [
@@ -173,8 +365,13 @@
       "name": "GitLeet",
       "imageKey": "gitleet",
       "period": "2025",
-      "description": "Serverless browser extension that syncs accepted LeetCode submissions (question metadata, solution, performance) to a user's GitHub repository. Writes to solutions/<problem-slug>/ with solution files and README; supports optional MCP schema endpoint and auto-push on Accepted.",
-      "stack": ["JavaScript", "Chrome Extension", "GitHub API", "MCP"],
+      "description": "Serverless browser extension that syncs accepted LeetCode submissions (question metadata, solution, performance) to a user's GitHub repository. Writes GitHub repository with solution files and README; supports optional MCP schema endpoint and auto-push on Accepted.",
+      "stack": [
+        "JavaScript",
+        "Chrome Extension",
+        "GitHub API",
+        "MCP"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/GitLeet",
       "livePreview": null
     },
@@ -183,7 +380,13 @@
       "imageKey": "ats",
       "period": "2025",
       "description": "Model-agnostic Applicant Tracking System engine with deterministic LaTeX parsing, strict rubric scoring, evidence mapping, and pluggable LLM models. Supports local and enhanced modes with Zod schemas for JD normalization, bullet classification, and fit explanation.",
-      "stack": ["TypeScript", "Node.js", "Zod", "LaTeX", "LLM"],
+      "stack": [
+        "TypeScript",
+        "Node.js",
+        "Zod",
+        "LaTeX",
+        "LLM"
+      ],
       "sourceCode": null,
       "livePreview": null
     },
@@ -192,7 +395,13 @@
       "imageKey": "workrise",
       "period": "2025-06",
       "description": "Developed an autonomous multi-agent system using the AutoGen framework and Ollama LLMs with 60% execution accuracy to translate natural language into optimized SQL queries, validating the inference logic with Bird.dev dataset.",
-      "stack": ["Ollama", "AutoGen", "Python", "SQL", "MySQL"],
+      "stack": [
+        "Ollama",
+        "AutoGen",
+        "Python",
+        "SQL",
+        "MySQL"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/MultiAgent-Text-to-SQL",
       "livePreview": null
     },
@@ -201,7 +410,14 @@
       "imageKey": "chatbot",
       "period": "2025-03",
       "description": "Deployed a full-stack RAG (Retrieval-Augmented Generation) chatbot using Node.js/Express, React, OpenRouter and Google AI Studio for interactive portfolio Q&A, delivering 95.8% precision, 95.4% F1 score, and 3.2s average latency.",
-      "stack": ["Node.js", "Express", "OpenRouter API", "Google AI Studio", "React", "RAG"],
+      "stack": [
+        "Node.js",
+        "Express",
+        "OpenRouter API",
+        "Google AI Studio",
+        "React",
+        "RAG"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/portfolio.git",
       "livePreview": "https://swapnilmane22.github.io/portfolio/"
     },
@@ -210,7 +426,12 @@
       "imageKey": "portfolio",
       "period": "2025-02",
       "description": "Dynamic digital resume with skills, experience, projects and live demos; includes integrated RAG chatbot (Node/Express backend, React frontend).",
-      "stack": ["React", "Node.js", "Express", "CSS"],
+      "stack": [
+        "React",
+        "Node.js",
+        "Express",
+        "CSS"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/portfolio.git",
       "livePreview": "https://swapnilmane22.github.io/portfolio/"
     },
@@ -219,7 +440,12 @@
       "imageKey": "movie",
       "period": "2025-02",
       "description": "Prototyped a movie recommender using TF-IDF and SBERT with Python, leveraging feature engineering on 45,000 records from the Kaggle Movies Dataset to increase semantic similarity precision in top-K results.",
-      "stack": ["Python", "TF-IDF", "SBERT", "Kaggle"],
+      "stack": [
+        "Python",
+        "TF-IDF",
+        "SBERT",
+        "Kaggle"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/lumaa-spring-2025-ai-ml",
       "livePreview": null
     },
@@ -228,7 +454,11 @@
       "imageKey": "soh",
       "period": "2024",
       "description": "Led the development of a battery State of Health (SOH) prediction system, focusing on estimating Remaining Useful Life (RUL) for efficient lifecycle management. AI models achieved over 90% accuracy, utilizing advanced machine learning techniques to categorize batteries and model their degradation over time. Optimized Python code for handling over 3.25 million data points using parallel processing and multithreading.",
-      "stack": ["Python", "MATLAB", "Machine Learning"],
+      "stack": [
+        "Python",
+        "MATLAB",
+        "Machine Learning"
+      ],
       "sourceCode": null,
       "livePreview": null
     },
@@ -237,7 +467,11 @@
       "imageKey": "ar",
       "period": "2024-11",
       "description": "Computer vision algorithms for edge detection and feature matching (Gaussian filters, Sobel, Hough transform, FAST-BRIEF); 3D pose estimation and video tracking (epipolar geometry, triangulation, Lucas-Kanade, inverse compositional alignment) for AR integration.",
-      "stack": ["Python", "OpenCV", "PyPlot"],
+      "stack": [
+        "Python",
+        "OpenCV",
+        "PyPlot"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/CV-Projects-Edge-Detection-Feature-Matching-AR-and-Video-Tracking.git",
       "livePreview": null
     },
@@ -246,7 +480,11 @@
       "imageKey": "dm",
       "period": "2024-04",
       "description": "This project implements several techniques for image classification and clustering. The methods used include Principal Component Analysis (PCA), Discrete Cosine Transform (DCT), Deep Neural Networks (DNN), and K-Nearest Neighbors (KNN). The primary goal is to enhance data representation, improve classification accuracy, and optimize clustering outcomes.",
-      "stack": ["Python", "Sci-kit Learn", "SciPy"],
+      "stack": [
+        "Python",
+        "Sci-kit Learn",
+        "SciPy"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/Data-Mining-Dimensionality-Reduction-Classification-and-Clustering.git",
       "livePreview": null
     },
@@ -255,7 +493,11 @@
       "imageKey": "tcs",
       "period": "2023",
       "description": "The Ticket Classification System streamlines ticket management by automatically categorizing incoming support requests based on historical data. Built using Azure ML Studio, the model employs TF-IDF for text vectorization and regression techniques for supervised learning on skewed data. When a new ticket is generated, the system calculates a similarity score by comparing it with previously classified tickets, ensuring accurate categorization. Azure's cloud-based infrastructure ensures scalability, improving issue resolution times and customer satisfaction.",
-      "stack": ["Microsoft Azure ML Studio", "Python", "Azure Data Lake"],
+      "stack": [
+        "Microsoft Azure ML Studio",
+        "Python",
+        "Azure Data Lake"
+      ],
       "sourceCode": null,
       "livePreview": null
     },
@@ -264,7 +506,10 @@
       "imageKey": "course",
       "period": "2023-11",
       "description": "Java program that assigns courses considering graduation criteria and prerequisites; State pattern for degree requirements; wait-list and graduation eligibility.",
-      "stack": ["Java", "Design Patterns"],
+      "stack": [
+        "Java",
+        "Design Patterns"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/Optimized-Course-Assignment-System",
       "livePreview": null
     },
@@ -273,7 +518,12 @@
       "imageKey": "tot",
       "period": "2019-08 to 2020-03",
       "description": "Classified EEG signals from raw brainwave data (frontal and temporal lobes); MATLAB and Python for processing; supervised model for thought-to-text; 59% accuracy under predefined test conditions. Research paper.",
-      "stack": ["Python", "MATLAB", "Keras", "Sci-kit Learn"],
+      "stack": [
+        "Python",
+        "MATLAB",
+        "Keras",
+        "Sci-kit Learn"
+      ],
       "sourceCode": null,
       "livePreview": "https://www.taylorfrancis.com/chapters/edit/10.1201/9781003052098-54/thought-text-conversion-using-deep-learning-swapnil-mane-tiasha-nath-shobin-thomas-omkar-swami-pranali-choudhari-smita-chopde"
     },
@@ -282,7 +532,12 @@
       "imageKey": "ocr",
       "period": "2019-02",
       "description": "Handwritten digit recognition using MNIST dataset with a three-layered neural network (input, hidden, output). Preprocesses data from the MNIST dataset, rescales it, and trains the neural network using backpropagation and regularization techniques.",
-      "stack": ["Python", "PyTorch", "OpenCV", "PyPlot"],
+      "stack": [
+        "Python",
+        "PyTorch",
+        "OpenCV",
+        "PyPlot"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/handwritten_digit_recognition_mnist",
       "livePreview": null
     },
@@ -291,7 +546,11 @@
       "imageKey": "iot",
       "period": "2019",
       "description": "Attendance tracking app for businesses, associations and schools to track employees, members and students; check-in, check-out and access control for administrators with smartphones and tablets.",
-      "stack": ["Arduino", "IoT", "Android App"],
+      "stack": [
+        "Arduino",
+        "IoT",
+        "Android App"
+      ],
       "sourceCode": "https://github.com/SwapnilMane22/Bidirectional-Attendance-Barcode-Counter",
       "livePreview": null
     },
@@ -300,7 +559,10 @@
       "imageKey": "arduino",
       "period": "2019",
       "description": "Vital component for uninterrupted power supply during electrical outages. Converts high 3-phase voltage to manageable 3 volts. An Arduino UNO board seamlessly switches from primary mains to backup power, guaranteeing smooth transition and uninterrupted power flow. Used in industries, data centers, and critical infrastructure.",
-      "stack": ["Arduino", "Voltage Rectifier"],
+      "stack": [
+        "Arduino",
+        "Voltage Rectifier"
+      ],
       "sourceCode": null,
       "livePreview": null
     }
@@ -325,7 +587,12 @@
       "title": "GoMx Individual Excellence Award",
       "organization": "LTIMindtree Ltd.",
       "description": "For developing automation tools that enhanced operational efficiency and productivity by over 85%. SAP NetWeaver monitoring script (.NET) reduced manual time per system by ~86% (35 to 5 minutes), saving ~90% of annual monitoring effort (~900 minutes). Python GUI-based user search with OCR and Excel reduced search time by 67%. Demonstrated ability to identify inefficiencies and implement solutions with tangible time and resource savings.",
-      "metrics": ["86% reduction in monitoring time per system", "90% annual monitoring effort saved", "67% reduction in user search time", "85%+ operational efficiency improvement"]
+      "metrics": [
+        "86% reduction in monitoring time per system",
+        "90% annual monitoring effort saved",
+        "67% reduction in user search time",
+        "85%+ operational efficiency improvement"
+      ]
     },
     {
       "title": "Team collaboration and delivery",

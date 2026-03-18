@@ -9,6 +9,10 @@ import Skills from './components/Skills/Skills';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Contact from './components/Contact/Contact';
 import Footer from './components/Footer/Footer';
+import SectionReveal from './components/SectionReveal/SectionReveal';
+import ScrollProgress from './components/ScrollProgress/ScrollProgress';
+import Timeline from './components/Timeline/Timeline';
+import AnimatedBackground from './components/AnimatedBackground/AnimatedBackground';
 import './App.css';
 
 const App = () => {
@@ -39,15 +43,30 @@ const App = () => {
 
   return (
     <div id='top' className={`${themeName} app`}>
+      <AnimatedBackground />
+      <ScrollProgress />
       <Header />
 
       <main>
         {/* <Home/> */}
-        <About />
-        <Journey/>
-        <Projects />
-        <Skills />
-        <Contact />
+        <SectionReveal>
+          <About />
+        </SectionReveal>
+        <SectionReveal>
+          <Journey/>
+        </SectionReveal>
+        <SectionReveal>
+          <Timeline />
+        </SectionReveal>
+        <SectionReveal>
+          <Projects />
+        </SectionReveal>
+        <SectionReveal>
+          <Skills />
+        </SectionReveal>
+        <SectionReveal className="section-reveal--last">
+          <Contact />
+        </SectionReveal>
       </main>
 
       <ScrollToTop />

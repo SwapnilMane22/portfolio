@@ -46,7 +46,7 @@ const Journey = () => {
           <h2 className="section__title">Journey</h2>
           <div className="journey__content">
             <div className="journey-stats" key={animationKey}>
-              <div className="journey-stat">
+              <div className="journey-stat glass">
                 <span className="journey-stat-number">
                   {showPlaceholder ? (
                     '—'
@@ -58,7 +58,7 @@ const Journey = () => {
                 </span>
                 <span className="journey-stat-label">Years of Experience</span>
               </div>
-              <div className="journey-stat">
+              <div className="journey-stat glass">
                 <span className="journey-stat-number">
                   {showPlaceholder ? (
                     '—'
@@ -70,7 +70,7 @@ const Journey = () => {
                 </span>
                 <span className="journey-stat-label">Projects</span>
               </div>
-              <div className="journey-stat">
+              <div className="journey-stat glass">
                 <span className="journey-stat-number">
                   {showPlaceholder ? (
                     '—'

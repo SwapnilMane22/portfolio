@@ -21,7 +21,7 @@ const ChatBot = () => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [size, setSize] = useState({ width: 320, height: 400 });
   const [isDragging, setIsDragging] = useState(false);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const chatWindowRef = useRef(null);
   const chatIconRef = useRef(null);
   const messagesEndRef = useRef(null);
@@ -35,8 +35,11 @@ const ChatBot = () => {
   });
 
   useEffect(() => {
-    // Align with ScrollToTop: same right offset (1.5em ≈ 24px)
-    const rightOffsetPx = 24;
+    // ==========================================
+    // CHATBOT PADDING ADJUSTMENT
+    // Change this value to move the icon further/closer to the right edge
+    const rightOffsetPx = 17;
+    // ==========================================
     const bottomOffsetPx = 20;
     const btnSize = 44;
     setPosition({

@@ -75,7 +75,7 @@ function buildRAGContext() {
   if (k.experience && k.experience.length) {
     lines.push('--- PROFESSIONAL EXPERIENCE ---', '');
     k.experience.forEach(exp => {
-      lines.push(`${exp.organization} | ${exp.role} | ${exp.startDate || ''} - ${exp.endDate || ''} (${exp.type || 'full-time'})`);
+      lines.push(`${exp.organization} | ${exp.role} | ${exp.startDate || ''} - ${exp.endDate || ''} (${exp.type || 'Full-time'})`);
       if (exp.techStack && exp.techStack.length) lines.push(`  Tech: ${exp.techStack.join(', ')}`);
       (exp.bullets || []).forEach(b => lines.push(`  - ${b}`));
     });
@@ -269,7 +269,7 @@ async function streamGeminiAsSSE(messages, apiKey, model, res) {
           started = true;
           sendSSE(res, { content: text });
         }
-      } catch (_) {}
+      } catch (_) { }
     }
   } catch (e) {
     if (started) {
@@ -384,7 +384,7 @@ async function streamOpenRouterAsSSE(messages, apiKey, baseURL, model, res) {
             started = true;
             sendSSE(res, { content });
           }
-        } catch (_) {}
+        } catch (_) { }
       }
     }
   } catch (e) {
@@ -669,6 +669,8 @@ app.get('/api/profile', (req, res) => {
       numProjects: stats.numberOfProjects ?? computed.numProjects,
       numOrganizations: stats.numberOfOrganizations ?? computed.numOrganizations,
     },
+    education: Array.isArray(k.education) ? k.education : [],
+    experience: Array.isArray(k.experience) ? k.experience : [],
     projects: (k.projects || []).map((p) => ({
       name: p.name,
       description: p.description,

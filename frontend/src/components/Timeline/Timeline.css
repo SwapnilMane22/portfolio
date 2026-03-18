@@ -1,0 +1,325 @@
+/* Timeline Global Layout */
+.timeline {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  position: relative;
+  padding: 2rem 1rem;
+}
+
+.timeline__title {
+  text-align: center;
+  margin-bottom: 3rem;
+  font-size: 2.2rem;
+}
+
+.timeline__labels {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  color: var(--clr-fg-alt);
+}
+
+.timeline__labels-center {
+  width: 48px;
+}
+
+.timeline__col-title {
+  width: 350px;
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Center Line Container */
+.timeline__grid {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Container for the animated line */
+.timeline__line-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background-color: var(--border); /* subtle background track */
+  opacity: 0.5;
+  z-index: 0;
+}
+
+/* The actual filling line */
+.timeline__line-animated {
+  width: 100%;
+  background-color: var(--clr-primary);
+  transform-origin: top;
+}
+
+/* Year Nodes */
+.timeline__year {
+  display: flex;
+  justify-content: center;
+  margin: 3rem 0;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline__year-pill {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(50%);
+  -webkit-backdrop-filter: blur(12px) saturate(50%);
+  color: var(--title);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+  border: 1px solid var(--clr-primary);
+  box-shadow: 0 0 10px var(--clr-primary-soft);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  position: relative; /* ensure before element sits behind */
+}
+
+/* Mask to hide the center line behind the pill */
+.timeline__year-pill::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 50%;
+  background: var(--clr-bg);
+  z-index: -1;
+}
+
+.timeline__year-pill:hover,
+.timeline__year-pill[aria-expanded="true"] {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px var(--clr-primary);
+}
+
+.timeline__year-pill--minor {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px) saturate(50%);
+  -webkit-backdrop-filter: blur(12px) saturate(50%);
+  color: var(--clr-fg);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--shadow);
+}
+
+/* Card Positioning */
+.timeline__left {
+  width: calc(50% - 40px);
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-end; /* right-align */
+}
+
+.timeline__right {
+  width: calc(50% - 40px);
+  margin-left: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: flex-start; /* left-align */
+  margin-top: -30px; /* Stagger visually */
+}
+
+/* Base Card Style - Glassmorphism (shares tokens with projects/journey) */
+.timeline__card {
+  width: 100%;
+  max-width: 380px;
+  text-align: left;
+  padding: 1.5rem;
+  position: relative;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.timeline__card:hover,
+.timeline__card.is-open {
+  transform: translateY(-4px);
+}
+
+/* Explicit Connecting Lines to Center */
+.timeline__connector {
+  position: absolute;
+  top: 2rem;
+  width: 40px;
+  height: 2px;
+  background-color: var(--clr-primary);
+  opacity: 0.3;
+}
+
+.timeline__left .timeline__connector {
+  right: -40px;
+}
+.timeline__right .timeline__connector {
+  left: -40px;
+}
+
+/* Top bar: Distinct Date Styling */
+.timeline__card-top {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0.5rem;
+}
+
+.timeline__card-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--title);
+}
+
+.timeline__card-range {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--clr-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-top: 0.2rem;
+}
+
+.timeline__card-sub {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--clr-fg-alt);
+  margin-bottom: 1rem;
+}
+
+.timeline__org-link {
+  color: var(--clr-primary);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.timeline__org-link:hover {
+  text-decoration: underline;
+}
+
+.timeline__org-text {
+  color: var(--clr-fg-alt);
+  font-weight: 650;
+}
+
+.timeline__location,
+.timeline__meta-inline {
+  color: var(--clr-fg);
+  opacity: 0.8;
+}
+
+/* Duration Bar & Text for Continuous Events */
+.timeline__duration { 
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.timeline__duration-text {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--clr-primary);
+  background: var(--glass-bg);
+  padding: 4px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--glass-border);
+  white-space: nowrap;
+}
+
+.timeline__duration-bar {
+  height: 4px;
+  background: var(--clr-primary);
+  border-radius: 2px;
+  width: var(--durationW);
+  opacity: 0.8;
+  box-shadow: 0 0 8px var(--clr-primary-soft);
+}
+
+.timeline__bullets {
+  margin: 1rem 0 0 1rem;
+  padding: 0;
+  list-style: disc;
+  color: var(--clr-fg);
+  font-size: 0.9rem;
+  line-height: 1.6;
+}
+
+.timeline__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.timeline__meta-chip {
+  font-size: 0.75rem;
+  background: var(--glass-bg);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  border: 1px solid var(--glass-border);
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  color: var(--title);
+  font-weight: 600;
+}
+
+.timeline__gpa {
+  margin-top: 0.55rem;
+  font-size: 0.85rem;
+  font-weight: 650;
+  color: var(--clr-fg-alt);
+}
+
+.timeline__hint {
+  font-size: 0.75rem;
+  color: var(--clr-fg);
+  opacity: 0.6;
+  margin-top: 0.5rem;
+  transition: opacity 0.2s;
+}
+
+.timeline__card:hover .timeline__hint {
+  opacity: 1;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .timeline__labels {
+    display: none;
+  }
+  .timeline__line-container {
+    left: 20px;
+  }
+  .timeline__year {
+    justify-content: flex-start;
+    margin: 2rem 0;
+  }
+  .timeline__left, .timeline__right {
+    width: calc(100% - 40px);
+    margin-left: 40px;
+    align-items: flex-start;
+    margin-top: 0;
+  }
+  .timeline__left .timeline__connector,
+  .timeline__right .timeline__connector {
+    right: auto;
+    left: -40px;
+    width: 20px;
+  }
+}
+

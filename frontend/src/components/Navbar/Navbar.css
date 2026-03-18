@@ -3,7 +3,10 @@
 }
 
 .nav__list {
-    margin-right: 1.5em;
+    margin: 0 1.5em 0 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
   }
 
   .desktop-menu {
@@ -11,7 +14,7 @@
   }
 
   .btn--icon{
-    color: var(--theme);
+    color: var(--title);
   }
 
 
@@ -33,6 +36,7 @@
 
   .nav__list-item {
     margin-left: 1.5em;
+    list-style: none;
   }
   
   .app .nav__hamburger {
@@ -40,7 +44,9 @@
   }
   
   .nav__theme {
-    margin-top: -1.1em;
+    margin-top: 0;
+    display: flex;
+    align-items: center;
   }
   
   @media (max-width: 600px) {
