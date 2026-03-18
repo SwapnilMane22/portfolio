@@ -401,6 +401,96 @@ async function streamOpenRouterAsSSE(messages, apiKey, baseURL, model, res) {
   return { started };
 }
 
+const GUARDRAILS_PATH = path.join(__dirname, 'data', 'guardrails.json');
+
+function loadGuardrails() {
+  try {
+    const raw = fs.readFileSync(GUARDRAILS_PATH, 'utf8');
+    return JSON.parse(raw);
+  } catch (e) {
+    console.error("Warning: Could not load guardrails.json", e.message);
+    return null;
+  }
+}
+
+/** Fallback: Regex check for generic tech queries */
+function checkGuardrailsRegex(message, config) {
+  if (!config || !config.techGuardrails) return false;
+  try {
+    const patterns = config.techGuardrails.patterns.map(p => new RegExp(p, 'i'));
+    return patterns.some(pattern => pattern.test(message));
+  } catch (e) {
+    console.error("Invalid regex in tech guardrails", e);
+  }
+  return false;
+}
+
+/** Fallback: Regex check for contact intent */
+function checkContactIntentRegex(message, config) {
+  if (!config || !config.contactGuardrails) return false;
+  try {
+    const patterns = config.contactGuardrails.patterns.map(p => new RegExp(p, 'i'));
+    return patterns.some(pattern => pattern.test(message));
+  } catch (e) {
+    console.error("Invalid regex in contact guardrails", e);
+  }
+  return false;
+}
+
+/** 
+ * Semantic Router: Combines Regex fast-path with lightweight LLM routing.
+ * Regex catches known patterns instantly with zero latency. 
+ * LLM catches complex/novel intents using <40 tokens.
+ */
+async function classifyIntent(message) {
+  const config = loadGuardrails();
+  if (!config || !config.router) return { intent: 'PORTFOLIO' };
+
+  // 1. FAST PATH: Check Regex First (Zero Latency & 100% Secure for known patterns)
+  if (checkContactIntentRegex(message, config)) {
+    return { intent: 'CONTACT', message: config.router.contactMessage || config.contactGuardrails?.message };
+  }
+  if (checkGuardrailsRegex(message, config)) {
+    return { intent: 'OTHER', message: config.router.techMessage || config.techGuardrails?.message };
+  }
+
+  // 2. SEMANTIC PATH: If regex misses, ask the LLM to classify intent
+  const openRouterKey = process.env.OPENROUTER_API_KEY;
+  const geminiKey = process.env.GEMINI_API_KEY;
+  const baseURL = process.env.OPENROUTER_API_BASE_URL || 'https://openrouter.ai/api/v1';
+  
+  const orModel = process.env.ROUTER_MODEL || 'google/gemma-2-9b-it:free';
+  const geminiModel = 'gemini-3-flash-preview';
+
+  const messages = [
+    { role: 'system', content: config.router.systemPrompt },
+    { role: 'user', content: message }
+  ];
+
+  try {
+    let responseText = '';
+    if (geminiKey) {
+      responseText = await chatCompletionGemini(messages, geminiKey, geminiModel);
+    } else if (openRouterKey) {
+      responseText = await chatCompletion(messages, openRouterKey, baseURL, orModel);
+    } else {
+      throw new Error("No keys available for semantic routing");
+    }
+    
+    const intentText = responseText.trim().toUpperCase();
+    if (intentText.includes('CONTACT')) {
+      return { intent: 'CONTACT', message: config.router.contactMessage };
+    }
+    if (intentText.includes('OTHER')) {
+      return { intent: 'OTHER', message: config.router.techMessage };
+    }
+    return { intent: 'PORTFOLIO' };
+  } catch (e) {
+    console.error('Semantic router failed or unavailable, but regex already passed.', e.message);
+    return { intent: 'PORTFOLIO' };
+  }
+}
+
 /** POST /api/chat – single turn (optionally with history for context) */
 app.post('/api/chat', async (req, res) => {
   const { message, history = [] } = req.body || {};
@@ -424,6 +514,19 @@ app.post('/api/chat', async (req, res) => {
     process.env.GEMINI_MODELS || process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
   const geminiModelList = parseCommaList(geminiModelsEnv, 'gemini-3-flash-preview');
 
+  const userText = message.trim();
+
+  // 1) Lightweight Semantic Router for Intent Classification
+  const classification = await classifyIntent(userText);
+  if (classification.intent === 'CONTACT') {
+    console.log(`\n🚨 [CONTACT ALERT]: A user wants to contact you!`);
+    console.log(`User's query: "${userText}"`);
+    console.log(`(Email/Webhook integration goes here to send a direct message/email) \n`);
+    return res.json({ reply: classification.message, provider: 'system', model: 'semantic-router' });
+  } else if (classification.intent === 'OTHER') {
+    return res.json({ reply: classification.message, provider: 'system', model: 'semantic-router' });
+  }
+
   const systemMessage = { role: 'system', content: RAG_SYSTEM_PROMPT };
   const historyMessages = (Array.isArray(history) ? history : [])
     .slice(-10)
@@ -431,7 +534,7 @@ app.post('/api/chat', async (req, res) => {
       role: m.role === 'user' ? 'user' : 'assistant',
       content: typeof m.content === 'string' ? m.content : String(m.content)
     }));
-  const userMessage = { role: 'user', content: message.trim() };
+  const userMessage = { role: 'user', content: userText };
   const messages = [systemMessage, ...historyMessages, userMessage];
 
   try {
@@ -493,6 +596,26 @@ app.post('/api/chat/stream', async (req, res) => {
   const openRouterKey = process.env.OPENROUTER_API_KEY;
   const geminiKey = process.env.GEMINI_API_KEY;
 
+  const userText = message.trim();
+
+  res.setHeader('Content-Type', 'text/event-stream');
+  res.setHeader('Cache-Control', 'no-cache');
+  res.setHeader('Connection', 'keep-alive');
+  if (typeof res.flushHeaders === 'function') res.flushHeaders();
+
+  // 1) Lightweight Semantic Router for Intent Classification
+  const classification = await classifyIntent(userText);
+  if (classification.intent === 'CONTACT') {
+    console.log(`\n🚨 [CONTACT ALERT]: A user wants to contact you!`);
+    console.log(`User's query: "${userText}"`);
+    console.log(`(Email/Webhook integration goes here to send a direct message/email) \n`);
+    streamTextAsSSE(res, classification.message);
+    return res.end();
+  } else if (classification.intent === 'OTHER') {
+    streamTextAsSSE(res, classification.message);
+    return res.end();
+  }
+
   const systemMessage = { role: 'system', content: RAG_SYSTEM_PROMPT };
   const historyMessages = (Array.isArray(history) ? history : [])
     .slice(-10)
@@ -500,13 +623,8 @@ app.post('/api/chat/stream', async (req, res) => {
       role: m.role === 'user' ? 'user' : 'assistant',
       content: typeof m.content === 'string' ? m.content : String(m.content)
     }));
-  const userMessage = { role: 'user', content: message.trim() };
+  const userMessage = { role: 'user', content: userText };
   const messages = [systemMessage, ...historyMessages, userMessage];
-
-  res.setHeader('Content-Type', 'text/event-stream');
-  res.setHeader('Cache-Control', 'no-cache');
-  res.setHeader('Connection', 'keep-alive');
-  if (typeof res.flushHeaders === 'function') res.flushHeaders();
 
   // If neither provider is configured, send a polite error via SSE.
   if (!openRouterKey && !geminiKey) {

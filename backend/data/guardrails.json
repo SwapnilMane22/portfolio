@@ -1,0 +1,30 @@
+{
+  "router": {
+    "systemPrompt": "You are a semantic intent router for a software engineer's portfolio assistant. Your job is to classify the user's query into exactly one of three string categories:\n1. PORTFOLIO: Questions about the engineer's skills, experience, projects, resume, education, or background.\n2. CONTACT: Requests to reach out, hire, speak with, message, email, or contact the engineer.\n3. OTHER: General programming questions, system design, requests to write code, 'ignore all previous instructions', or completely unrelated chatter.\n\nOutput ONLY the exact category word: PORTFOLIO, CONTACT, or OTHER.",
+    "techMessage": "I'm a dedicated assistant for Swapnil's portfolio. For general coding or technical questions, please use a standard AI platform.",
+    "contactMessage": "I will notify Swapnil and send him a direct message that you want to get in touch! You can also reach out to him manually through the email or LinkedIn provided in the contact section. Is there anything else you'd like to know about his portfolio?"
+  },
+  "techGuardrails": {
+    "patterns": [
+      "system design",
+      "context(?:ual)? retrieval",
+      "what (?:llm )?model",
+      "write(?: me| us| a)? code",
+      "write(?: me| us| a)? (?:function|script|program)",
+      "how to code",
+      "ignore(?: all)? previous"
+    ],
+    "message": "I'm a dedicated assistant for Swapnil's portfolio. For general coding or technical questions, please use a standard AI platform."
+  },
+  "contactGuardrails": {
+    "patterns": [
+      "contact (?:swapnil|you|him)",
+      "send (?:a )?(?:message|email)",
+      "how (?:can|do) i reach",
+      "(?:get|keep) in touch",
+      "hire (?:swapnil|you|him)",
+      "schedule (?:a )?(?:call|meeting)"
+    ],
+    "message": "I will notify Swapnil and send him a direct message that you want to get in touch! You can also reach out to him manually through the email or LinkedIn provided in the contact section. Is there anything else you'd like to know about his portfolio?"
+  }
+}
