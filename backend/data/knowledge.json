@@ -237,25 +237,6 @@
       ]
     },
     {
-      "organization": "Sitewiz Inc.",
-      "link": "https://www.linkedin.com/company/sitewizai/posts/?feedView=all",
-      "role": "AI Engineer",
-      "startDate": "2025-08",
-      "endDate": "2025-09",
-      "type": "Part-time",
-      "bullets": [
-        "Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent handoffs for LLM execution",
-        "Streamlined the AI infrastructure by migrating from redundant Vertex AI to dedicated AWS GPU endpoints, reducing monthly cloud expenses by $16,000 and saving 5+ hours of weekly troubleshooting",
-        "Conducted technical due diligence to realign cloud strategy and established production-grade backend services, transforming experimental features into stable, reliable infrastructure for an enterprise launch"
-      ],
-      "techStack": [
-        "AutoGen",
-        "AWS S3",
-        "Vertex AI",
-        "Python"
-      ]
-    },
-    {
       "organization": "Bridge Green Upcycle Corp",
       "link": "https://bridgegreenupcycle.com/",
       "role": "Software Engineering Intern",
