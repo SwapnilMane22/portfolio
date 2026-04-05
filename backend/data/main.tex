@@ -1,0 +1,216 @@
+\documentclass[a4paper,10pt]{extarticle}
+
+\usepackage{parskip}
+\usepackage{hologo}
+% \usepackage{fontspec} % REMOVED: Causes error with standard compiler
+
+% --- FIXED FONT SUPPORT FOR PDFLATEX ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet} % Loads Helvetica (looks like Arial)
+\renewcommand{\familydefault}{\sfdefault} % Sets the document font to sans-serif
+% ---------------------------------------
+
+% Layout and Geometry
+\usepackage[top=.45in, bottom=.45in, left=.35in, right=.35in]{geometry} %scale=0.9, 
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+
+% Graphics and Colors
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Tables
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % Centered version of 'X' col. type
+
+% Icons and Fonts
+\usepackage{fontawesome5}
+\usepackage[normalem]{ulem} % For underline
+
+% Links (Load last)
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+
+% Custom Formatting
+\titleformat{\section}{\fontsize{11pt}{11pt}\bfseries\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0.5pt}{0.5pt}{0.5pt}
+
+\begin{document}
+
+% Non-numbered pages
+\pagestyle{empty}
+
+% --- HEADER ---
+\begin{tabularx}{\linewidth}{@{}C @{}}
+{\fontsize{16}{16} \textcolor{black}{\textbf{{Swapnil Tukaram Mane}}}}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{@{}C @{}}
+{\href{mailto:stm2212@gmail.com}{\raisebox{0\height} stm2212@gmail.com}} $|$ \href{tel:+16072321068}{\raisebox{0\height}+1(607)232-1068} $|$ 
+\textcolor[HTML]{000000}
+{\uline{\href{https://swapnilmane22.github.io/portfolio/}{\raisebox{-0.05\height} Portfolio}} $|$}
+\textcolor[HTML]{000000}{\uline{\href{https://www.linkedin.com/in/-swapnilmane-/}{\raisebox{-0.05\height} Linkedin/-swapnilmane-/}} $|$}
+\textcolor[HTML]{000000}{\uline{\href{https://github.com/SwapnilMane22}{\raisebox{-0.05\height} GitHub/SwapnilMane22}}} 
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- SUMMARY ---
+\section*{SUMMARY}
+\vspace{4pt}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+5+ years of software engineering experience delivering production-ready solutions, building web/mobile applications, \newline architecting scalable ETL pipelines, and agentic AI workflows, complemented with legacy SAP ABAP, S/4HANA automations
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- PROFESSIONAL EXPERIENCE ---
+\section{{PROFESSIONAL EXPERIENCE}}
+\vspace{4pt}
+
+% Asearis
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://asearis.com/}{Asearis Data Systems Inc.}}}\color[HTML]{000000}\textit{, Software Engineer} \hfill \color[HTML]{000000} July 2025 - Present \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Led the multiplatform client modernization, rebuilding 60\% of the mobile and desktop applications to enhance user experience while designing robust REST APIs on the Java backend to support new workflows
+        \item Developed a Rust microservice for the LLM and chatbot inference to ensure 99\% system availability and distribute the workload from the main server
+        \item Engineered the token tracking workflow for monetization, implementing the core business logic for processing daily high throughput tokens and introduced strict code reviews, reducing 30\% of bugs to elevate platform-wide code quality \\[-6pt]
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+\vspace{-8pt}
+
+% Sitewiz
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://www.linkedin.com/company/sitewizai/posts/?feedView=all}{Sitewiz, Inc.}}}\color[HTML]{000000}\textit{, AI Engineer} \hfill \color[HTML]{000000} Aug 2025 - Sep 2025 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent data handoffs and downstream object retrieval
+        \item Modernized the backend infrastructure by deprecating legacy Vertex AI resources, reducing monthly cloud expenses by \$16,000 and saving an estimated 5+ hours of weekly troubleshooting
+        \item Conducted technical due diligence to realign cloud strategy and established production-grade backend services, \newline transforming experimental features into stable, reliable infrastructure for an enterprise launch \\[-6pt]
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+\vspace{-8pt}
+
+% Bridge Green
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{{\href{https://bridgegreenupcycle.com/}{Bridge Green Upcycle Corp}}}\textit{, Software Engineering Intern} \hfill \color[HTML]{000000} Dec 2023 – Dec 2024 \\[1pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Reduced feature extraction time by 95\% for battery State of Health (SOH) analysis by engineering a PySpark pipeline to ingest and batch-process 18M+ records
+        \item Synthesized hybrid LSTM-DNN models for battery health prediction, with 5.7\% MAE, enabling failure forecasting
+        \item Streamlined Tableau dashboards with Python to visualize battery analytics, supporting the growth for the Series A launch
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+\vspace{-10pt}
+
+% LTIMindtree
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{{\href{https://www.ltimindtree.com/}{LTIMindtree Ltd. (formerly Larsen \& Toubro Infotech Ltd.)}}}\textit{, Software Engineer} \hfill \color[HTML]{000000} Aug 2020 – Jul 2023 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Created an NLP pipeline in Azure ML Studio for 900K+ IT tickets using word embedding and TF-IDF vectorization
+        \item Resolved severe class imbalance through stratified sampling, SMOTE oversampling, and class-weighted Logistic \newline Regression \& Random Forest models, driving 66\% accuracy on a highly skewed dataset
+        \item Embedded real-time inference via Azure ML endpoint with RLHF for the ticketing app to boost model generalization
+        \item Programmed a Python/Tkinter lookup tool with OpenCV, Tesseract OCR \& MS Excel, cutting search time by 67\%
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+
+% \vspace{6pt}
+
+% % LTI
+% \begin{tabularx}{\linewidth}{ @{}l r@{} }
+% \color[HTML]{000000} \textbf{{\href{https://www.ltimindtree.com/}{Larsen \& Toubro Infotech Ltd. (LTI)}}}\textit{, Software Engineer} \hfill \color[HTML]{000000} Aug 2020 - Jul 2022 \\[2pt]
+% \begin{minipage}[t]{\linewidth}
+%     \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=3pt]
+%         \item Refined SAP ABAP RICEFW objects (AMDP, CDS, SQL) to enhance system performance in Agile environments.
+%         \item Devised a .NET-based VB script for SAP NetWeaver monitoring, which reduced manual monitoring time per system by 86\% (from 35 to 5 minutes), saving 90\% of annual monitoring effort (900 minutes annually).
+%         \item Programmed a Python/Tkinter lookup tool with OpenCV, Tesseract OCR \& MS Excel, cutting search time by 67\%.
+%       \end{itemize}  
+% \end{minipage}
+% \end{tabularx}
+\vspace{4pt}
+
+% --- TECHNICAL SKILLS ---
+\section{{TECHNICAL SKILLS}} 
+\vspace{4pt}
+\color[HTML]{000000}\textbf{Languages:}\color[HTML]{000000}\hspace*{0ex} Python, SQL, Java, JavaScript, Rust, Kotlin, C\#, SAP ABAP \\[3pt]
+\color[HTML]{000000}\textbf{Frameworks \& Runtimes:}\color[HTML]{000000}\hspace*{0ex} Flask, ReactJs, Node.js, REST API, Django, FastAPI \\[3pt]
+\color[HTML]{000000}\textbf{AI, GenAI \& Data:}\color[HTML]{000000}\hspace*{0ex} PyTorch, PySpark, TensorFlow, scikit-learn, Ollama, OpenCV, AutoGen \\[3pt] 
+\color[HTML]{000000}\textbf{Cloud Technologies:}\color[HTML]{000000}\hspace*{0ex} Azure ML, Amazon Web Services (AWS), Google Cloud Platform (GCP), Docker \\[3pt] 
+\color[HTML]{000000}\textbf{Tools:}\color[HTML]{000000}\hspace*{0ex} Android Studio, MATLAB, Git, GitHub, Jupyter Notebook, CI/CD, NI LabView \\[-8pt]
+
+\vspace{4pt}
+
+% --- PROJECT EXPERIENCE ---
+\section{\href{https://swapnilmane22.github.io/portfolio/}{PROJECT EXPERIENCE}} 
+
+\vspace{2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Multi-agent LLM text-to-SQL, (}\uline{\href{https://github.com/SwapnilMane22/MultiAgent-Text-to-SQL}{GitHub}})}} \hfill \color[HTML]{000000}Jun 2025 \\[2pt] 
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, leftmargin=2em, itemsep=1pt]
+        \item Developed an autonomous multi-agent system using the AutoGen framework and Ollama LLMs with 60\% execution accuracy to translate natural language into optimized SQL queries, validating the logic with Bird.dev dataset
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Portfolio ChatBot, (}\uline{\href{https://swapnilmane22.github.io/portfolio/}{Demo}})}} \hfill \color[HTML]{000000}Mar 2025 \\[2pt] 
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=1pt]
+        \item Deployed a full-stack RAG (Retrieval-Augmented Generation) chatbot using Node.js/Express, React, OpenRouter and Google AI Studio for interactive portfolio Q\&A, delivering 95.8\% precision, 95.4\% F1 score, and 3.2s average latency
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Movie Recommendation System, (}\uline{\href{https://github.com/SwapnilMane22/lumaa-spring-2025-ai-ml}{GitHub}})}} \hfill \color[HTML]{000000}Feb 2025 \\[2pt] 
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=1pt]
+        \item Prototyped a movie recommender using TF-IDF and SBERT with Python, leveraging feature engineering on 45,000 records from the Kaggle Movies Dataset to increase semantic similarity precision in top-K results % , and Sentence Transformer
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{Thought to Text Conversion Using Deep Learning, (}\uline{\href{https://www.taylorfrancis.com/chapters/edit/10.1201/9781003052098-54/thought-text-conversion-using-deep-learning-swapnil-mane-tiasha-nath-shobin-thomas-omkar-swami-pranali-choudhari-smita-chopde}{Publication}})} \hfill \color[HTML]{000000}Mar 2020 \\[2pt] 
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=1pt]
+        \item Utilized MATLAB and Python for EEG signal processing and trained a supervised learning model to recognize neural activity patterns, achieving 59\% accuracy in thought-to-text classification under predefined test conditions
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- EDUCATION ---
+\section{{EDUCATION}}
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://www.binghamton.edu/computer-science/graduate-programs/mscs/index.html}{Binghamton University, Thomas J. Watson College of Engineering and Applied Science}}} & \hfill \color[HTML]{000000} Aug 2023 - May 2025\hfill \\ 
+\color[HTML]{000000} \textit{Master of Science in Computer Science} \color[HTML]{000000}  & \hfill \textit{\textbf{}} \\ 
+\multicolumn{2}{@{}X@{}}{}
+\end{tabularx}
+
+% \vspace{-13pt}
+
+% \vspace{4pt}
+\end{document}

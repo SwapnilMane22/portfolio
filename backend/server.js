@@ -12,7 +12,11 @@ const app = express();
 app.use(cors({ origin: true }));
 app.use(express.json());
 
-const KNOWLEDGE_PATH = path.join(__dirname, 'data', 'knowledge.json');
+/** Directory containing `knowledge.json` (default: ./data next to this server). Override for monorepos: PORTFOLIO_DATA_DIR=/abs/path/to/portfolio/backend/data */
+const PORTFOLIO_DATA_DIR = process.env.PORTFOLIO_DATA_DIR
+  ? path.resolve(process.env.PORTFOLIO_DATA_DIR)
+  : path.join(__dirname, 'data');
+const KNOWLEDGE_PATH = path.join(PORTFOLIO_DATA_DIR, 'knowledge.json');
 const PORT = process.env.PORT || 5000;
 
 /** Flatten skills from structured (byCategory or flat) or legacy array */
@@ -124,70 +128,7 @@ function buildRAGContext() {
 
 const RAG_SYSTEM_PROMPT = buildRAGContext();
 
-/** OpenRouter chat completion (non-streaming, OpenAI-compatible) */
-async function chatCompletion(messages, apiKey, baseURL, model) {
-  const base = baseURL || 'https://openrouter.ai/api/v1';
-  const url = base.endsWith('/chat/completions')
-    ? base
-    : base.replace(/\/$/, '') + '/chat/completions';
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${apiKey}`,
-    },
-    body: JSON.stringify({
-      model: model || process.env.CHAT_MODEL || 'google/gemma-2-9b-it:free',
-      messages,
-      max_tokens: 512,
-      temperature: 0.3,
-    }),
-  });
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`OpenRouter API error ${res.status}: ${err}`);
-  }
-  const data = await res.json();
-  const content = data.choices?.[0]?.message?.content;
-  if (content == null) throw new Error('No content in OpenRouter response');
-  return content;
-}
-
-/** Gemini chat completion (non-streaming) */
-async function chatCompletionGemini(messages, apiKey, model) {
-  const m = model || process.env.GEMINI_MODEL || 'gemini-3-flash-preview';
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(
-    m
-  )}:generateContent`;
-
-  const contents = messages.map((msg) => ({
-    role: msg.role === 'assistant' ? 'model' : 'user',
-    parts: [{ text: msg.content }],
-  }));
-
-  const res = await fetch(url, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-      'x-goog-api-key': apiKey,
-    },
-    body: JSON.stringify({ contents }),
-  });
-
-  if (!res.ok) {
-    const err = await res.text();
-    throw new Error(`Gemini API error ${res.status}: ${err}`);
-  }
-
-  const data = await res.json();
-  const parts = data.candidates?.[0]?.content?.parts || [];
-  const text = parts
-    .map((p) => (typeof p.text === 'string' ? p.text : ''))
-    .join('')
-    .trim();
-  if (!text) throw new Error('No text in Gemini response');
-  return text;
-}
+const { chatCompletion, chatCompletionGemini } = require('./lib/llmClients');
 
 /** Gemini streaming -> forward tokens as SSE (streamGenerateContent) */
 async function streamGeminiAsSSE(messages, apiKey, model, res) {

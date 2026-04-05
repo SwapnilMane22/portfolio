@@ -1,5 +1,5 @@
 {
-  "name": "backend",
+  "name": "portfolio-backend",
   "version": "0.0.1",
   "description": "Mern Stack Portfolio",
   "homepage": "https://github.com/SwapnilMane22/mern_portfolio#readme",
@@ -14,6 +14,10 @@
   "author": "Swapnil Mane",
   "type": "commonjs",
   "main": "server.js",
+  "exports": {
+    ".": "./server.js",
+    "./llm": "./lib/llmClients.js"
+  },
   "scripts": {
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
