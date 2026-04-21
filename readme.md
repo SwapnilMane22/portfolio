@@ -1,131 +1,170 @@
-# Portfolio Architecture & Documentation
+# Portfolio — Architecture & Setup
 
-This repository houses a modern, dynamic, and responsive personal developer portfolio. It is divided into two primary subsystems: a powerful React-based frontend and a Node.js/Express backend that fuels the data layer and AI chatbot integrations.
+Personal developer portfolio for Swapnil Mane. Two subsystems:
 
-## 💻 Local Development & Setup
+- **`frontend/`** — React 18 SPA (Create React App) served from GitHub Pages
+- **`backend/`** — Node.js/Express API served as a Vercel serverless function
 
-Follow these steps to run the portfolio on your local machine (macOS, Linux, or Windows/WSL):
+The frontend renders from `/api/profile`; the integrated chatbot streams from `/api/chat/stream` (RAG over `backend/data/knowledge.json`).
 
-### 1) Prerequisites
-- **Node.js**: v18+ recommended
-- **npm**: (comes bundled with Node)
-- **Git**
+---
 
-### 2) Install Dependencies
-From the root `portfolio/` folder, install packages for both the backend and frontend:
+## Local development
+
+### Prerequisites
+- Node.js 18+
+- npm
+- Git
+
+### Install
 ```bash
 cd backend && npm install
 cd ../frontend && npm install
 ```
 
-### 3) Configure Backend Environment (Optional)
-If you wish to enable the integrated AI chatbot, create a `.env` file inside the `backend/` directory:
+### Backend env (`backend/.env`)
+The chatbot tries providers in this order: **NVIDIA NIM → Google AI Studio → OpenRouter**. Any one provider is enough.
+
 ```bash
-# Provide an API key for the chatbot inference models
-OPENROUTER_API_KEY=your_key_here
-# or
-GEMINI_API_KEY=your_key_here
+# Primary provider (recommended)
+NVIDIA_API_KEY=nvapi-xxxxxxxx
+NVIDIA_MODELS=nvidia/llama-3.3-nemotron-super-49b-v1,meta/llama-3.3-70b-instruct,meta/llama-3.1-8b-instruct
+NVIDIA_ROUTER_MODEL=meta/llama-3.1-8b-instruct
+
+# Fallback #1
+GEMINI_API_KEY=xxxxxxxx
+GEMINI_MODELS=gemini-2.5-flash,gemini-2.5-flash-lite
+GEMINI_ROUTER_MODEL=gemini-2.5-flash-lite
+
+# Fallback #2
+OPENROUTER_API_KEY=sk-or-v1-xxxxxxxx
+CHAT_MODELS=meta/llama-3.3-70b-instruct:free,google/gemma-3-27b-it:free
+ROUTER_MODEL=google/gemma-2-9b-it:free
+
+# Abuse protection
+ALLOWED_ORIGINS=http://localhost:3000,https://swapnilmane22.github.io
+CHAT_RATE_PER_MIN=10
+CHAT_RATE_PER_DAY=100
+
+# Optional: CONTACT intent webhook (Slack/Discord) so you get notified
+CONTACT_WEBHOOK_URL=
+
 PORT=5000
 ```
-> Note: If no API keys are provided, the site will still render perfectly, but the Chatbot will gracefully inform users that it is offline.
+If no provider keys are set, the site still renders; the chatbot returns a friendly "unavailable" message.
 
-### 4) Run the Servers
-Open two terminal windows. 
+### Run
+Two terminals:
 
-**Terminal 1 (Backend API):**
 ```bash
-cd backend
-npm start
+# 1. Backend API on :5000
+cd backend && npm start
+
+# 2. Frontend on :3000
+cd frontend && npm start
+```
+Open <http://localhost:3000>.
+
+---
+
+## Architecture
+
+**Client–server split.** The React app fetches `/api/profile` on mount and renders the UI from the response — no hardcoded personal data on the frontend. The chatbot opens an SSE stream to `/api/chat/stream`.
+
+**JSON as source of truth.** All resume data lives in `backend/data/knowledge.json`. The Express backend reads it with `fs`, assembles `/api/profile`, and also compiles it into the RAG system prompt. Updating the portfolio is a single-file edit — no database.
+
+```
+┌─────────────┐  GET /api/profile      ┌─────────────────┐  reads  ┌──────────────────┐
+│  React UI   │ ─────────────────────▶ │  Express API    │ ──────▶ │  knowledge.json  │
+│  (GH Pages) │                        │  (Vercel λ)     │         └──────────────────┘
+│             │  POST /api/chat/stream │                 │  ┌────────────────────────┐
+│             │ ─────────────────────▶ │  SSE streaming  │◀─┤  NVIDIA / Gemini / OR  │
+└─────────────┘                        └─────────────────┘  └────────────────────────┘
 ```
 
-**Terminal 2 (Frontend React App):**
-```bash
-cd frontend
-npm start
-```
-The application will automatically launch in your browser at `http://localhost:3000`.
+---
 
-## 🏗️ System Design: Frontend & Backend Communication
+## RAG chatbot
 
-The architecture is built on a decoupled Client-Server model, operating as follows:
+**Context construction.** On boot, the backend flattens `knowledge.json` (skills, experience, projects, education, certifications, leadership, achievements, contact) into a single system prompt with strict anti-hallucination rules. The model is told to answer only from this context and to refuse anything that isn't a portfolio question.
 
-1. **The Backend API**: The Express server acts as the central data provider. It runs a REST API on `http://localhost:5000` exposing endpoints like `/api/profile` and `/api/chat`.
-2. **The Frontend Client**: The React frontend (bootstrapped with Create React App) runs independently. When the React app mounts, it makes asynchronous HTTP `GET` fetching calls to the backend's `/api/profile` endpoint.
-3. **Dynamic State Rendering**: The frontend receives the JSON payload from the API, passes the data into local React State (`useState` / Context Providers), and dynamically renders the entire UI based strictly on the backend's payload. The frontend does not hardcode personal information; it simply acts as a presentation layer for the data it fetches.
+**Two-stage intent router.** To avoid paying tokens on off-topic / injection queries:
+
+1. **Regex fast path (0 ms, 0 tokens).** `data/guardrails.json` has compiled patterns for obvious CONTACT ("hire you", "schedule a call") and OTHER ("write me code", "ignore previous instructions", "reveal system prompt", "jailbreak", …) intents. A match returns the pre-canned template immediately.
+2. **Semantic router fallback.** If regex misses, a tiny LLM call (~8 tokens out, `temperature: 0`) classifies the query as `PORTFOLIO | CONTACT | OTHER`. Anything other than PORTFOLIO is short-circuited before the full RAG call.
+
+**Structural prompt-injection defense.** User input is wrapped in `<<<USER_INPUT>>> … <<<END_USER_INPUT>>>` delimiters and the system prompt instructs the model to treat everything inside the delimiters as untrusted data. Not a silver bullet, but meaningfully reduces "ignore previous instructions"–style attacks.
+
+**Provider fallback.** The main chat call tries each configured provider in order and each model within that provider's list. Native SSE streaming where the provider supports it; token-chunk fallback otherwise.
 
 ---
 
-## 💾 The JSON "Database"
+## Security hardening (backend)
 
-To prioritize speed, simplicity, and portability, this portfolio bypasses traditional heavy databases (like PostgreSQL or MongoDB) in favor of a **Local JSON File Database** model. 
-
-- **Source of Truth**: All dynamic text, experience metrics, project descriptions, and links are stored inside `backend/data/knowledge.json`.
-- **How it Works**: When the frontend requests data via `/api/profile`, the Express backend uses the native Node `fs` (File System) module to read, parse, and serve the `knowledge.json` file.
-- **Why?**: This allows the owner to instantly update their entire portfolio (e.g., adding a new job or fixing a typo) simply by editing a single text file, requiring absolutely zero database migrations, SQL queries, or complex setup.
-
----
-
-## 🧠 RAG Pipeline & Semantic Routing Guardrails
-
-The integrated AI chatbot uses a custom **Retrieval-Augmented Generation (RAG)** pipeline to answer questions reliably based *only* on the portfolio's context.
-
-### 1) Dynamic Context Construction
-When a user submits a query via the `/api/chat` or `/api/chat/stream` endpoints, the backend dynamically reads `data/knowledge.json`. It flattens the nested JSON structures (Skills, Experience, Projects, Education) and compiles them into a hard-coded system prompt. This ensures the LLM generates answers strictly using the factual data provided in the portfolio without hallucinating external information.
-
-### 2) The LLM Semantic Router (Cost & Token Optimization)
-Passing the entire `knowledge.json` context array to the LLM for every single message consumes significant input tokens. To mitigate against off-topic queries and prompt injections, the system uses an advanced **Semantic Router**:
-- **Zero-Context Pre-Flight Check**: Before processing the primary RAG request, the user's query is intercepted and sent to a fast, lightweight LLM model with a tiny zero-context prompt (using `<40 tokens` total).
-- **Intent Classification**: The router strictly forces the LLM to classify the categorical string as internal `PORTFOLIO` queries, direct `CONTACT` requests, or `OTHER` generic tech questions.
-- **Early Return**: If the query is classified as `CONTACT` (e.g., "how can I hire you") or `OTHER` (e.g., "write some python code"), the backend immediately returns a customized template response mapped from `data/guardrails.json` and cleanly drops the request. The primary expensive LLM call is bypassed completely.
-
-### 3) Zero-Latency Regex Fallback
-For maximum security, the backend implements a secondary fast-path. Before even hitting the Semantic Router, all incoming queries are tested against a suite of offline Regular Expressions nested natively in `guardrails.json`. If a known toxic or off-topic pattern is detected, it returns instantly with 0ms latency and 0 LLM tokens burned.
+| Layer | Protection |
+|---|---|
+| **CORS** | Origin allowlist via `ALLOWED_ORIGINS`; unknown origins get a clean `403`. |
+| **Helmet** | Standard security headers (`X-Content-Type-Options`, `X-Frame-Options`, etc.). |
+| **Rate limits** | Per-IP: `10 req/min` + `100 req/day` on chat endpoints. In-memory (per Vercel instance); swap to Redis for durable limits. |
+| **Body size** | `express.json({ limit: '16kb' })`. |
+| **Input caps** | `MAX_MESSAGE_CHARS=1000`, `MAX_HISTORY_ITEMS=10`, `MAX_HISTORY_ITEM_CHARS=2000`. |
+| **History validation** | Role whitelist (`user \| assistant`) + length trim — defeats history-poisoning attacks. |
+| **LLM timeouts** | All outbound calls wrapped in `AbortController` (default 15 s, router 6 s). |
+| **SSE heartbeats** | `: ping` every 15 s + `X-Accel-Buffering: no` — keeps streams alive through proxies. |
+| **Request IDs** | Every request gets an 8-char ID, surfaced in all `console.error` output for log correlation. |
 
 ---
 
-## 🚀 CI/CD Pipeline Operations
+## CI/CD
 
-The repository utilizes **GitHub Actions** to guarantee reliable, automated Continuous Integration and Continuous Deployment (CI/CD). 
+GitHub Actions (`.github/workflows/deploy.yml`) deploys the frontend:
 
-The pipeline (`.github/workflows/deploy.yml`) actively listens for code changes:
-1. **Trigger**: Pushing any code to the `main` branch automatically triggers the workflow runner.
-2. **Build**: A fresh `ubuntu-latest` virtual machine is provisioned. It checks out the code, installs Node.js v18, and runs `npm install` and `npm run build` on the `frontend/` directory to compile an optimized, minified production package.
-3. **Deploy**: Once safely built, the `JamesIves/github-pages-deploy-action` kicks in. It takes the newly compiled `build/` folder and actively force-pushes it onto a separate branch called `gh-pages`.
-4. **Host**: GitHub Pages intercepts the `gh-pages` branch and instantly serves the React static files globally to the live portfolio web URL without any manual FTP or server administration.
+1. Push to `main` triggers the workflow.
+2. A fresh `ubuntu-latest` runner installs Node 18, runs `npm ci && npm run build` in `frontend/`.
+3. `JamesIves/github-pages-deploy-action` pushes the build to the `gh-pages` branch.
+4. GitHub Pages serves the `gh-pages` branch at the live URL.
 
----
-
-## ⚙️ Tech Stack
-
-**Frontend Framework & Tooling**
-*   **React (v18)** - Core UI framework managing layouts and view lifecycles.
-*   **Framer Motion** - High-performance animation engine for backgrounds, scroll reveals, and gesture mapping.
-*   **Context API** - Native React state management for Theme (Dark/Light), Chatbot persistence, and Profile Data.
-*   **Material UI (MUI) / CoreUI Icons** - Clean, scalable SVG icon components handling interactive UI elements.
-*   **React Markdown** - Translates LLM markdown responses into safe HTML for the chatbot interface.
-
-**Backend & AI**
-*   **Node.js & Express** - Lightweight server providing REST and Server-Sent Event (SSE) streaming capabilities.
-*   **OpenRouter / Google AI Studio** - Cloud LLM inference APIs powering the integrated RAG chatbot.
-*   **dotenv / CORS** - Vital Node middleware for environment secrets and cross-origin security execution.
+The backend deploys separately to Vercel (`vercel.json` rewrites every request to the Express app exported from `backend/api/index.js`).
 
 ---
 
-## 🎨 Design Principles Implemented
+## Tech stack
 
-*   **Glassmorphism Themeing**: The UI relies heavily on modern glass overlays (`backdrop-filter: blur`), opaque tinting, and precise soft drop-shadows to provide a crystal-clear, deep, futuristic aesthetic overlapping the live background elements.
-*   **Responsive Mobile-First Scaling**: All structural containers utilize fluid CSS Flexbox mapping and CSS variables (e.g., `gap`, `flex-wrap: wrap`) over strict pixel dimensions, allowing interactive elements to seamlessly wrap and shift to accommodate narrow phone viewports.
-*   **Dynamic Backgrounds & Interactivity**: Static backgrounds cause visual fatigue. We implemented an ambient system of moving background blobs fueled by dynamic, randomized keyframes that also gently track cursor positioning to make the DOM feel alive.
-*   **Dynamic Island Navigation**: Utilizing progressive scroll-tracking, the primary semantic navigation dynamically shifts from a transparent fixed position into a hyper-condensed floating "island" when scrolling deeply into the site to capture user attention and preserve screen real-estate.
-*   **Accessible Readability Constraints**: Background tracking and blur properties strictly decouple background noise from foreground text layouts, ensuring high contrast. We utilize carefully tuned contrast ratios depending on semantic classes triggered by the global `.light` or `.dark` body modifiers.
+**Frontend**
+- React 18, React Router
+- Framer Motion (animations)
+- MUI + CoreUI icons
+- React Markdown + remark-gfm (chatbot rendering)
+- Context API (theme, profile data, chatbot open state)
+
+**Backend**
+- Node.js 18 + Express 4
+- `helmet`, `express-rate-limit`, `cors`, `dotenv`
+- Native `fetch` + `AbortController` for LLM calls
+- Server-Sent Events for chat streaming
+
+**LLM providers**
+- NVIDIA NIM (primary)
+- Google AI Studio / Gemini (fallback)
+- OpenRouter (final fallback)
 
 ---
 
-## 🔮 Future Improvements & Roadmap
+## Design principles
 
-While the application operates fluidly, the following architecture optimizations and feature developments are actively being considered:
+- **Glassmorphism** — `backdrop-filter: blur` overlays, soft tinting, subtle shadows.
+- **Mobile-first responsive** — CSS flex + variables; containers wrap rather than relying on fixed pixels.
+- **Animated background** — Framer Motion blobs that drift and subtly track the cursor.
+- **Dynamic island nav** — navbar collapses into a floating pill on scroll.
+- **Theme-aware contrast** — `.light` / `.dark` body modifiers with tuned contrast ratios.
 
-*   **Monorepo Migration (Turborepo)**: Combine the uncoupled Native React Frontend and Express Node Backend into a unified full-stack monorepo framework (e.g. Next.js App Router) for optimized shared typing, streamlined single-command CI pipelines, and faster edge deployments.
-*   **WebGL Background Shaders**: Replace the current DOM-based framer-motion blob rendering with a low-level Three.js or WebGL shader. Offloading background animation calculations from the CPU to the GPU would dramatically increase framerates and lower battery drain on mobile devices while allowing for much more complex ambient effects.
-*   **State Persistent Chatbot Memory**: Integrate a lightweight edge database (like Redis or SQLite) into the backend server to temporarily cache chat histories by session ID. This would allow the chatbot to "remember" earlier contextual conversations dynamically instead of relying purely on a hardcoded loop back from the frontend React state.
-*   **Headless CMS Integration**: Migrate the static local `knowledge.json` data store into a headless markdown CMS system (like Sanity or Strapi). This enables non-technical editing through a GUI dashboard rather than forcing raw JSON edits when updating resume bullets.
+---
+
+## Roadmap
+
+- **Durable rate limits** — swap the in-memory `express-rate-limit` store for Upstash Redis so limits survive Vercel cold starts.
+- **Real retrieval** — once `knowledge.json` grows past ~50 KB, move from "stuff everything into the system prompt" to embedding + top-k retrieval.
+- **Monorepo (Turborepo / Next.js)** — collapse the split frontend/backend into one deploy surface.
+- **Persistent chat memory** — session-scoped conversation history in Redis instead of client-stored history.
+- **Headless CMS** — move resume data out of `knowledge.json` into a CMS (Sanity/Strapi) for non-technical editing.
+- **WebGL background** — replace Framer Motion blobs with a Three.js shader.

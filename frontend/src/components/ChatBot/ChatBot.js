@@ -19,7 +19,10 @@ const ChatBot = () => {
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const [position, setPosition] = useState({ x: 0, y: 0 });
-  const [size, setSize] = useState({ width: 320, height: 400 });
+  // Chatbot defaults to the expanded/big size. Actual pixel dimensions are
+  // clamped to the viewport in a mount effect below, so this is just a sane
+  // SSR/initial value before the window is measured.
+  const [size, setSize] = useState({ width: 520, height: 640 });
   const [isDragging, setIsDragging] = useState(false);
   const [isExpanded, setIsExpanded] = useState(true);
   const chatWindowRef = useRef(null);
@@ -46,6 +49,14 @@ const ChatBot = () => {
       x: window.innerWidth - btnSize - rightOffsetPx,
       y: window.innerHeight - btnSize - bottomOffsetPx,
     });
+    // Clamp the default "big" size to the viewport so it renders correctly
+    // on small screens. isExpanded stays true => the resize button shows the
+    // inward-pointing arrow on first render.
+    setSize({
+      width: Math.min(window.innerWidth - 40, 520),
+      height: Math.min(window.innerHeight - 80, 640),
+    });
+    setIsExpanded(true);
   }, []);
 
   const scrollToBottom = () => {

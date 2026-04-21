@@ -23,16 +23,6 @@ const ProjectContainer = ({ project }) => {
           
     <h3 className='project__heading'>{project.name}</h3>
 
-    {project.image && (
-          <div className='project__image-container'>
-            <img 
-              src={project.image} 
-              alt={project.name} 
-              className='project__image'
-            />
-          </div>
-        )}
-        
         <div className='project__description-container'>
           <p ref={descRef} className='project__description-preview'>
             {project.description} 

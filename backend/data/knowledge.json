@@ -180,28 +180,59 @@
       "Flask",
       "React",
       "Node.js",
+      "REST API",
       "FastAPI",
       "ETL",
+      "Data Pipelines",
+      "Probability and Statistics",
+      "Correlation Analysis",
       "Tableau",
+      "Feature Extraction",
+      "Transformation",
+      "Prediction",
+      "Forecasting",
       "Deep Learning",
+      "Neural Networks",
       "Natural Language Processing",
       "Reinforcement Learning",
-      "Generative AI",
-      "RAG",
+      "Pattern Recognition",
+      "Time Series Forecasting",
+      "Predictive Modeling",
+      "Machine Vision",
+      "Image Processing",
+      "Fine-tuning LLMs",
+      "Multi-agent AI",
+      "Conversational AI",
+      "Prompt Engineering",
+      "RAG Agent",
+      "Chain of Thought (CoT)",
       "Azure ML",
-      "AWS",
-      "GCP",
+      "Amazon Web Services (AWS)",
+      "Google Cloud Platform (GCP)",
       "Docker",
       "CI/CD",
       "Databricks",
       "Hadoop",
+      "Microsoft Azure",
+      "Google Cloud Platform",
+      "Android Studio",
+      "MATLAB",
       "Git",
       "GitHub",
       "Jupyter Notebook",
-      "MATLAB",
-      "Android Studio",
       "NI LabView",
-      "SAP S/4HANA"
+      "MS Excel",
+      "SAP Logon NetWeaver",
+      "S/4HANA",
+      "RICEFW",
+      "BADI",
+      "BAPIs",
+      "FI",
+      "MM",
+      "OData",
+      "AMDP",
+      "CDS Views",
+      "SQL query optimization"
     ]
   },
   "experience": [
@@ -213,6 +244,7 @@
       "endDate": "Present",
       "type": "Full-time",
       "bullets": [
+        "Built an internal B2B agentic workflow for market research, orchestrating multi-agent LLM pipelines end-to-end to autonomously gather, synthesize, and deliver market intelligence for enterprise customers",
         "Delivered critical product and infrastructure milestones across Android, iOS, macOS, backend, Windows, and LLM inference",
         "Rebuilt and stabilized the Android app, unblocking Google/Facebook authentication by fixing parameter-passing failures and production crash paths",
         "Improved the Java backend upgrading auth and account flows (email validation, password checks/policies, secure password reset requiring prior credential verification)",
@@ -233,7 +265,28 @@
         "LLMOps",
         "CI/CD",
         "Mobile",
-        "Desktop"
+        "Desktop",
+        "Multi-agent AI",
+        "Agentic Workflow"
+      ]
+    },
+    {
+      "organization": "Sitewiz Inc.",
+      "link": "https://www.linkedin.com/company/sitewizai/",
+      "role": "AI Engineer",
+      "startDate": "2025-08",
+      "endDate": "2025-09",
+      "type": "Part-time",
+      "bullets": [
+        "Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent handoffs for LLM execution",
+        "Streamlined the AI infrastructure by migrating from redundant Vertex AI to dedicated AWS GPU endpoints, reducing monthly cloud expenses by $16,000 and saving 5+ hours of weekly troubleshooting",
+        "Conducted technical due diligence to realign cloud strategy and established production-grade backend services, transforming experimental features into stable, reliable infrastructure for an enterprise launch"
+      ],
+      "techStack": [
+        "AutoGen",
+        "AWS S3",
+        "Vertex AI",
+        "Python"
       ]
     },
     {
@@ -357,7 +410,7 @@
       "livePreview": null
     },
     {
-      "name": "ATS Engine",
+      "name": "Role HQ",
       "imageKey": "ats",
       "period": "2025",
       "description": "Model-agnostic Applicant Tracking System engine with deterministic LaTeX parsing, strict rubric scoring, evidence mapping, and pluggable LLM models. Supports local and enhanced modes with Zod schemas for JD normalization, bullet classification, and fit explanation.",
@@ -588,5 +641,5 @@
   "journeyDisplay": {
     "introHtml": "<p>I have 5+ years of software engineering experience delivering production-ready solutions—building web and mobile applications, LLM inference, model training, and agentic AI workflows.</p><br><p>I hold a Master of Science in Computer Science from Binghamton University (GPA 3.71/4.0) and a B.E. in Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. My path has taken me from full-stack and backend development into ML engineering, LLM systems, and scalable data pipelines, shipping production software that has improved cost, accuracy, and time-to-resolution.</p><br><p>That growth from building apps and APIs to designing agentic AI, LLM inference, and predictive models has kept me consistent with my goal of building robust, scalable systems and bringing research-grade AI into production. I focus on shipping solutions that drive real impact.</p>"
   },
-  "narrative": "Swapnil Tukaram Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, LLM inference, model training, and agentic AI workflows. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience: Asearis Data Systems (Software Engineer, Rust LLM microservice, multiplatform client modernization 60%, 99% availability, token tracking and LLMOps), Sitewiz (AI Engineer, AutoGen multi-agent, AWS S3 serialization, Vertex AI to AWS GPU migration $16k/month savings), Bridge Green Upcycle Corp (Software Engineering Intern, PySpark 18M+ records, battery SOH 95% feature extraction reduction, LSTM-DNN 5.7% MAE, Tableau, Series A), LTIMindtree (Software Engineer Aug 2020–Jul 2023, Azure ML NLP 900K tickets, 66% accuracy, RLHF, Python/Tkinter OpenCV Tesseract 67% search time reduction), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Projects: GitLeet (browser extension LeetCode to GitHub sync), ATS Engine (model-agnostic ATS, LaTeX parsing, LLM), multi-agent Text-to-SQL (Ollama, AutoGen), Portfolio RAG chatbot (Node/Express, OpenRouter, Google AI Studio), Movie Recommendation (TF-IDF, SBERT), thought-to-text (EEG, 59% accuracy). Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
+  "narrative": "Swapnil Tukaram Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, LLM inference, model training, and agentic AI workflows. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience: Asearis Data Systems (Software Engineer, July 2025-Present; built an internal B2B agentic workflow for market research, Rust LLM microservice, multiplatform client modernization 60%, 99% availability, token tracking and LLMOps), Sitewiz Inc. (AI Engineer, Aug-Sep 2025; AutoGen multi-agent, AWS S3 serialization, Vertex AI to AWS GPU migration $16k/month savings), Bridge Green Upcycle Corp (Software Engineering Intern, Dec 2023-Dec 2024; PySpark 18M+ records, battery SOH 95% feature extraction reduction, LSTM-DNN 5.7% MAE, Tableau, Series A), LTIMindtree (Software Engineer Aug 2020-Jul 2023; Azure ML NLP 900K tickets, 66% accuracy, RLHF, Python/Tkinter OpenCV Tesseract 67% search time reduction), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Projects: Role HQ / ATS Engine (model-agnostic ATS, LaTeX parsing, LLM), GitLeet (browser extension LeetCode to GitHub sync), multi-agent Text-to-SQL (Ollama, AutoGen), Portfolio RAG chatbot (Node/Express, NVIDIA NIM, Google AI Studio, OpenRouter), Movie Recommendation (TF-IDF, SBERT), thought-to-text (EEG, 59% accuracy). Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
 }

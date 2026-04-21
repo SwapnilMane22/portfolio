@@ -67,15 +67,15 @@ const ProjectPopup = ({ project, isOpen, onClose }) => {
               </button>
             </div>
 
-            {/* {project.image && (
+            {project.image && (
               <div className="popup-image-container">
-                <img 
-                  src={project.image} 
-                  alt={project.name} 
+                <img
+                  src={project.image}
+                  alt={project.name}
                   className="popup-image"
                 />
               </div>
-            )} */}
+            )}
 
             <div className="popup-content">
               <div className="popup-description">
