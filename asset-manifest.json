@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/portfolio/static/css/main.823b6858.css",
-    "main.js": "/portfolio/static/js/main.07342600.js",
+    "main.css": "/portfolio/static/css/main.358e9176.css",
+    "main.js": "/portfolio/static/js/main.06f3f42f.js",
     "static/media/hero-workrise.png": "/portfolio/static/media/hero-workrise.1bb367c5c5044b8079da.png",
     "static/media/IOT.png": "/portfolio/static/media/IOT.d9e73afe877d3329ae47.png",
     "static/media/Neural Networks.png": "/portfolio/static/media/Neural Networks.012aec740f272ffaf924.png",
@@ -17,11 +17,11 @@
     "static/media/ocr.jpg": "/portfolio/static/media/ocr.d7dbfff81c31c6e762d4.jpg",
     "static/media/portfolio.jpg": "/portfolio/static/media/portfolio.cbc48be5e717f92508c4.jpg",
     "index.html": "/portfolio/index.html",
-    "main.823b6858.css.map": "/portfolio/static/css/main.823b6858.css.map",
-    "main.07342600.js.map": "/portfolio/static/js/main.07342600.js.map"
+    "main.358e9176.css.map": "/portfolio/static/css/main.358e9176.css.map",
+    "main.06f3f42f.js.map": "/portfolio/static/js/main.06f3f42f.js.map"
   },
   "entrypoints": [
-    "static/css/main.823b6858.css",
-    "static/js/main.07342600.js"
+    "static/css/main.358e9176.css",
+    "static/js/main.06f3f42f.js"
   ]
 }
