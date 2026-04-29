@@ -7,6 +7,8 @@ Personal developer portfolio for Swapnil Mane. Two subsystems:
 
 The frontend renders from `/api/profile`; the integrated chatbot streams from `/api/chat/stream` (RAG over `backend/data/knowledge.json`).
 
+> **Latest (Apr 2026):** RAG pipeline revamp — two-stage intent router (regex fast path + 8-token semantic classifier), structural prompt-injection defense via `<<<USER_INPUT>>>` delimiters, multi-provider fallback chain (NVIDIA NIM → Google Gemini → OpenRouter), and refreshed Project cards in the UI. Knowledge base extended with **Live Co-pilot**, **PRAGYA**, and an updated **Role HQ** entry.
+
 ---
 
 ## Local development
