@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/portfolio/static/css/main.358e9176.css",
-    "main.js": "/portfolio/static/js/main.06f3f42f.js",
+    "main.js": "/portfolio/static/js/main.b38c0a26.js",
     "static/media/hero-workrise.png": "/portfolio/static/media/hero-workrise.1bb367c5c5044b8079da.png",
     "static/media/IOT.png": "/portfolio/static/media/IOT.d9e73afe877d3329ae47.png",
     "static/media/Neural Networks.png": "/portfolio/static/media/Neural Networks.012aec740f272ffaf924.png",
@@ -18,10 +18,10 @@
     "static/media/portfolio.jpg": "/portfolio/static/media/portfolio.cbc48be5e717f92508c4.jpg",
     "index.html": "/portfolio/index.html",
     "main.358e9176.css.map": "/portfolio/static/css/main.358e9176.css.map",
-    "main.06f3f42f.js.map": "/portfolio/static/js/main.06f3f42f.js.map"
+    "main.b38c0a26.js.map": "/portfolio/static/js/main.b38c0a26.js.map"
   },
   "entrypoints": [
     "static/css/main.358e9176.css",
-    "static/js/main.06f3f42f.js"
+    "static/js/main.b38c0a26.js"
   ]
 }
