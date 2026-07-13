@@ -1,0 +1,207 @@
+\documentclass[a4paper,10pt]{extarticle}
+
+\usepackage{parskip}
+\usepackage{hologo}
+% \usepackage{fontspec} % REMOVED: Causes error with standard compiler
+
+% --- FIXED FONT SUPPORT FOR PDFLATEX ---
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{helvet} % Loads Helvetica (looks like Arial)
+\renewcommand{\familydefault}{\sfdefault} % Sets the document font to sans-serif
+% ---------------------------------------
+
+% Layout and Geometry
+\usepackage[top=.45in, bottom=.45in, left=.35in, right=.35in]{geometry} %scale=0.9,
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{multicol}
+\usepackage{multirow}
+
+% Graphics and Colors
+\usepackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+
+% Tables
+\usepackage{supertabular}
+\usepackage{tabularx}
+\newcolumntype{C}{>{\centering\arraybackslash}X} % Centered version of 'X' col. type
+
+% Icons and Fonts
+\usepackage{fontawesome5}
+\usepackage[normalem]{ulem} % For underline
+
+% Links (Load last)
+\usepackage[colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black]{hyperref}
+
+% Custom Formatting
+\titleformat{\section}{\fontsize{11pt}{11pt}\bfseries\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{0.5pt}{0.5pt}{0.5pt}
+
+\begin{document}
+
+% Non-numbered pages
+\pagestyle{empty}
+
+% --- HEADER ---
+\begin{tabularx}{\linewidth}{@{}C @{}}
+{\fontsize{16}{16} \textcolor{black}{\textbf{{Swapnil Tukaram Mane}}}}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{@{}C @{}}
+
+{\href{mailto:stm2212@gmail.com}{\raisebox{0\height} stm2212@gmail.com}} $|$ \href{tel:+16072321068}{\raisebox{0\height}+1(607)232-1068} $|$
+\textcolor[HTML]{000000}
+{\uline{\href{https://swapnilmane22.github.io/portfolio/}{\raisebox{-0.05\height} Portfolio}} $|$}
+\textcolor[HTML]{000000}{\uline{\href{https://www.linkedin.com/in/-swapnilmane-/}{\raisebox{-0.05\height} Linkedin/-swapnilmane-/}} $|$}
+\textcolor[HTML]{000000}{\uline{\href{https://github.com/SwapnilMane22}{\raisebox{-0.05\height} GitHub/SwapnilMane22}}}
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- SUMMARY ---
+\section*{SUMMARY}
+\vspace{4pt}
+\begin{tabularx}{\linewidth}{@{}X@{}}
+5+ years of software engineering experience architecting and shipping production AI systems -- distributed and on-device LLM inference, cross-platform web/mobile/desktop clients, and agentic AI workflows -- owning delivery end-to-end from architecture and technical roadmap to release engineering and client-facing iteration
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- PROFESSIONAL EXPERIENCE ---
+\section{{PROFESSIONAL EXPERIENCE}}
+\vspace{4pt}
+
+% Asearis
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://asearis.com/}{Asearis Data Systems Inc.}}}\color[HTML]{000000}\textit{, Software Engineer} \hfill \color[HTML]{000000} July 2025 - Present \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Architecting the company's MVP -- a decentralized LLM inference platform that runs heavy AI workloads on contributors' consumer devices -- owning four surfaces end-to-end: the Android and Windows clients, the Java backend with PostgreSQL, and the Rust microservice tier (API gateway and inference orchestrator)
+        \item Designed and shipped the Rust inference layer that coordinates LLM workloads across contributor devices, sustaining 99\% service availability through request cancellation and dead-node cleanup
+        \item Shipped offline on-device LLM inference across all four client platforms by embedding the Rust contributor client via FFI (UniFFI/cargo-ndk Kotlin bindings on Android, Swift XCFramework on iOS/macOS, native DLL on Windows) with memory-mapped model loading that eliminated mobile out-of-memory crashes
+        \item Hardened cross-platform release engineering: keyless GitHub Actions CI/CD on GCP via Workload Identity Federation, Secret Manager-backed signing, automated Play Console delivery, and SOC 2-driven removal of macOS Keychain dependencies from the notarized installer pipeline
+        \item Engineered the token-tracking and LLMOps layer used for monetization -- per-request input/output token accounting with model-level usage and cost attribution for per-user, per-model billing
+        \item Rebuilt 60\% of the mobile and desktop UI, introduced PR-based review standards and CI/CD across four codebases cutting bug regressions by 30\%, and led sprint planning across Android, Windows, Java, and Rust deliverables \\[-6pt]
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+\vspace{-8pt}
+
+% Sitewiz
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://www.linkedin.com/company/sitewizai/posts/?feedView=all}{Sitewiz, Inc.}}}\color[HTML]{000000}\textit{, AI Engineer} \hfill \color[HTML]{000000} Aug 2025 - Sep 2025 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Resolved state-management failures in AutoGen multi-agent workflows by standardizing AWS S3 data serialization, ensuring reliable cross-agent handoffs for LLM execution
+        \item Streamlined the AI infrastructure by migrating from redundant Vertex AI to dedicated AWS GPU endpoints, reducing monthly cloud expenses by \$16,000 and saving 5+ hours of weekly troubleshooting
+        \item Conducted technical due diligence to realign cloud strategy and established production-grade backend services, \newline transforming experimental features into stable, reliable infrastructure for an enterprise launch \\[-6pt]
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+\vspace{-8pt}
+
+% Bridge Green
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{{\href{https://bridgegreenupcycle.com/}{Bridge Green Upcycle Corp}}}\textit{, Software Engineering Intern} \hfill \color[HTML]{000000} Dec 2023 – Dec 2024 \\[1pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Reduced feature extraction time by 95\% for battery State of Health (SOH) analysis by engineering a PySpark pipeline to ingest and batch-process 18M+ records
+        \item Trained hybrid LSTM-DNN models for predictive battery health forecasting, achieving a 5.7\% MAE to enable highly accurate failure detection
+        \item Optimized Tableau dashboards using Python to visualize battery analytics, enabling scalability for the Series A launch
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+\vspace{-2pt}
+
+% LTIMindtree
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\textbf{{\href{https://www.ltimindtree.com/}{LTIMindtree Ltd. (formerly Larsen \& Toubro Infotech Ltd.)}}}\textit{, Software Engineer} \hfill \color[HTML]{000000} Aug 2020 – Jul 2023 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=2pt]
+        \item Trained an NLP pipeline in Azure ML Studio for 900K+ IT tickets using word embedding and TF-IDF vectorization
+        \item Resolved severe class imbalance through stratified sampling, SMOTE oversampling, and class-weighted Logistic \newline Regression \& Random Forest models, driving 66\% accuracy on a highly skewed dataset
+        \item Engineered real-time inference via Azure ML endpoint with RLHF to align model outputs and boost generalization
+        \item Programmed a Python/Tkinter lookup tool with OpenCV, Tesseract OCR \& MS Excel, cutting search time by 67\%
+    \end{itemize}
+\end{minipage}
+\end{tabularx}
+\vspace{4pt}
+
+% --- TECHNICAL SKILLS ---
+\section{{TECHNICAL SKILLS}}
+\vspace{4pt}
+\color[HTML]{000000}\textbf{Languages:}\color[HTML]{000000}\hspace*{0ex} Python, Rust, TypeScript, Swift, SQL, Java, JavaScript, Kotlin, C\#, SAP ABAP \\[3pt]
+\color[HTML]{000000}\textbf{AI, GenAI \& Model Training:}\color[HTML]{000000}\hspace*{0ex} PyTorch, PySpark, TensorFlow, scikit-learn, Hugging Face, Candle, Ollama, Unsloth, AutoGen, OpenCV, RAG, Model Context Protocol (MCP), LLM evals \\[3pt]
+\color[HTML]{000000}\textbf{Frameworks \& Runtimes:}\color[HTML]{000000}\hspace*{0ex} React, Next.js, Node.js, Express, Flask, FastAPI, REST API, SwiftUI, Playwright, BullMQ \\[3pt]
+\color[HTML]{000000}\textbf{Cloud Technologies:}\color[HTML]{000000}\hspace*{0ex} AWS, Google Cloud (Compute Engine, Cloud SQL, Secret Manager, Workload Identity Federation), Azure ML, Cloudflare (Workers, D1, R2, Tunnel), Docker, GitHub Actions CI/CD, PostgreSQL, Redis \\[3pt]
+\color[HTML]{000000}\textbf{Tools:}\color[HTML]{000000}\hspace*{0ex} Git, GitHub, Android Studio, Xcode, Gradle, Jupyter Notebook, MATLAB \\[-8pt]
+
+\vspace{4pt}
+
+% --- PROJECT EXPERIENCE ---
+\section{\href{https://swapnilmane22.github.io/portfolio/}{PROJECT EXPERIENCE}}
+
+\vspace{2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Role HQ -- Job Application Automation Platform, (}\uline{\href{https://github.com/SwapnilMane22/ATS}{GitHub}})}} \hfill \color[HTML]{000000}2025 - Present \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, leftmargin=2em, itemsep=1pt]
+        \item Engineered a self-hosted job-application engine that scans 40+ ATS portals, scores each opening against the resume on a 4-layer rubric with H1B-sponsorship detection, and auto-tailors the resume and cover letter behind fabrication guards (TypeScript, Node.js, React, BullMQ, Redis, Turso libSQL)
+        \item Automated headless form prefill and submission across Greenhouse, Ashby, Lever, Workday, and iCIMS via Playwright routed through MCP -- field-level capture, EEO autofill, custom-question answer drafting, an inline review/edit UI, and an append-only submission audit trail with AES-256-GCM-encrypted payloads
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Live Co-pilot -- Real-time Meeting Assistant, (}\uline{\href{https://github.com/SwapnilMane22/live-copilot}{GitHub}})}} \hfill \color[HTML]{000000}Apr 2026 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, leftmargin=2em, itemsep=1pt]
+        \item Built a browser-based meeting assistant streaming microphone audio to Whisper Large V3 for live transcription and prompting GPT-OSS 120B into typed, citation-backed suggestion cards (closed 5-type taxonomy, anti-repetition state, five meeting modes) with an evals harness that fails runs on banned phrases (Next.js 15, TypeScript, SSE, Groq)
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Multi-agent LLM text-to-SQL, (}\uline{\href{https://github.com/SwapnilMane22/MultiAgent-Text-to-SQL}{GitHub}})}} \hfill \color[HTML]{000000}Jun 2025 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep, leftmargin=2em, itemsep=1pt]
+        \item Developed an autonomous multi-agent system using the AutoGen framework and Ollama LLMs with 60\% execution accuracy to translate natural language into optimized SQL queries, validating the inference logic with Bird.dev dataset
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{-2pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{{Portfolio ChatBot, (}\uline{\href{https://swapnilmane22.github.io/portfolio/}{Demo}})}} \hfill \color[HTML]{000000}Mar 2025 \\[2pt]
+\begin{minipage}[t]{\linewidth}
+    \begin{itemize}[nosep,after=\strut, leftmargin=2em, itemsep=1pt]
+        \item Deployed a full-stack RAG chatbot (Node.js/Express, React) with a two-stage intent router (regex fast path + 8-token semantic classifier), structural prompt-injection defense, and a multi-provider fallback chain (NVIDIA NIM, Gemini, OpenRouter) over SSE streaming, delivering 95.8\% precision, 95.4\% F1, and 3.2s average latency
+    \end{itemize}
+    \end{minipage}
+\end{tabularx}
+
+\vspace{4pt}
+
+% --- EDUCATION ---
+\section{{EDUCATION}}
+\vspace{4pt}
+
+\begin{tabularx}{\linewidth}{ @{}l r@{} }
+\color[HTML]{000000} \textbf{{\href{https://www.binghamton.edu/computer-science/graduate-programs/mscs/index.html}{Binghamton University, Thomas J. Watson College of Engineering and Applied Science}}} & \hfill \color[HTML]{000000} Aug 2023 - May 2025\hfill \\
+\color[HTML]{000000} \textit{Master of Science in Computer Science} \color[HTML]{000000}  & \hfill \textit{GPA: 3.71/4.0} \\
+\multicolumn{2}{@{}X@{}}{}
+\end{tabularx}
+
+% \vspace{-13pt}
+
+% \vspace{4pt}
+\end{document}

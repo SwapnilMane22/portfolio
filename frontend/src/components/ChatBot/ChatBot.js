@@ -39,16 +39,27 @@ const ChatBot = () => {
 
   useEffect(() => {
     // ==========================================
-    // CHATBOT PADDING ADJUSTMENT
-    // Change this value to move the icon further/closer to the right edge
-    const rightOffsetPx = 17;
+    // CHATBOT DOCK PADDING — manual knobs (in px)
+    // These are the EXACT gaps between the button and the viewport edges.
+    // Increase rightOffsetPx to move the button further from the right edge.
+    const rightOffsetPx = 24;
+    const bottomOffsetPx = 24;
     // ==========================================
-    const bottomOffsetPx = 20;
-    const btnSize = 44;
-    setPosition({
-      x: window.innerWidth - btnSize - rightOffsetPx,
-      y: window.innerHeight - btnSize - bottomOffsetPx,
-    });
+
+    // Anchor the button to the bottom-right corner using its REAL rendered
+    // size (measured from the DOM) so the gap above always matches the CSS,
+    // and re-anchor on window resize so it never drifts off the corner.
+    const anchorToCorner = () => {
+      const btn = chatIconRef.current;
+      const btnW = btn ? btn.offsetWidth : 50;
+      const btnH = btn ? btn.offsetHeight : 50;
+      setPosition({
+        x: Math.max(0, window.innerWidth - btnW - rightOffsetPx),
+        y: Math.max(0, window.innerHeight - btnH - bottomOffsetPx),
+      });
+    };
+
+    anchorToCorner();
     // Clamp the default "big" size to the viewport so it renders correctly
     // on small screens. isExpanded stays true => the resize button shows the
     // inward-pointing arrow on first render.
@@ -57,6 +68,9 @@ const ChatBot = () => {
       height: Math.min(window.innerHeight - 80, 640),
     });
     setIsExpanded(true);
+
+    window.addEventListener('resize', anchorToCorner);
+    return () => window.removeEventListener('resize', anchorToCorner);
   }, []);
 
   const scrollToBottom = () => {
@@ -404,7 +418,7 @@ const ChatBot = () => {
         <CIcon
           icon={icon.cilSpeech}
           className="chatbot-icon"
-          style={{ width: '28px', height: '28px', marginTop: 4, background: 2 }}
+          style={{ width: '28px', height: '28px' }}
         />
       </button>
     </div>
