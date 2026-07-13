@@ -1079,28 +1079,53 @@ function parseExperienceDate(value) {
   return isNaN(d.getTime()) ? null : d;
 }
 
-/** Compute stats from knowledge: projects count, unique organizations, years of experience (career span) */
+const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
+
+/**
+ * Actual worked years = sum of employment durations, with overlapping roles
+ * merged (so concurrent jobs aren't double-counted) and employment gaps
+ * excluded (so a break between jobs doesn't inflate the total). This is the
+ * honest "years of experience" figure — the career span (earliest → latest)
+ * would over-count internships and gaps.
+ */
+function computeWorkedYears(experience) {
+  // Build [start, end] intervals in ms; an open ("Present") or missing end
+  // resolves to now, matching how the résumé reads a current role.
+  const intervals = [];
+  for (const e of experience) {
+    const start = parseExperienceDate(e.startDate);
+    if (!start) continue;
+    const end = parseExperienceDate(e.endDate) || new Date();
+    if (end <= start) continue;
+    intervals.push([start.getTime(), end.getTime()]);
+  }
+  if (intervals.length === 0) return 0;
+
+  intervals.sort((a, b) => a[0] - b[0]);
+  let totalMs = 0;
+  let [curStart, curEnd] = intervals[0];
+  for (let i = 1; i < intervals.length; i += 1) {
+    const [s, e] = intervals[i];
+    if (s <= curEnd) {
+      curEnd = Math.max(curEnd, e); // overlap → extend the merged block
+    } else {
+      totalMs += curEnd - curStart; // disjoint → bank the block, skip the gap
+      [curStart, curEnd] = [s, e];
+    }
+  }
+  totalMs += curEnd - curStart;
+  return Math.floor(totalMs / MS_PER_YEAR);
+}
+
+/** Compute stats from knowledge: projects count, unique organizations, worked years of experience */
 function computeStats(k) {
   const projects = k.projects || [];
   const experience = k.experience || [];
   const numProjects = projects.length;
   const orgs = new Set(experience.map((e) => e.organization).filter(Boolean));
   const numOrganizations = orgs.size;
-  let yearsOfExperience = 0;
-  if (experience.length > 0) {
-    let minStart = null;
-    let maxEnd = null;
-    for (const e of experience) {
-      const start = parseExperienceDate(e.startDate);
-      const end = parseExperienceDate(e.endDate);
-      if (start) minStart = minStart ? (start < minStart ? start : minStart) : start;
-      if (end) maxEnd = maxEnd ? (end > maxEnd ? end : maxEnd) : end;
-    }
-    if (minStart && maxEnd && maxEnd >= minStart) {
-      yearsOfExperience = Math.floor((maxEnd - minStart) / (365.25 * 24 * 60 * 60 * 1000));
-    }
-  }
-  return { yearsOfExperience: Math.max(0, yearsOfExperience - 1), numProjects, numOrganizations };
+  const yearsOfExperience = computeWorkedYears(experience);
+  return { yearsOfExperience, numProjects, numOrganizations };
 }
 
 app.get('/api/profile', (req, res) => {

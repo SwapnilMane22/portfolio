@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { createPortal } from 'react-dom'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import LinkedInIcon from '@mui/icons-material/LinkedIn'
 import CloseIcon from '@mui/icons-material/Close';
@@ -41,6 +42,22 @@ const About = () => {
       };
     }
   }, [role, role2, role3]);
+
+  // While the resume modal is open, lock background scroll and allow Escape to
+  // close it — standard dialog behavior so the fixed overlay owns the viewport.
+  useEffect(() => {
+    if (!showResume) return undefined;
+    const onKeyDown = (e) => {
+      if (e.key === 'Escape') setShowResume(false);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [showResume]);
 
   const handleResumeClick = (e) => {
     e.preventDefault();
@@ -177,13 +194,22 @@ const About = () => {
         )}
       </div>
 
-      {/* PDF Modal */}
-      {showResume && !isAndroid && !isIoS && (
-        <div className="resume-modal">
-          <div className="resume-modal__content">
-            <button 
-              className="resume-modal__close" 
+      {/* PDF Modal — portaled to <body> so the fixed overlay escapes the
+          transformed SectionReveal ancestor and covers the full viewport.
+          Clicking the backdrop (but not the content) closes it. */}
+      {showResume && !isAndroid && !isIoS && createPortal(
+        <div
+          className="resume-modal"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Resume preview"
+          onClick={handleCloseResume}
+        >
+          <div className="resume-modal__content" onClick={(e) => e.stopPropagation()}>
+            <button
+              className="resume-modal__close"
               onClick={handleCloseResume}
+              aria-label="Close resume"
             >
               <CloseIcon/>
             </button>
@@ -193,7 +219,8 @@ const About = () => {
               className="resume-modal__iframe"
             />
           </div>
-        </div>
+        </div>,
+        document.body
       )}
     </div>
   )

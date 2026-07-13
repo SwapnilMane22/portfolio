@@ -63,6 +63,8 @@
       "programmingLanguages": [
         "Python",
         "Rust",
+        "TypeScript",
+        "Swift",
         "SQL",
         "Java",
         "JavaScript",
@@ -87,7 +89,13 @@
         "React",
         "Node.js",
         "REST API",
-        "FastAPI"
+        "FastAPI",
+        "Next.js",
+        "Express.js",
+        "SwiftUI",
+        "Tailwind CSS",
+        "Playwright",
+        "BullMQ"
       ],
       "dataScience": [
         "ETL",
@@ -117,7 +125,11 @@
         "Conversational AI",
         "Prompt Engineering",
         "RAG Agent",
-        "Chain of Thought (CoT)"
+        "Chain of Thought (CoT)",
+        "Model Context Protocol (MCP)",
+        "On-device LLM Inference",
+        "LLM Evals",
+        "Candle"
       ],
       "bigDataCloud": [
         "Azure ML",
@@ -128,8 +140,13 @@
         "Databricks",
         "Hadoop",
         "PySpark",
-        "Microsoft Azure",
-        "Google Cloud Platform"
+        "Cloudflare (Workers, D1, R2, Tunnel)",
+        "GCP Secret Manager",
+        "Workload Identity Federation",
+        "GitHub Actions",
+        "PostgreSQL",
+        "Redis",
+        "Turso (libSQL)"
       ],
       "tools": [
         "Android Studio",
@@ -140,7 +157,9 @@
         "CI/CD",
         "NI LabView",
         "MS Excel",
-        "SAP Logon NetWeaver"
+        "SAP Logon NetWeaver",
+        "Xcode",
+        "Gradle"
       ],
       "sap": [
         "SAP ABAP",
@@ -213,8 +232,6 @@
       "CI/CD",
       "Databricks",
       "Hadoop",
-      "Microsoft Azure",
-      "Google Cloud Platform",
       "Android Studio",
       "MATLAB",
       "Git",
@@ -232,7 +249,28 @@
       "OData",
       "AMDP",
       "CDS Views",
-      "SQL query optimization"
+      "SQL query optimization",
+      "TypeScript",
+      "Swift",
+      "SwiftUI",
+      "Next.js",
+      "Express.js",
+      "Tailwind CSS",
+      "Playwright",
+      "BullMQ",
+      "Model Context Protocol (MCP)",
+      "On-device LLM Inference",
+      "LLM Evals",
+      "Candle",
+      "Cloudflare (Workers, D1, R2, Tunnel)",
+      "GCP Secret Manager",
+      "Workload Identity Federation",
+      "GitHub Actions",
+      "PostgreSQL",
+      "Redis",
+      "Turso (libSQL)",
+      "Xcode",
+      "Gradle"
     ]
   },
   "experience": [
@@ -249,6 +287,10 @@
         "Designed and shipped the Rust inference layer that coordinates LLM work across contributor devices, sustaining 99% service availability under load through request cancellation and dead-node cleanup that keep jobs moving when a contributor drops off mid-task",
         "Delivered the Windows and Android client experience — unblocked Google and Facebook sign-in on Android, restored login and GPU contribution on Windows, and added background task automation so critical work runs reliably even when the app is not open",
         "Rebuilt approximately 60% of the mobile and desktop UI, improving usability and visual consistency across the contributor and consumer experiences ahead of the enterprise rollout",
+        "Shipped offline on-device LLM inference across all four client platforms (Android, iOS, macOS, Windows) by embedding the Rust contributor client through platform FFI bridges — UniFFI + cargo-ndk Kotlin bindings on Android, Swift XCFramework on iOS/macOS, native DLL on Windows — with memory-mapped safetensors model loading that eliminated out-of-memory crashes on mobile devices",
+        "Hardened cross-platform release engineering: keyless GitHub Actions CI/CD via GCP Workload Identity Federation, signing credentials moved to GCP Secret Manager, automated Google Play Console delivery with runtime version injection, and cross-platform Rust builds driven directly from Gradle (no platform-specific scripts)",
+        "Removed all macOS Keychain dependencies from the build-and-release pipeline (encrypted-file token store via CryptoKit + keyless rcodesign signing) as part of SOC 2 compliance work, and moved client/service endpoints behind Cloudflare Tunnel HTTPS during the platform's migration to GCP",
+        "Designed a responsive SwiftUI layout system (window-size-class breakpoints, centralized layout tokens, adaptive stacks) so the macOS app adapts across desktop window sizes and iPad form factors",
         "Hardened the Java backend's authentication and account flows — email validation, password policy, and secure password reset requiring prior credential verification — raising the platform's identity and account-security posture",
         "Built the token-tracking and LLMOps layer used for monetization — per-request accounting of input and output tokens, model-level usage, and cost attribution — giving finance trustworthy per-user, per-model billing data",
         "Introduced PR-based code review standards and CI/CD pipelines across mobile, desktop, backend, and Rust services, cutting bug regressions by approximately 30% and making releases predictable",
@@ -269,6 +311,14 @@
         "Microservices",
         "API Gateway",
         "CI/CD",
+        "GitHub Actions",
+        "GCP",
+        "Cloudflare Tunnel",
+        "Swift",
+        "SwiftUI",
+        "Kotlin",
+        "Candle",
+        "UniFFI",
         "Mobile",
         "Desktop"
       ]
@@ -416,13 +466,13 @@
         "Server-Sent Events"
       ],
       "sourceCode": "https://github.com/SwapnilMane22/live-copilot",
-      "livePreview": "https://live-copilot-swapnilmane22s-projects.vercel.app/"
+      "livePreview": "https://live-copilot-orpin.vercel.app/"
     },
     {
       "name": "PRAGYA — Policy Research & Administrative Governance for Youth Advancement",
       "imageKey": "pragya",
-      "period": "2026-04",
-      "description": "Marketing website for PRAGYA (a NavGaurav Sai Kendra initiative bridging civil-service aspirants with real-world policy research and governance). Four routes (Home, About, Services, Contact) pre-rendered as static HTML on Next.js 16 App Router with Turbopack — trivially scales to 500k+ users on edge CDN with zero-downtime atomic deploys. Theme-aware tricolor brand system (saffron #f26522 / navy #1a237e / India-green #138808) with light + dark parity, an inline currentColor helm SVG that recolors via parent text-* class, and all copy centralized in a single typed site-config.ts. Architecturally seamed for Phase 2 (student applications, dashboards, certificate issuance) via reserved lib/db/, app/api/, and app/(auth)/ folders that slot in Drizzle + Postgres + NextAuth without refactoring Phase 1.",
+      "period": "2026-04 to 2026-06",
+      "description": "Web platform for PRAGYA (a NavGaurav Sai Kendra initiative bridging civil-service aspirants with real-world policy research and governance). Four routes (Home, About, Services, Contact) pre-rendered as static HTML on Next.js 16 App Router with Turbopack — trivially scales to 500k+ users on edge CDN with zero-downtime atomic deploys. Theme-aware tricolor brand system (saffron #f26522 / navy #1a237e / India-green #138808) with light + dark parity, an inline currentColor helm SVG that recolors via parent text-* class, and all copy centralized in a single typed site-config.ts. Phase 2 shipped June 2026: fellowship application platform with shared client/server Zod validation, CV/resume upload via presigned direct-to-R2 uploads, HTTP-Range media streaming for cross-device review of submitted media, admin dashboard with settings and applicant management, and a certified-talent directory — migrated from Cloudflare Pages to Cloudflare Workers via OpenNext with D1 (SQLite) as the data layer.",
       "stack": [
         "Next.js 16 (App Router, Turbopack)",
         "React 19",
@@ -430,7 +480,11 @@
         "Tailwind CSS v4",
         "next-themes",
         "framer-motion",
-        "lucide-react"
+        "lucide-react",
+        "Cloudflare Workers (OpenNext)",
+        "Cloudflare D1",
+        "Cloudflare R2",
+        "Zod"
       ],
       "sourceCode": "https://github.com/SwapnilMane22/Pragya",
       "livePreview": "https://pragya.org.in"
@@ -453,7 +507,7 @@
       "name": "Role HQ",
       "imageKey": "ats",
       "period": "2025-2026",
-      "description": "Self-hosted, auth-gated job-application engine that scans 40+ portal boards (Greenhouse, Lever, Ashby, Workday + customs) every few hours, LLM-scores each opening against the user's LaTeX resume on a strict rubric (keyword + semantic + sponsor lookup + track classifier), auto-tailors resume + cover letter (with fabrication guard, 1-page enforcement, and 5-axis quality grading → A/B/C badges), and auto-fills portal forms via a Chrome MV3 extension. Multi-device sync via Turso libSQL with zero-duplicate-work guarantees (UNIQUE url index + INSERT-or-fail lease claim + pre-flight status check across devices). Per-device BullMQ + Redis queues with graceful drain on Ctrl-C; runtime LLM provider switching (NVIDIA NIM → Google Gemini → OpenRouter → local Ollama priority chain). Admin/viewer role split with optional Cloudflare Tunnel for read-only recruiter access at a public URL — the user's disciplined application process becomes a portfolio artifact. Production-hardened: TLS, HSTS, CSP, HMAC-signed HTTP-only cookies, bcrypt(10), per-IP auth rate limit, token-versioned session invalidation.",
+      "description": "Self-hosted, auth-gated job-application engine that scans 40+ portal boards (Greenhouse, Lever, Ashby, Workday + customs) every few hours, LLM-scores each opening against the user's LaTeX resume on a strict rubric (keyword + semantic + sponsor lookup + track classifier), auto-tailors resume + cover letter (with fabrication guard, 1-page enforcement, and 5-axis quality grading → A/B/C badges), and auto-fills portal forms via a Chrome MV3 extension. Phase 9 (Apr-May 2026) added a fully headless prefill-review-submit pipeline: MCP-routed Playwright workers probe and fill Greenhouse/Ashby/Lever/Workday/iCIMS/iCore applications in the background with zero tabs opened, capture every field (locator strategies, EEO defaults, LLM-drafted custom-question answers) into a reviewable store, surface them in an inline review UI (JD left, editable prefilled fields right) with one-click submit, per-portal confirmation polling, AES-256-GCM-encrypted payloads, and an append-only submission audit trail. Multi-device sync via Turso libSQL with zero-duplicate-work guarantees (UNIQUE url index + INSERT-or-fail lease claim + pre-flight status check across devices). Per-device BullMQ + Redis queues with graceful drain on Ctrl-C; runtime LLM provider switching (NVIDIA NIM → Google Gemini → OpenRouter → local Ollama priority chain). Admin/viewer role split with optional Cloudflare Tunnel for read-only recruiter access at a public URL — the user's disciplined application process becomes a portfolio artifact. Production-hardened: TLS, HSTS, CSP, HMAC-signed HTTP-only cookies, bcrypt(10), per-IP auth rate limit, token-versioned session invalidation.",
       "stack": [
         "TypeScript",
         "Node.js",
@@ -468,6 +522,7 @@
         "Tectonic",
         "Chrome MV3 Extension",
         "Playwright",
+        "MCP (Model Context Protocol)",
         "Multi-provider LLM",
         "Cloudflare Tunnel"
       ],
@@ -701,5 +756,5 @@
   "journeyDisplay": {
     "introHtml": "<p>I have 5+ years of software engineering experience delivering production-ready solutions—building web and mobile applications, LLM inference, model training, and agentic AI workflows.</p><br><p>I hold a Master of Science in Computer Science from Binghamton University (GPA 3.71/4.0) and a B.E. in Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. My path has taken me from full-stack and backend development into ML engineering, LLM systems, and scalable data pipelines, shipping production software that has improved cost, accuracy, and time-to-resolution.</p><br><p>That growth from building apps and APIs to designing agentic AI, LLM inference, and predictive models has kept me consistent with my goal of building robust, scalable systems and bringing research-grade AI into production. I focus on shipping solutions that drive real impact.</p>"
   },
-  "narrative": "Swapnil Tukaram Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, LLM inference, distributed AI systems, model training, and agentic AI workflows. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience: Asearis Data Systems (Software Engineer, July 2025-Present; engineering on the company MVP — a decentralized LLM inference platform that distributes heavy AI workloads across contributors' Android and Windows devices using a Rust microservice tier (API Gateway and Inference Server on AWS plus a Rust contributor client deployed on edge devices via FFI bridge into the host apps); owns engineering across Android, Windows, the Java backend with Postgres, and the Rust microservices; sustained 99% availability on the inference layer; built token-tracking and LLMOps for monetization; ~60% UI rebuild across mobile and desktop; PR review standards reduced bug regressions ~30%), Sitewiz Inc. (AI Engineer, Aug-Sep 2025; AutoGen multi-agent, AWS S3 serialization, Vertex AI to AWS GPU migration $16k/month savings), Bridge Green Upcycle Corp (Software Engineering Intern, Dec 2023-Dec 2024; PySpark 18M+ records, battery SOH 95% feature extraction reduction, LSTM-DNN 5.7% MAE, Tableau, Series A), LTIMindtree (Software Engineer Aug 2020-Jul 2023; SAP ABAP for SD/FI on S/4HANA — AMDP, CDS Views, BADIs, BAPIs, SQL trace optimization; Azure ML NLP 900K tickets 66% accuracy with RLHF; Python/Tkinter OpenCV Tesseract 67% search time reduction; GoMx Individual Excellence Award for SAP NetWeaver monitoring automation that cut per-system monitoring time 86%), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Projects: Live Co-pilot (browser-based real-time meeting assistant on Next.js 15 + Groq Whisper Large V3 + GPT-OSS 120B; closed-taxonomy typed suggestion cards with anti-repetition, source-quote citations, five meeting modes, evals harness with banned-phrase enforcement), PRAGYA (Next.js 16 + React 19 static-first marketing site for a civil-services policy initiative; tricolor brand system, dark-mode parity, architecturally seamed for a Phase-2 DB-backed application/dashboard layer), Role HQ (self-hosted job-application engine that scans 40+ portal boards, LLM-scores, auto-tailors resume + cover letter with 5-axis quality grading, and auto-fills via Chrome MV3 extension; multi-device sync via Turso libSQL with zero-duplicate-work guarantees, runtime LLM provider switching, admin/viewer roles for recruiter access via Cloudflare Tunnel), GitLeet (browser extension LeetCode to GitHub sync, optional MCP schema endpoint), multi-agent Text-to-SQL (Ollama, AutoGen, 60% execution accuracy on Bird.dev), Portfolio RAG chatbot (Node/Express, multi-provider fallback NVIDIA NIM → Gemini → OpenRouter, two-stage intent router with regex fast path + 8-token semantic classifier, structural prompt-injection defense, 95.8% precision and 95.4% F1), Movie Recommendation (TF-IDF, SBERT), thought-to-text (EEG, 59% accuracy). Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
+  "narrative": "Swapnil Tukaram Mane has 5+ years of software engineering experience delivering production-ready solutions: web and mobile applications, LLM inference, distributed AI systems, model training, and agentic AI workflows. Education: MS Computer Science from Binghamton University (GPA 3.71/4.0), B.E. Electronics and Telecommunication from Fr. C. Rodrigues Institute of Technology, Mumbai University. Experience: Asearis Data Systems (Software Engineer, July 2025-Present; engineering on the company MVP — a decentralized LLM inference platform that distributes heavy AI workloads across contributors' Android and Windows devices using a Rust microservice tier (API Gateway and Inference Server, migrated to GCP in May 2026, plus a Rust contributor client deployed on edge devices via FFI bridge into the host apps); owns engineering across Android, Windows, the Java backend with Postgres, and the Rust microservices; sustained 99% availability on the inference layer; built token-tracking and LLMOps for monetization; ~60% UI rebuild across mobile and desktop; PR review standards reduced bug regressions ~30%; shipped offline on-device LLM inference across Android, iOS, macOS, and Windows via Rust FFI — UniFFI/cargo-ndk Kotlin bindings, Swift XCFramework, native Windows DLL — with memory-mapped safetensors loading; hardened release engineering with keyless GitHub Actions CI/CD via GCP Workload Identity Federation, Secret Manager-backed signing, automated Play Console delivery, and SOC 2-driven removal of macOS Keychain dependencies; built a responsive SwiftUI layout system for macOS/iPad form factors), Sitewiz Inc. (AI Engineer, Aug-Sep 2025; AutoGen multi-agent, AWS S3 serialization, Vertex AI to AWS GPU migration $16k/month savings), Bridge Green Upcycle Corp (Software Engineering Intern, Dec 2023-Dec 2024; PySpark 18M+ records, battery SOH 95% feature extraction reduction, LSTM-DNN 5.7% MAE, Tableau, Series A), LTIMindtree (Software Engineer Aug 2020-Jul 2023; SAP ABAP for SD/FI on S/4HANA — AMDP, CDS Views, BADIs, BAPIs, SQL trace optimization; Azure ML NLP 900K tickets 66% accuracy with RLHF; Python/Tkinter OpenCV Tesseract 67% search time reduction; GoMx Individual Excellence Award for SAP NetWeaver monitoring automation that cut per-system monitoring time 86%), CueMath (Python and Game Development Teacher), Navavidha Techsolutions (Junior App Developer, IoT, Arduino). Projects: Live Co-pilot (browser-based real-time meeting assistant on Next.js 15 + Groq Whisper Large V3 + GPT-OSS 120B; closed-taxonomy typed suggestion cards with anti-repetition, source-quote citations, five meeting modes, evals harness with banned-phrase enforcement), PRAGYA (Next.js 16 + React 19 site for a civil-services policy initiative; tricolor brand system, dark-mode parity; Phase 2 shipped June 2026 on Cloudflare Workers via OpenNext — fellowship applications with shared Zod validation, CV upload via presigned direct-to-R2, HTTP-Range media streaming, admin dashboards, certified-talent directory, D1 data layer), Role HQ (self-hosted job-application engine that scans 40+ portal boards, LLM-scores, auto-tailors resume + cover letter with 5-axis quality grading, and auto-fills via Chrome MV3 extension; multi-device sync via Turso libSQL with zero-duplicate-work guarantees, runtime LLM provider switching, admin/viewer roles for recruiter access via Cloudflare Tunnel; headless MCP-routed Playwright prefill/submit across Greenhouse/Ashby/Lever/Workday/iCIMS/iCore with field-capture review store, EEO autofill, custom-question answer drafting, inline review UI, per-portal submission confirmation polling, and append-only submission audit trail), GitLeet (browser extension LeetCode to GitHub sync, optional MCP schema endpoint), multi-agent Text-to-SQL (Ollama, AutoGen, 60% execution accuracy on Bird.dev), Portfolio RAG chatbot (Node/Express, multi-provider fallback NVIDIA NIM → Gemini → OpenRouter, two-stage intent router with regex fast path + 8-token semantic classifier, structural prompt-injection defense, 95.8% precision and 95.4% F1), Movie Recommendation (TF-IDF, SBERT), thought-to-text (EEG, 59% accuracy). Tagline: I work fast, build from scratch, and ship production-ready AI solutions."
 }
