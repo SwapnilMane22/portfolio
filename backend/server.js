@@ -22,6 +22,10 @@ const path = require('path');
 const fs = require('fs');
 const crypto = require('crypto');
 
+// Milliseconds in an average year (365.25 days), used for experience-duration math.
+// Declared at module top so it is initialized before RAG_SYSTEM_PROMPT is built at load time.
+const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
+
 const app = express();
 
 // Vercel / any reverse proxy: trust X-Forwarded-For so rate limit sees real client IP.
@@ -1078,8 +1082,6 @@ function parseExperienceDate(value) {
   const d = new Date(year, month, 1);
   return isNaN(d.getTime()) ? null : d;
 }
-
-const MS_PER_YEAR = 365.25 * 24 * 60 * 60 * 1000;
 
 /**
  * Actual worked years = sum of employment durations, with overlapping roles
