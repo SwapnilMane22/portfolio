@@ -275,6 +275,17 @@ const {
   chatCompletionNvidia,
   DEFAULT_TIMEOUT_MS,
 } = require('./lib/llmClients');
+// Model names are discovered at call time rather than hardcoded. Every default
+// this file used to carry for NVIDIA and OpenRouter is dead; see the header of
+// ./lib/modelDiscovery.js for the measurements and why the catalogue alone is
+// not enough to pick a model.
+const {
+  resolveModelList,
+  resolveRouterModels,
+  ROUTER_MAX_TOKENS,
+  noteModelOutcome,
+  noteModelError,
+} = require('./lib/modelDiscovery');
 
 /**
  * Create an AbortController + timer pair. Caller MUST call `cancel()` in a finally
@@ -319,7 +330,11 @@ async function streamGeminiAsSSE(messages, apiKey, model, res) {
   if (!llmRes.ok) {
     cancel();
     const err = await llmRes.text();
-    throw new Error(`Gemini stream error ${llmRes.status}: ${err}`);
+    // Status carried for the model walk's per-provider classification
+    // (see classifyStatus in ./lib/modelDiscovery.js).
+    const e = new Error(`Gemini stream error ${llmRes.status}: ${err}`);
+    e.status = llmRes.status;
+    throw e;
   }
 
   const reader = llmRes.body.getReader();
@@ -396,14 +411,6 @@ async function streamGeminiAsSSE(messages, apiKey, model, res) {
   return { started };
 }
 
-function parseCommaList(value, fallback) {
-  const raw = (value ?? fallback ?? '').toString();
-  return raw
-    .split(',')
-    .map((s) => s.trim())
-    .filter(Boolean);
-}
-
 /** Send one SSE event to the client */
 function sendSSE(res, data) {
   res.write(`data: ${JSON.stringify(data)}\n\n`);
@@ -468,7 +475,11 @@ async function streamNvidiaAsSSE(messages, apiKey, baseURL, model, res) {
   if (!llmRes.ok) {
     cancel();
     const err = await llmRes.text();
-    throw new Error(`NVIDIA NIM stream error ${llmRes.status}: ${err}`);
+    // Status carried for the model walk's per-provider classification
+    // (see classifyStatus in ./lib/modelDiscovery.js).
+    const e = new Error(`NVIDIA NIM stream error ${llmRes.status}: ${err}`);
+    e.status = llmRes.status;
+    throw e;
   }
 
   const reader = llmRes.body.getReader();
@@ -571,7 +582,11 @@ async function streamOpenRouterAsSSE(messages, apiKey, baseURL, model, res) {
   if (!llmRes.ok) {
     cancel();
     const err = await llmRes.text();
-    throw new Error(`OpenRouter stream error ${llmRes.status}: ${err}`);
+    // Status carried for the model walk's per-provider classification
+    // (see classifyStatus in ./lib/modelDiscovery.js).
+    const e = new Error(`OpenRouter stream error ${llmRes.status}: ${err}`);
+    e.status = llmRes.status;
+    throw e;
   }
 
   const reader = llmRes.body.getReader();
@@ -703,11 +718,6 @@ async function classifyIntent(message) {
   const openRouterKey = process.env.OPENROUTER_API_KEY;
   const baseURL = process.env.OPENROUTER_API_BASE_URL || 'https://openrouter.ai/api/v1';
 
-  // Router ALWAYS uses the smallest model regardless of main chat model env.
-  const nvidiaRouterModel = process.env.NVIDIA_ROUTER_MODEL || 'meta/llama-3.1-8b-instruct';
-  const geminiRouterModel = process.env.GEMINI_ROUTER_MODEL || 'gemini-2.5-flash-lite';
-  const orRouterModel = process.env.ROUTER_MODEL || 'google/gemma-2-9b-it:free';
-
   const messages = [
     { role: 'system', content: config.router.systemPrompt },
     // Wrap user input so router prompt is also delimiter-protected.
@@ -715,18 +725,50 @@ async function classifyIntent(message) {
   ];
 
   try {
-    let responseText = '';
-    // Tight timeout for the router: it's a 1-token classifier; 6s is plenty.
-    const routerOpts = { maxTokens: 8, temperature: 0, timeoutMs: 6000 };
-    if (nvidiaKey) {
-      responseText = await chatCompletionNvidia(messages, nvidiaKey, nvidiaRouterModel, routerOpts);
-    } else if (geminiKey) {
-      responseText = await chatCompletionGemini(messages, geminiKey, geminiRouterModel, routerOpts);
-    } else if (openRouterKey) {
-      responseText = await chatCompletion(messages, openRouterKey, baseURL, orRouterModel, routerOpts);
-    } else {
+    if (!nvidiaKey && !geminiKey && !openRouterKey) {
       throw new Error('No keys available for semantic routing');
     }
+
+    // The router wants the cheapest adequate model, which is the opposite of the
+    // chat path. It walks candidates for the same reason the chat path does: a
+    // model that spends its whole budget on hidden reasoning returns an empty
+    // reply, which the chatCompletion* helpers raise as an error, and the next
+    // candidate gets a turn. See ROUTER_MAX_TOKENS in ./lib/modelDiscovery.js
+    // for the measurements — an 8-token budget silently broke routing on every
+    // reasoning model, and routing fails CLOSED, so the breakage was invisible.
+    const routerOpts = { maxTokens: ROUTER_MAX_TOKENS, temperature: 0, timeoutMs: 6000 };
+    const callers = {
+      nvidia: (m) => chatCompletionNvidia(messages, nvidiaKey, m, routerOpts),
+      gemini: (m) => chatCompletionGemini(messages, geminiKey, m, routerOpts),
+      openrouter: (m) => chatCompletion(messages, openRouterKey, baseURL, m, routerOpts),
+    };
+    const providers = [
+      nvidiaKey && 'nvidia',
+      geminiKey && 'gemini',
+      openRouterKey && 'openrouter',
+    ].filter(Boolean);
+
+    let responseText = '';
+    let routerError;
+    outer: for (const provider of providers) {
+      for (const model of await resolveRouterModels(provider)) {
+        try {
+          responseText = await callers[provider](model);
+          noteModelOutcome(provider, model, 'ok');
+          break outer;
+        } catch (e) {
+          routerError = e;
+          // File the verdict so a retired or empty-replying model is not chosen
+          // again on the next request.
+          const kind = noteModelError(provider, model, e);
+          console.error(`Semantic router ${provider}/${model} failed:`, e.message || e);
+          // A bad key condemns every model on this provider — move on rather
+          // than repeating the same rejection.
+          if (kind === 'provider') break;
+        }
+      }
+    }
+    if (!responseText) throw routerError ?? new Error('Semantic router produced no reply');
 
     const intentText = responseText.trim().toUpperCase();
     if (intentText.includes('CONTACT')) {
@@ -811,16 +853,19 @@ app.post('/api/chat', chatDailyLimiter, chatLimiter, async (req, res) => {
   }
 
   const nvidiaBaseURL = process.env.NVIDIA_API_BASE_URL || 'https://integrate.api.nvidia.com/v1';
-  const nvidiaModelsEnv =
-    process.env.NVIDIA_MODELS || process.env.NVIDIA_MODEL || 'meta/llama-3.1-8b-instruct';
-  const nvidiaModelList = parseCommaList(nvidiaModelsEnv, 'meta/llama-3.1-8b-instruct');
-
   const baseURL = process.env.OPENROUTER_API_BASE_URL || 'https://openrouter.ai/api/v1';
-  const modelsEnv = process.env.CHAT_MODELS || process.env.CHAT_MODEL || 'google/gemma-2-9b-it:free';
-  const modelList = parseCommaList(modelsEnv, 'google/gemma-2-9b-it:free');
-  const geminiModelsEnv =
-    process.env.GEMINI_MODELS || process.env.GEMINI_MODEL || 'gemini-2.5-flash';
-  const geminiModelList = parseCommaList(geminiModelsEnv, 'gemini-2.5-flash');
+
+  // Ranked live candidates per provider, replacing three hardcoded defaults
+  // that were duplicated across this handler, the SSE handler and the router —
+  // and of which the NVIDIA and OpenRouter ones no longer exist. Fetched in
+  // parallel so discovery costs one round trip, not three, and only for
+  // providers that actually have a key. A provider with no key gets an empty
+  // list, which the guards below already read as "skip me".
+  const [nvidiaModelList, geminiModelList, modelList] = await Promise.all([
+    nvidiaKey ? resolveModelList('nvidia') : [],
+    geminiKey ? resolveModelList('gemini') : [],
+    openRouterKey ? resolveModelList('openrouter') : [],
+  ]);
 
   // 1) Lightweight Semantic Router for Intent Classification
   const classification = await classifyIntent(userText);
@@ -843,9 +888,20 @@ app.post('/api/chat', chatDailyLimiter, chatLimiter, async (req, res) => {
       for (const m of nvidiaModelList) {
         try {
           const reply = await chatCompletionNvidia(messages, nvidiaKey, m, { baseURL: nvidiaBaseURL });
+          noteModelOutcome('nvidia', m, 'ok');
           return res.json({ reply, provider: 'nvidia', model: m });
         } catch (e) {
           lastError = e;
+          // Remember the verdict so a model that is retired or not on this
+          // account drops out of the ranking instead of being retried on every
+          // request. A transient failure only cools the model off.
+          if (noteModelError('nvidia', m, e) === 'provider') {
+          // A provider-level verdict (a bad key) condemns every candidate, so
+          // stop walking: continuing just repeats the same rejection and burns
+          // the request budget before the next provider gets its turn.
+            console.error(`[${req.id}] NVIDIA NIM unusable (provider-level):`, e.message || e);
+            break;
+          }
           console.error(`[${req.id}] NVIDIA NIM model "${m}" failed:`, e.message || e);
         }
       }
@@ -863,9 +919,14 @@ app.post('/api/chat', chatDailyLimiter, chatLimiter, async (req, res) => {
       for (const gm of geminiModelList) {
         try {
           const reply = await chatCompletionGemini(messages, geminiKey, gm);
+          noteModelOutcome('gemini', gm, 'ok');
           return res.json({ reply, provider: 'gemini', model: gm });
         } catch (e) {
           lastGeminiError = e;
+          if (noteModelError('gemini', gm, e) === 'provider') {
+            console.error(`[${req.id}] Gemini unusable (provider-level):`, e.message || e);
+            break;
+          }
           console.error(`[${req.id}] Gemini model "${gm}" failed:`, e.message || e);
         }
       }
@@ -883,9 +944,14 @@ app.post('/api/chat', chatDailyLimiter, chatLimiter, async (req, res) => {
       for (const m of modelList) {
         try {
           const reply = await chatCompletion(messages, openRouterKey, baseURL, m);
+          noteModelOutcome('openrouter', m, 'ok');
           return res.json({ reply, provider: 'openrouter', model: m });
         } catch (e) {
           lastError = e;
+          if (noteModelError('openrouter', m, e) === 'provider') {
+            console.error(`[${req.id}] OpenRouter unusable (provider-level):`, e.message || e);
+            break;
+          }
           console.error(`[${req.id}] OpenRouter model "${m}" failed:`, e.message || e);
         }
       }
@@ -950,16 +1016,19 @@ app.post('/api/chat/stream', chatDailyLimiter, chatLimiter, async (req, res) => 
   }
 
   const nvidiaBaseURL = process.env.NVIDIA_API_BASE_URL || 'https://integrate.api.nvidia.com/v1';
-  const nvidiaModelsEnv =
-    process.env.NVIDIA_MODELS || process.env.NVIDIA_MODEL || 'meta/llama-3.1-8b-instruct';
-  const nvidiaModelList = parseCommaList(nvidiaModelsEnv, 'meta/llama-3.1-8b-instruct');
-
   const baseURL = process.env.OPENROUTER_API_BASE_URL || 'https://openrouter.ai/api/v1';
-  const modelsEnv = process.env.CHAT_MODELS || process.env.CHAT_MODEL || 'google/gemma-2-9b-it:free';
-  const modelList = parseCommaList(modelsEnv, 'google/gemma-2-9b-it:free');
-  const geminiModelsEnv =
-    process.env.GEMINI_MODELS || process.env.GEMINI_MODEL || 'gemini-2.5-flash';
-  const geminiModelList = parseCommaList(geminiModelsEnv, 'gemini-2.5-flash');
+
+  // Ranked live candidates per provider, replacing three hardcoded defaults
+  // that were duplicated across this handler, the SSE handler and the router —
+  // and of which the NVIDIA and OpenRouter ones no longer exist. Fetched in
+  // parallel so discovery costs one round trip, not three, and only for
+  // providers that actually have a key. A provider with no key gets an empty
+  // list, which the guards below already read as "skip me".
+  const [nvidiaModelList, geminiModelList, modelList] = await Promise.all([
+    nvidiaKey ? resolveModelList('nvidia') : [],
+    geminiKey ? resolveModelList('gemini') : [],
+    openRouterKey ? resolveModelList('openrouter') : [],
+  ]);
 
   try {
     // 1) Try NVIDIA NIM first (if configured)
@@ -969,21 +1038,33 @@ app.post('/api/chat/stream', chatDailyLimiter, chatLimiter, async (req, res) => 
         try {
           const { started } = await streamNvidiaAsSSE(messages, nvidiaKey, nvidiaBaseURL, m, res);
           if (started) {
+            noteModelOutcome('nvidia', m, 'ok');
             stopHeartbeat();
             return res.end();
           }
           lastError = new Error(`No tokens produced for NVIDIA model "${m}"`);
         } catch (e) {
           lastError = e;
+          noteModelError('nvidia', m, e);
           console.error(`[${req.id}] NVIDIA NIM model "${m}" failed (stream):`, e.message || e);
           // Non-stream fallback for this model before moving on
           try {
             const reply = await chatCompletionNvidia(messages, nvidiaKey, m, { baseURL: nvidiaBaseURL });
+            // The model answered after all, so the stream-path verdict filed
+            // above was wrong about it — clear it rather than leaving a working
+            // model marked dead.
+            noteModelOutcome('nvidia', m, 'ok');
             streamTextAsSSE(res, reply);
             stopHeartbeat();
             return res.end();
           } catch (e2) {
             lastError = e2;
+            if (noteModelError('nvidia', m, e2) === 'provider') {
+          // A provider-level verdict (a bad key) condemns every candidate, so
+          // stop walking: continuing just repeats the same rejection and burns
+          // the request budget before the next provider gets its turn.
+              break;
+            }
           }
         }
       }
@@ -1002,20 +1083,24 @@ app.post('/api/chat/stream', chatDailyLimiter, chatLimiter, async (req, res) => 
         try {
           const { started } = await streamGeminiAsSSE(messages, geminiKey, gm, res);
           if (started) {
+            noteModelOutcome('gemini', gm, 'ok');
             stopHeartbeat();
             return res.end();
           }
           lastGeminiError = new Error(`No tokens produced for Gemini model "${gm}"`);
         } catch (e) {
           lastGeminiError = e;
+          noteModelError('gemini', gm, e);
           console.error(`[${req.id}] Gemini model "${gm}" failed (stream):`, e.message || e);
           try {
             const reply = await chatCompletionGemini(messages, geminiKey, gm);
+            noteModelOutcome('gemini', gm, 'ok');
             streamTextAsSSE(res, reply);
             stopHeartbeat();
             return res.end();
           } catch (e2) {
             lastGeminiError = e2;
+            if (noteModelError('gemini', gm, e2) === 'provider') break;
           }
         }
       }
@@ -1034,12 +1119,17 @@ app.post('/api/chat/stream', chatDailyLimiter, chatLimiter, async (req, res) => 
         try {
           const { started } = await streamOpenRouterAsSSE(messages, openRouterKey, baseURL, m, res);
           if (started) {
+            noteModelOutcome('openrouter', m, 'ok');
             stopHeartbeat();
             return res.end();
           }
           lastError = new Error(`No tokens produced for model "${m}"`);
         } catch (e) {
           lastError = e;
+          if (noteModelError('openrouter', m, e) === 'provider') {
+            console.error(`[${req.id}] OpenRouter unusable (provider-level):`, e.message || e);
+            break;
+          }
           console.error(`[${req.id}] OpenRouter model "${m}" failed (stream):`, e.message || e);
         }
       }

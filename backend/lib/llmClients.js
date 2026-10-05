@@ -20,7 +20,13 @@ async function fetchWithTimeout(url, init = {}, timeoutMs = DEFAULT_TIMEOUT_MS) 
     return await fetch(url, { ...init, signal: controller.signal });
   } catch (e) {
     if (e && (e.name === 'AbortError' || controller.signal.aborted)) {
-      throw new Error(`LLM request timed out after ${timeoutMs}ms`);
+      const err = new Error(`LLM request timed out after ${timeoutMs}ms`);
+      // Flagged structurally rather than left for callers to detect by parsing
+      // this message. A timeout is evidence about THIS model's serving latency,
+      // so the model walk benches it for longer than a generic blip — see
+      // noteModelError in ./modelDiscovery.js.
+      err.timedOut = true;
+      throw err;
     }
     throw e;
   } finally {
@@ -70,7 +76,13 @@ async function chatCompletionNvidia(messages, apiKey, model, options = {}) {
   );
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`NVIDIA NIM API error ${res.status}: ${err}`);
+    // `status` is carried on the error, not just interpolated into the message,
+    // so the model walk can tell "this model is gone" (404) from "this key is
+    // bad" (403 on NVIDIA) without re-parsing a string we formatted ourselves.
+    // See classifyStatus() in ./modelDiscovery.js.
+    const e = new Error(`NVIDIA NIM API error ${res.status}: ${err}`);
+    e.status = res.status;
+    throw e;
   }
   const data = await res.json();
   const content = data.choices?.[0]?.message?.content;
@@ -126,7 +138,9 @@ async function chatCompletion(messages, apiKey, baseURL, model, options = {}) {
   );
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`OpenRouter API error ${res.status}: ${err}`);
+    const e = new Error(`OpenRouter API error ${res.status}: ${err}`);
+    e.status = res.status;
+    throw e;
   }
   const data = await res.json();
   const content = data.choices?.[0]?.message?.content;
@@ -185,7 +199,9 @@ async function chatCompletionGemini(messages, apiKey, model, options = {}) {
 
   if (!res.ok) {
     const err = await res.text();
-    throw new Error(`Gemini API error ${res.status}: ${err}`);
+    const e = new Error(`Gemini API error ${res.status}: ${err}`);
+    e.status = res.status;
+    throw e;
   }
 
   const data = await res.json();
