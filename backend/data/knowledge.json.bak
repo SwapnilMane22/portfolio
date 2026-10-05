@@ -129,9 +129,7 @@
         "Model Context Protocol (MCP)",
         "On-device LLM Inference",
         "LLM Evals",
-        "Candle",
-        "Agentic Tool Use",
-        "Local and API Model Routing"
+        "Candle"
       ],
       "bigDataCloud": [
         "Azure ML",
@@ -272,9 +270,7 @@
       "Redis",
       "Turso (libSQL)",
       "Xcode",
-      "Gradle",
-      "WebAuthn / Passkeys",
-      "Agentic Tool Routing"
+      "Gradle"
     ]
   },
   "experience": [
@@ -286,16 +282,19 @@
       "endDate": "Present",
       "type": "Full-time",
       "bullets": [
-        "Own the Java and PostgreSQL backend of a decentralized LLM inference platform that runs AI workloads on contributors' idle devices, and build across its four client applications: Android in Kotlin, iOS and macOS in Swift, and Windows in C#/.NET",
-        "Build the chat assistant: conversation history and cross-device sync, MCP tool integration, and an auto-router that selects between on-device local models and hosted API models based on request needs, device capability, node health, cost, and speed",
-        "Built passkey (WebAuthn) sign-in across the Java backend and the iOS and macOS clients, covering registration and sign-in ceremonies, credential storage, and step-up re-authentication before a new device is enrolled",
-        "Built the token-tracking and LLMOps layer used for monetization: per-request accounting of input and output tokens, model-level usage, and cost attribution for per-user, per-model billing",
-        "Integrated the Rust contributor client into the Android (UniFFI, cargo-ndk) and Windows (native DLL, C#/.NET) applications, adopting memory-mapped model loading that eliminated out-of-memory crashes on mobile hardware",
-        "Hardened cross-platform release engineering: keyless GitHub Actions CI/CD via GCP Workload Identity Federation, signing credentials in GCP Secret Manager, automated Google Play delivery with runtime version injection, and cross-platform Rust builds driven from Gradle",
-        "Removed macOS Keychain dependencies from the build and release pipeline (encrypted-file token store via CryptoKit, keyless rcodesign signing) as part of SOC 2 readiness, and moved client and service endpoints behind Cloudflare Tunnel HTTPS during the platform's migration to GCP",
-        "Hardened the Java backend's authentication and account flows: email validation, password policy, and secure password reset requiring prior credential verification",
-        "Rebuilt approximately 60% of the mobile and desktop UI, and designed a responsive SwiftUI layout system (window-size-class breakpoints, centralized layout tokens, adaptive stacks) so the macOS app adapts across window sizes and iPad form factors",
-        "Introduced PR-based code review and CI/CD pipelines across mobile, desktop, backend and services, and led technical planning across the Java, Rust and mobile workstreams"
+        "Engineering the company's MVP: a decentralized LLM inference platform that runs heavy AI workloads on contributors' Android and Windows devices, turning idle consumer hardware into usable cloud capacity and reducing infrastructure spend against centralized GPU alternatives",
+        "Own four surfaces of the stack end-to-end — the Android and Windows client applications, the Java backend with a Postgres data layer, and the Rust microservice tier (API gateway and inference orchestrator) deployed on AWS",
+        "Designed and shipped the Rust inference layer that coordinates LLM work across contributor devices, sustaining 99% service availability under load through request cancellation and dead-node cleanup that keep jobs moving when a contributor drops off mid-task",
+        "Delivered the Windows and Android client experience — unblocked Google and Facebook sign-in on Android, restored login and GPU contribution on Windows, and added background task automation so critical work runs reliably even when the app is not open",
+        "Rebuilt approximately 60% of the mobile and desktop UI, improving usability and visual consistency across the contributor and consumer experiences ahead of the enterprise rollout",
+        "Shipped offline on-device LLM inference across all four client platforms (Android, iOS, macOS, Windows) by embedding the Rust contributor client through platform FFI bridges — UniFFI + cargo-ndk Kotlin bindings on Android, Swift XCFramework on iOS/macOS, native DLL on Windows — with memory-mapped safetensors model loading that eliminated out-of-memory crashes on mobile devices",
+        "Hardened cross-platform release engineering: keyless GitHub Actions CI/CD via GCP Workload Identity Federation, signing credentials moved to GCP Secret Manager, automated Google Play Console delivery with runtime version injection, and cross-platform Rust builds driven directly from Gradle (no platform-specific scripts)",
+        "Removed all macOS Keychain dependencies from the build-and-release pipeline (encrypted-file token store via CryptoKit + keyless rcodesign signing) as part of SOC 2 compliance work, and moved client/service endpoints behind Cloudflare Tunnel HTTPS during the platform's migration to GCP",
+        "Designed a responsive SwiftUI layout system (window-size-class breakpoints, centralized layout tokens, adaptive stacks) so the macOS app adapts across desktop window sizes and iPad form factors",
+        "Hardened the Java backend's authentication and account flows — email validation, password policy, and secure password reset requiring prior credential verification — raising the platform's identity and account-security posture",
+        "Built the token-tracking and LLMOps layer used for monetization — per-request accounting of input and output tokens, model-level usage, and cost attribution — giving finance trustworthy per-user, per-model billing data",
+        "Introduced PR-based code review standards and CI/CD pipelines across mobile, desktop, backend, and Rust services, cutting bug regressions by approximately 30% and making releases predictable",
+        "Led technical planning and sprint-level work allocation, mapping Android, Windows, Java, and Rust deliverables to engineer strengths to hit committed timelines"
       ],
       "techStack": [
         "Java",
@@ -321,13 +320,7 @@
         "Candle",
         "UniFFI",
         "Mobile",
-        "Desktop",
-        "C#/.NET",
-        "Model Context Protocol (MCP)",
-        "WebAuthn / Passkeys",
-        "Jetpack/Android",
-        "iOS",
-        "macOS"
+        "Desktop"
       ]
     },
     {
